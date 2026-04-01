@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="light" lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Über Mich — Reta Yamaci</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "champagne":    "#EEE9E4",
+            "near-white":   "#FAFAF8",
+            "accent-rose":  "#D4A49C",
+            "dark-text":    "#242424",
+            "footer-black": "#000000",
+          },
+          fontFamily: {
+            "headline": ["Playfair Display", "serif"],
+            "body":     ["Montserrat", "sans-serif"],
+            "label":    ["Montserrat", "sans-serif"],
+          },
+          borderRadius: {
+            "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px",
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    .hero-title  { font-size: 96px; line-height: 1.05; }
+    .section-h2  { font-size: 48px; }
+    .body-text   { font-size: 17px; line-height: 1.65; }
+    .cta-dash    { display: inline-block; transition: transform 0.3s ease; }
+    .cta-link:hover .cta-dash { transform: translateX(8px); }
+    @media (max-width: 768px) {
+      .hero-title { font-size: 52px; }
+      .section-h2 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body class="bg-near-white text-dark-text font-body">
+
+<!-- NAV -->
+<header class="fixed top-0 w-full z-50 bg-[#EEE9E4]/40 backdrop-blur-sm transition-colors duration-500 hover:bg-[#EEE9E4]/90">
+  <nav aria-label="Haupt-Navigation" class="flex justify-between items-center px-8 md:px-12 py-6 max-w-[1920px] mx-auto">
+    <a href="index.html" class="font-headline text-2xl italic text-dark-text tracking-tight">Reta Yamaci</a>
+    <div class="hidden md:flex items-center gap-10 font-label text-xs tracking-[0.2em] uppercase text-dark-text">
+      <a href="leistungen.html" class="hover:text-accent-rose transition-colors duration-300">Leistungen</a>
+      <a href="portfolio.html"  class="hover:text-accent-rose transition-colors duration-300">Portfolio</a>
+      <a href="ueber-mich.html" class="text-accent-rose">Über Mich</a>
+      <a href="masterclass.html" class="hover:text-accent-rose transition-colors duration-300">Masterclass</a>
+    </div>
+    <a href="anfrage.html" class="cta-link hidden md:flex items-center gap-1 font-label text-xs tracking-[0.2em] uppercase text-dark-text hover:text-accent-rose transition-colors duration-300">
+      Termin Buchen <span class="cta-dash ml-1">——</span>
+    </a>
+    <button id="menu-toggle" type="button" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menü öffnen" aria-expanded="false">
+      <span class="block w-6 h-px bg-dark-text transition-all duration-300"></span>
+      <span class="block w-6 h-px bg-dark-text transition-all duration-300"></span>
+      <span class="block w-4 h-px bg-dark-text transition-all duration-300"></span>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden bg-[#EEE9E4]/95 backdrop-blur-sm px-8 pb-8 flex-col gap-6 font-label text-xs tracking-[0.2em] uppercase text-dark-text">
+    <a href="leistungen.html"  class="hover:text-accent-rose transition-colors">Leistungen</a>
+    <a href="portfolio.html"   class="hover:text-accent-rose transition-colors">Portfolio</a>
+    <a href="ueber-mich.html"  class="text-accent-rose">Über Mich</a>
+    <a href="masterclass.html" class="hover:text-accent-rose transition-colors">Masterclass</a>
+    <a href="anfrage.html"     class="hover:text-accent-rose transition-colors">Termin Buchen ——</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ========================
+       HERO
+  ========================= -->
+  <section class="relative min-h-[70vh] flex items-center justify-center bg-[#242424] overflow-hidden">
+    <!-- Tonal overlay gradient for depth -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] via-[#242424] to-[#2e2820] opacity-90"></div>
+    <!-- Subtle warm texture hint -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(212,164,156,0.06)_0%,_transparent_70%)]"></div>
+
+    <div class="relative z-10 text-center px-6 py-32 md:py-40">
+      <p class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose/80 mb-6">Hair & Makeup Stylistin</p>
+      <h1 class="hero-title font-headline text-white mb-8">Über Mich</h1>
+      <p class="font-body font-light text-white/60 text-xl md:text-2xl tracking-wide max-w-xl mx-auto leading-relaxed">
+        Leidenschaft für Perfektion<br>seit über einem Jahrzehnt
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================
+       STORY SECTION
+  ========================= -->
+  <section class="bg-near-white py-24 px-6 md:px-12">
+    <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-start">
+
+      <!-- Portrait (links) -->
+      <div class="w-full">
+        <div class="w-full aspect-[3/4] bg-[#cfc8c0] flex items-end justify-start overflow-hidden">
+          <!-- Platzhalter: Foto von Reta hier einfügen -->
+          <p class="font-label text-xs tracking-[0.15em] uppercase text-[#a09890] p-6 opacity-60">Foto · Reta Yamaci</p>
+        </div>
+      </div>
+
+      <!-- Content (rechts) -->
+      <div class="flex flex-col justify-center pt-4 md:pt-12">
+
+        <!-- Heading -->
+        <h2 class="section-h2 font-headline text-dark-text mb-4 leading-tight">Von der Kunst<br>zur Expertise</h2>
+
+        <!-- Tonal divider -->
+        <div class="h-px bg-champagne w-16 mb-6"></div>
+
+        <!-- Italic subtitle -->
+        <p class="font-headline italic text-xl text-dark-text/70 mb-10">Meine Reise im Detail</p>
+
+        <!-- Bio text -->
+        <div class="flex flex-col gap-6 mb-12">
+          <p class="body-text font-body text-dark-text/80">
+            Seit über einem Jahrzehnt ist Beauty meine Leidenschaft – von Make-up und Hairstyling bis hin zu Augenbrauen-Design. Was 2018 mit professionellen Ausbildungen in Make-up, Hairstyling und Maskenbildnerei für Medien, TV, Theater und Spezialeffekte (SFX) begann, mündete 2020 in die Selbstständigkeit als mobile Make-up Artistin, Hairstylistin und Augenbrauen-Stylistin.
+          </p>
+          <p class="body-text font-body text-dark-text/80">
+            Von 2023 bis 2025 arbeitete ich in Köln eng mit dem renommierten türkischen Make-up Artist Serhat Şen zusammen – mit Schwerpunkt auf Bridal Styling und wertvoller Erfahrung auf internationalem Niveau. Ergänzt wird mein Portfolio durch meine Expertise als Fachfrau für Schminke und Handel, sodass ich meine Kundinnen von Kopf bis Fuß perfekt begleiten kann.
+          </p>
+          <p class="body-text font-body text-dark-text/80">
+            Ob Alltags-Look, Hochzeits-Make-up, Hochzeitsfrisur, Produktionsshooting oder Theaterproduktion – ich bin flexibel in meinem Studio, mobil bei Ihnen oder an einem Wunschort. Neue Projekte und kreative Ideen begeistern mich jederzeit.
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <a href="anfrage.html" class="cta-link inline-flex items-center font-label text-xs tracking-[0.2em] uppercase text-dark-text hover:text-accent-rose transition-colors duration-300">
+          Jetzt Termin Anfragen <span class="cta-dash ml-2">——</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       EXPERTISE SECTION
+  ========================= -->
+  <section class="bg-champagne py-24 px-6 md:px-12">
+    <div class="max-w-[1280px] mx-auto">
+
+      <!-- Section label -->
+      <p class="font-label text-xs tracking-[0.25em] uppercase text-accent-rose mb-16">Expertise</p>
+
+      <!-- 3 columns -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+
+        <!-- Bridal Excellence -->
+        <div class="bg-[#f8f3ee] p-10 flex flex-col gap-4">
+          <span class="font-label text-xs tracking-[0.2em] opacity-40">01</span>
+          <h3 class="font-headline text-2xl text-dark-text leading-snug">Bridal Excellence</h3>
+          <div class="h-px bg-champagne"></div>
+          <p class="body-text font-body text-dark-text/70">
+            Perfektion für den wichtigsten Tag. Inspiriert von internationalem Handwerk und jahrelanger Erfahrung mit Bräuten aus unterschiedlichsten Kulturen.
+          </p>
+        </div>
+
+        <!-- Editorial & Media -->
+        <div class="bg-[#f8f3ee] p-10 flex flex-col gap-4">
+          <span class="font-label text-xs tracking-[0.2em] opacity-40">02</span>
+          <h3 class="font-headline text-2xl text-dark-text leading-snug">Editorial & Media</h3>
+          <div class="h-px bg-champagne"></div>
+          <p class="body-text font-body text-dark-text/70">
+            Von TV-Produktionen bis hin zu spezialisierten SFX Character-Designs. Professionelles Make-up für Foto, Film und Bühne.
+          </p>
+        </div>
+
+        <!-- Lifestyle Design -->
+        <div class="bg-[#f8f3ee] p-10 flex flex-col gap-4">
+          <span class="font-label text-xs tracking-[0.2em] opacity-40">03</span>
+          <h3 class="font-headline text-2xl text-dark-text leading-snug">Lifestyle Design</h3>
+          <div class="h-px bg-champagne"></div>
+          <p class="body-text font-body text-dark-text/70">
+            Individuelles Augenbrauen-Styling und mobile Beauty-Konzepte — maßgeschneidert für Ihren Alltag oder besonderen Anlass.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-footer-black w-full">
+  <div class="flex flex-col items-center gap-10 py-20 px-8">
+    <a href="index.html" class="font-headline text-xl italic text-white">Reta Yamaci</a>
+    <nav aria-label="Footer-Navigation" class="flex flex-wrap justify-center gap-8 md:gap-14">
+      <a href="#" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Impressum</a>
+      <a href="#" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Datenschutz</a>
+      <a href="anfrage.html" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Kontakt</a>
+      <a href="#0" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Instagram</a>
+      <a href="#0" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Pinterest</a>
+    </nav>
+    <p class="font-label text-xs tracking-[0.2em] uppercase text-stone-600">© 2026 Reta Yamaci. Alle Rechte vorbehalten.</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  // Mobile Nav Toggle
+  const toggle = document.getElementById('menu-toggle');
+  const menu   = document.getElementById('mobile-menu');
+  const bars   = toggle.querySelectorAll('span');
+  toggle.addEventListener('click', function() {
+    const isHidden = menu.classList.contains('hidden');
+    menu.classList.toggle('hidden');
+    menu.classList.toggle('flex', isHidden);
+    toggle.setAttribute('aria-expanded', String(isHidden));
+    bars[0].style.transform = isHidden ? 'translateY(6px) rotate(45deg)' : '';
+    bars[1].style.opacity   = isHidden ? '0' : '1';
+    bars[2].style.transform = isHidden ? 'translateY(-6px) rotate(-45deg)' : '';
+  });
+  menu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      toggle.setAttribute('aria-expanded', 'false');
+      bars.forEach(function(b) { b.style.transform = ''; b.style.opacity = ''; });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
