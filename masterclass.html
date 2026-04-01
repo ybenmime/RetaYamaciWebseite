@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="light" lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Masterclass — Reta Yamaci</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "accent-rose":  "#D4A49C",
+            "dark-text":    "#242424",
+            "footer-black": "#000000",
+          },
+          fontFamily: {
+            "headline": ["Playfair Display", "serif"],
+            "body":     ["Montserrat", "sans-serif"],
+          },
+          borderRadius: {
+            "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px",
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    .cta-dash { display: inline-block; transition: transform 0.3s ease; }
+    .cta-link:hover .cta-dash { transform: translateX(8px); }
+    .section-h2 { font-size: 48px; line-height: 1.1; }
+    .body-text  { font-size: 17px; line-height: 1.65; }
+
+    /* Video container — verhindert Download-Kontextmenü */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      background: #111;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    /* Transparentes Overlay verhindert Rechtsklick auf den iframe */
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: transparent;
+    }
+
+    /* Video Card Hover */
+    .video-card { transition: opacity 0.3s; }
+    .video-card:hover { opacity: 0.85; }
+
+    /* Thumbnail placeholder */
+    .thumb-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Loading screen (vor Auth-Check) */
+    #loading-screen {
+      position: fixed; inset: 0;
+      background: #0d0d0d;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999;
+    }
+
+    /* Access expired overlay */
+    #expired-overlay {
+      position: fixed; inset: 0;
+      background: #0d0d0d;
+      display: none; align-items: center; justify-content: center;
+      z-index: 9999;
+    }
+
+    @media (max-width: 768px) {
+      .section-h2 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body class="bg-[#0d0d0d] text-white font-body" style="user-select: none;">
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <p class="font-headline italic text-white/40 text-xl">Laden …</p>
+  </div>
+
+  <!-- Access Expired Overlay -->
+  <div id="expired-overlay" style="display:none;">
+    <div class="text-center px-6 max-w-md">
+      <p class="font-body text-xs tracking-[0.3em] uppercase text-accent-rose mb-4">Zugang abgelaufen</p>
+      <h2 class="font-headline text-3xl italic text-white mb-4">Ihr Jahres-Zugang ist beendet.</h2>
+      <p class="font-body text-sm text-white/50 mb-10">Bitte kontaktieren Sie uns, um Ihren Zugang zu verlängern.</p>
+      <a href="anfrage.html" class="cta-link inline-flex items-center gap-2 font-body text-xs tracking-[0.2em] uppercase text-white hover:text-accent-rose transition-colors">
+        Kontakt aufnehmen <span class="cta-dash">——</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT (versteckt bis Auth-Check abgeschlossen) -->
+  <div id="page-content" style="display:none;">
+
+  <!-- ========================
+       NAV
+  ========================= -->
+  <header class="fixed top-0 w-full z-50 bg-[#0d0d0d]/80 backdrop-blur-sm border-b border-white/5">
+    <nav class="flex justify-between items-center px-8 md:px-12 py-6 max-w-[1920px] mx-auto">
+      <a href="index.html" class="font-headline text-2xl italic text-white tracking-tight">Reta Yamaci</a>
+      <div class="hidden md:flex items-center gap-10 font-body text-xs tracking-[0.2em] uppercase text-white/50">
+        <a href="leistungen.html" class="hover:text-white transition-colors duration-300">Leistungen</a>
+        <a href="portfolio.html"  class="hover:text-white transition-colors duration-300">Portfolio</a>
+        <a href="ueber-mich.html" class="hover:text-white transition-colors duration-300">Über Mich</a>
+        <span class="text-accent-rose">Masterclass</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <span id="user-email" class="hidden md:block font-body text-xs text-white/30 tracking-wide"></span>
+        <button id="logout-btn" class="cta-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-accent-rose transition-colors duration-300 flex items-center gap-1">
+          Abmelden <span class="cta-dash">——</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-24">
+
+    <!-- ========================
+         HERO
+    ========================= -->
+    <section class="px-8 md:px-12 py-24 max-w-[1280px] mx-auto">
+      <p class="font-body text-xs tracking-[0.3em] uppercase text-accent-rose mb-6">Exklusiver Bereich</p>
+      <h1 class="font-headline text-white mb-6" style="font-size: 72px; line-height: 1.05;">
+        Willkommen in deiner<br/><em class="italic">Masterclass</em>
+      </h1>
+      <p class="font-body font-light text-white/50 text-lg max-w-xl leading-relaxed">
+        Drei professionelle Lerneinheiten zu Frisuren und Techniken — kuratiert und aufgenommen von Reta Yamaci. Dein Zugang ist <span id="expiry-display" class="text-accent-rose"></span> gültig.
+      </p>
+    </section>
+
+    <!-- ========================
+         FEATURED VIDEO
+    ========================= -->
+    <section class="px-8 md:px-12 pb-24 max-w-[1280px] mx-auto">
+      <p class="font-body text-xs tracking-[0.2em] uppercase text-white/30 mb-6">Featured</p>
+
+      <div class="relative bg-[#111] overflow-hidden">
+        <!-- Vimeo Embed (TODO: Video-ID ersetzen) -->
+        <div class="video-wrapper">
+          <!--
+            TODO: Die Vimeo-Video-ID unten ersetzen (z.B. 123456789)
+            Einstellungen in Vimeo:
+            - Privacy: "Only on sites I choose" → deine Domain eintragen
+            - Downloads: deaktivieren
+          -->
+          <iframe
+            src="https://player.vimeo.com/video/VIMEO_ID_FEATURED?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            title="Masterclass — Featured Video">
+          </iframe>
+          <!-- Overlay verhindert Rechtsklick -->
+          <div class="video-overlay" oncontextmenu="return false;"></div>
+        </div>
+
+        <!-- Placeholder wenn kein Video vorhanden -->
+        <div id="featured-placeholder" class="thumb-placeholder" style="aspect-ratio: 16/9; min-height: 400px;">
+          <div class="text-center">
+            <div class="w-16 h-16 border border-white/20 flex items-center justify-center mx-auto mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+            <p class="font-body text-xs tracking-[0.2em] uppercase text-white/20">Video folgt in Kürze</p>
+          </div>
+        </div>
+
+        <div class="p-8 bg-[#111]">
+          <p class="font-body text-xs tracking-[0.2em] uppercase text-accent-rose mb-3">Lektion 01</p>
+          <h2 class="font-headline text-2xl text-white">Titel folgt</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         VIDEO BIBLIOTHEK
+    ========================= -->
+    <section class="bg-[#111] py-24 px-8 md:px-12">
+      <div class="max-w-[1280px] mx-auto">
+
+        <p class="font-body text-xs tracking-[0.2em] uppercase text-white/30 mb-2">Alle Inhalte</p>
+        <h2 class="section-h2 font-headline text-white mb-16">Die Bibliothek</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <!-- Video 1 -->
+          <div class="video-card flex flex-col">
+            <div class="video-wrapper">
+              <iframe
+                src="https://player.vimeo.com/video/VIMEO_ID_1?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                title="Lektion 01">
+              </iframe>
+              <div class="video-overlay" oncontextmenu="return false;"></div>
+            </div>
+            <!-- Placeholder -->
+            <div class="thumb-placeholder">
+              <div class="text-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" class="mx-auto mb-2">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <p class="font-body text-xs text-white/20">Lektion 01</p>
+              </div>
+            </div>
+            <div class="bg-[#1a1a1a] p-6 flex flex-col gap-3 flex-1">
+              <p class="font-body text-xs tracking-[0.2em] uppercase text-accent-rose">Lektion 01</p>
+              <h3 class="font-headline text-lg text-white">Titel folgt</h3>
+              <p class="font-body text-sm text-white/40 font-light flex-1">Beschreibung folgt sobald das Video hochgeladen wird.</p>
+              <a href="#" class="cta-link mt-4 inline-flex items-center gap-2 font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors">
+                Jetzt ansehen <span class="cta-dash">——</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="video-card flex flex-col">
+            <div class="video-wrapper">
+              <iframe
+                src="https://player.vimeo.com/video/VIMEO_ID_2?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                title="Lektion 02">
+              </iframe>
+              <div class="video-overlay" oncontextmenu="return false;"></div>
+            </div>
+            <div class="thumb-placeholder">
+              <div class="text-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" class="mx-auto mb-2">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <p class="font-body text-xs text-white/20">Lektion 02</p>
+              </div>
+            </div>
+            <div class="bg-[#1a1a1a] p-6 flex flex-col gap-3 flex-1">
+              <p class="font-body text-xs tracking-[0.2em] uppercase text-accent-rose">Lektion 02</p>
+              <h3 class="font-headline text-lg text-white">Titel folgt</h3>
+              <p class="font-body text-sm text-white/40 font-light flex-1">Beschreibung folgt sobald das Video hochgeladen wird.</p>
+              <a href="#" class="cta-link mt-4 inline-flex items-center gap-2 font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors">
+                Jetzt ansehen <span class="cta-dash">——</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="video-card flex flex-col">
+            <div class="video-wrapper">
+              <iframe
+                src="https://player.vimeo.com/video/VIMEO_ID_3?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                title="Lektion 03">
+              </iframe>
+              <div class="video-overlay" oncontextmenu="return false;"></div>
+            </div>
+            <div class="thumb-placeholder">
+              <div class="text-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" class="mx-auto mb-2">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <p class="font-body text-xs text-white/20">Lektion 03</p>
+              </div>
+            </div>
+            <div class="bg-[#1a1a1a] p-6 flex flex-col gap-3 flex-1">
+              <p class="font-body text-xs tracking-[0.2em] uppercase text-accent-rose">Lektion 03</p>
+              <h3 class="font-headline text-lg text-white">Titel folgt</h3>
+              <p class="font-body text-sm text-white/40 font-light flex-1">Beschreibung folgt sobald das Video hochgeladen wird.</p>
+              <a href="#" class="cta-link mt-4 inline-flex items-center gap-2 font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors">
+                Jetzt ansehen <span class="cta-dash">——</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#000] w-full">
+    <div class="flex flex-col items-center gap-10 py-20 px-8">
+      <a href="index.html" class="font-headline text-xl italic text-white">Reta Yamaci</a>
+      <nav class="flex flex-wrap justify-center gap-8 md:gap-14">
+        <a href="#" class="font-body text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Impressum</a>
+        <a href="#" class="font-body text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Datenschutz</a>
+        <a href="anfrage.html" class="font-body text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Kontakt</a>
+      </nav>
+      <p class="font-body text-xs tracking-[0.2em] uppercase text-stone-600">© 2026 Reta Yamaci. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  </div><!-- /page-content -->
+
+  <!-- ========================
+       SUPABASE AUTH + SCHUTZ
+  ========================= -->
+  <script>
+  (function() {
+    // ─── SUPABASE KONFIGURATION ───────────────────────────────────────────────
+    // TODO: Diese Werte aus deinem Supabase-Dashboard eintragen:
+    //       Settings → API → Project URL & anon/public key
+    const SUPABASE_URL      = 'https://DEIN_PROJEKT.supabase.co';
+    const SUPABASE_ANON_KEY = 'DEIN_ANON_KEY';
+    // ─────────────────────────────────────────────────────────────────────────
+
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function init() {
+      const { data: { session } } = await client.auth.getSession();
+
+      // Nicht eingeloggt → Login-Seite
+      if (!session) {
+        window.location.href = 'masterclass-login.html';
+        return;
+      }
+
+      // Zugang-Ablauf prüfen (Supabase Tabelle: profiles)
+      // Spalte: access_expires_at (timestamp with time zone)
+      const { data: profile, error } = await client
+        .from('profiles')
+        .select('access_expires_at')
+        .eq('user_id', session.user.id)
+        .single();
+
+      if (!error && profile && profile.access_expires_at) {
+        const expiresAt = new Date(profile.access_expires_at);
+        const now       = new Date();
+
+        if (now > expiresAt) {
+          // Zugang abgelaufen
+          document.getElementById('loading-screen').style.display  = 'none';
+          document.getElementById('expired-overlay').style.display = 'flex';
+          return;
+        }
+
+        // Ablaufdatum in Hero anzeigen
+        const options = { day: '2-digit', month: 'long', year: 'numeric' };
+        document.getElementById('expiry-display').textContent =
+          'bis ' + expiresAt.toLocaleDateString('de-DE', options);
+      }
+
+      // E-Mail in Nav anzeigen
+      document.getElementById('user-email').textContent = session.user.email;
+
+      // Seite einblenden
+      document.getElementById('loading-screen').style.display = 'none';
+      document.getElementById('page-content').style.display   = 'block';
+    }
+
+    init();
+
+    // Logout
+    document.getElementById('logout-btn').addEventListener('click', async function() {
+      await client.auth.signOut();
+      window.location.href = 'masterclass-login.html';
+    });
+
+    // ─── VIDEO-SCHUTZ ──────────────────────────────────────────────────────────
+    // Rechtsklick deaktivieren
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+
+    // Tastenkürzel sperren: Strg+S (Speichern), Strg+U (Quellcode)
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && ['s', 'u', 'p'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+      }
+    });
+    // ─────────────────────────────────────────────────────────────────────────
+  })();
+  </script>
+
+</body>
+</html>

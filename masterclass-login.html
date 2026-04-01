@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="light" lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Masterclass Login — Reta Yamaci</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "accent-rose": "#D4A49C",
+          },
+          fontFamily: {
+            "headline": ["Playfair Display", "serif"],
+            "body":     ["Montserrat", "sans-serif"],
+          },
+          borderRadius: {
+            "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px",
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    .cta-dash { display: inline-block; transition: transform 0.3s ease; }
+    .cta-link:hover .cta-dash { transform: translateX(8px); }
+    .input-dark {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      padding: 12px 0;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .input-dark::placeholder { color: rgba(255,255,255,0.35); }
+    .input-dark:focus { border-bottom-color: #D4A49C; }
+    .error-msg { color: #D4A49C; font-size: 12px; font-family: 'Montserrat', sans-serif; margin-top: 6px; display: none; }
+  </style>
+</head>
+<body class="bg-[#0d0d0d] min-h-screen flex flex-col items-center justify-center px-6 font-body">
+
+  <!-- Back to site -->
+  <a href="index.html" class="absolute top-8 left-8 font-headline text-lg italic text-white/60 hover:text-white transition-colors duration-300">Reta Yamaci</a>
+
+  <!-- Login Card -->
+  <div class="w-full max-w-md">
+
+    <!-- Header -->
+    <div class="mb-12 text-center">
+      <p class="font-body text-xs tracking-[0.3em] uppercase text-accent-rose mb-4">Masterclass</p>
+      <h1 class="font-headline text-4xl italic text-white mb-3">Willkommen zurück</h1>
+      <p class="font-body text-sm text-white/40 font-light">Melden Sie sich an, um auf Ihre Inhalte zuzugreifen.</p>
+    </div>
+
+    <!-- Expired notice (shown via URL param) -->
+    <div id="expired-notice" class="hidden mb-8 p-4 border border-accent-rose/30 bg-accent-rose/5">
+      <p class="font-body text-xs text-accent-rose tracking-wide">Ihr Zugang ist abgelaufen. Bitte kontaktieren Sie uns für eine Verlängerung.</p>
+    </div>
+
+    <!-- Form -->
+    <form id="login-form" novalidate class="flex flex-col gap-8">
+
+      <div>
+        <label class="block font-body text-xs tracking-[0.2em] uppercase text-white/40 mb-2">E-Mail</label>
+        <input id="email" type="email" placeholder="ihre@email.de" class="input-dark" autocomplete="email"/>
+        <p id="email-error" class="error-msg">Bitte eine gültige E-Mail eingeben.</p>
+      </div>
+
+      <div>
+        <label class="block font-body text-xs tracking-[0.2em] uppercase text-white/40 mb-2">Passwort</label>
+        <input id="password" type="password" placeholder="••••••••" class="input-dark" autocomplete="current-password"/>
+        <p id="password-error" class="error-msg">Passwort ist erforderlich.</p>
+      </div>
+
+      <!-- General error -->
+      <p id="general-error" class="error-msg text-center" style="display:none;"></p>
+
+      <!-- Submit -->
+      <button type="submit" id="submit-btn"
+        class="cta-link w-full mt-4 py-4 bg-white text-[#0d0d0d] font-body text-xs tracking-[0.25em] uppercase font-medium hover:bg-accent-rose hover:text-white transition-colors duration-300 flex items-center justify-center gap-2">
+        <span id="btn-label">Einloggen</span>
+        <span class="cta-dash">——</span>
+      </button>
+
+    </form>
+
+    <!-- Forgot password -->
+    <div class="mt-8 text-center">
+      <button id="forgot-btn" type="button" class="font-body text-xs tracking-wide text-white/30 hover:text-white/60 transition-colors duration-300 underline underline-offset-4">
+        Passwort vergessen?
+      </button>
+      <p id="reset-sent" class="hidden font-body text-xs text-accent-rose mt-3">Reset-Link wurde an Ihre E-Mail gesendet.</p>
+    </div>
+
+  </div>
+
+  <!-- Supabase + Auth Logic -->
+  <script>
+  (function() {
+    // ─── SUPABASE KONFIGURATION ───────────────────────────────────────────────
+    // TODO: Diese Werte aus deinem Supabase-Dashboard eintragen:
+    //       Settings → API → Project URL & anon/public key
+    const SUPABASE_URL      = 'https://DEIN_PROJEKT.supabase.co';
+    const SUPABASE_ANON_KEY = 'DEIN_ANON_KEY';
+    // ─────────────────────────────────────────────────────────────────────────
+
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // Zeige "abgelaufen"-Hinweis wenn URL-Parameter vorhanden
+    if (new URLSearchParams(window.location.search).get('expired') === 'true') {
+      document.getElementById('expired-notice').classList.remove('hidden');
+    }
+
+    // Falls bereits eingeloggt → direkt zur Masterclass
+    client.auth.getSession().then(function({ data: { session } }) {
+      if (session) window.location.href = 'masterclass.html';
+    });
+
+    // Login Form
+    document.getElementById('login-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const email    = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const btn      = document.getElementById('submit-btn');
+      const label    = document.getElementById('btn-label');
+
+      // Reset errors
+      document.getElementById('email-error').style.display    = 'none';
+      document.getElementById('password-error').style.display = 'none';
+      document.getElementById('general-error').style.display  = 'none';
+
+      // Validation
+      let valid = true;
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('email-error').style.display = 'block'; valid = false;
+      }
+      if (!password) {
+        document.getElementById('password-error').style.display = 'block'; valid = false;
+      }
+      if (!valid) return;
+
+      // Loading state
+      btn.disabled  = true;
+      label.textContent = 'Einen Moment …';
+
+      const { data, error } = await client.auth.signInWithPassword({ email, password });
+
+      if (error) {
+        btn.disabled      = false;
+        label.textContent = 'Einloggen';
+        const msg = document.getElementById('general-error');
+        msg.textContent   = error.message.includes('Invalid login')
+          ? 'E-Mail oder Passwort ist falsch.'
+          : 'Ein Fehler ist aufgetreten. Bitte erneut versuchen.';
+        msg.style.display = 'block';
+        return;
+      }
+
+      // Erfolg → Weiterleitung
+      window.location.href = 'masterclass.html';
+    });
+
+    // Passwort vergessen
+    document.getElementById('forgot-btn').addEventListener('click', async function() {
+      const email = document.getElementById('email').value.trim();
+      if (!email) {
+        document.getElementById('email-error').style.display = 'block';
+        return;
+      }
+      await client.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + '/masterclass-login.html'
+      });
+      document.getElementById('reset-sent').classList.remove('hidden');
+    });
+  })();
+  </script>
+
+</body>
+</html>
