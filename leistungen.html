@@ -50,6 +50,7 @@
       cursor: pointer;
       transition: background-color 0.2s;
       position: relative;
+      border-bottom: 1px solid #e7e2dd;
     }
     .option-row:hover { background-color: rgba(212,164,156,0.08); }
     .option-row.selected { background-color: rgba(212,164,156,0.12); }
@@ -123,69 +124,69 @@
       <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose block mb-4">Besondere Anlässe</span>
       <h2 class="font-headline section-h2 text-dark-text">Für Ihren besonderen Tag</h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div class="flex flex-wrap justify-center gap-6">
 
       <!-- Karte: Braut -->
-      <div class="anlass-card bg-near-white p-10 flex flex-col" data-service="Braut">
+      <div class="anlass-card bg-[#f8f3ee] p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" data-service="Braut">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">01</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Braut</h3>
         <div class="h-px bg-champagne mb-4"></div>
         <div class="options-list flex flex-col mb-8 flex-1">
           <div class="option-row" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
           <div class="option-row" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
-          <div class="option-row" data-option="Hairstyling + Makeup" data-price="400"><span class="option-label">Hairstyling + Makeup</span><span class="option-price">400 €</span></div>
+          <div class="option-row" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
         </div>
         <a href="anfrage.html?service=Braut" class="cta-link card-cta inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
       </div>
 
       <!-- Karte: Henna -->
-      <div class="anlass-card bg-near-white p-10 flex flex-col" data-service="Henna">
+      <div class="anlass-card bg-[#f8f3ee] p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" data-service="Henna">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">02</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Henna</h3>
         <div class="h-px bg-champagne mb-4"></div>
         <div class="options-list flex flex-col mb-8 flex-1">
           <div class="option-row" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
           <div class="option-row" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
-          <div class="option-row" data-option="Hairstyling + Makeup" data-price="400"><span class="option-label">Hairstyling + Makeup</span><span class="option-price">400 €</span></div>
+          <div class="option-row" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
         </div>
         <a href="anfrage.html?service=Henna" class="cta-link card-cta inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
       </div>
 
       <!-- Karte: Standesamt -->
-      <div class="anlass-card bg-near-white p-10 flex flex-col" data-service="Standesamt">
+      <div class="anlass-card bg-[#f8f3ee] p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" data-service="Standesamt">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">03</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Standesamt</h3>
         <div class="h-px bg-champagne mb-4"></div>
         <div class="options-list flex flex-col mb-8 flex-1">
           <div class="option-row" data-option="Hairstyling" data-price="200"><span class="option-label">Hairstyling</span><span class="option-price">200 €</span></div>
           <div class="option-row" data-option="Makeup" data-price="200"><span class="option-label">Makeup</span><span class="option-price">200 €</span></div>
-          <div class="option-row" data-option="Hairstyling + Makeup" data-price="380"><span class="option-label">Hairstyling + Makeup</span><span class="option-price">380 €</span></div>
+          <div class="option-row" data-option="Complete Look" data-price="380"><span class="option-label">Complete Look</span><span class="option-price">380 €</span></div>
         </div>
         <a href="anfrage.html?service=Standesamt" class="cta-link card-cta inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
       </div>
 
       <!-- Karte: Verlobung -->
-      <div class="anlass-card bg-near-white p-10 flex flex-col" data-service="Verlobung">
+      <div class="anlass-card bg-[#f8f3ee] p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" data-service="Verlobung">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">04</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Verlobung</h3>
         <div class="h-px bg-champagne mb-4"></div>
         <div class="options-list flex flex-col mb-8 flex-1">
           <div class="option-row" data-option="Hairstyling" data-price="200"><span class="option-label">Hairstyling</span><span class="option-price">200 €</span></div>
           <div class="option-row" data-option="Makeup" data-price="200"><span class="option-label">Makeup</span><span class="option-price">200 €</span></div>
-          <div class="option-row" data-option="Hairstyling + Makeup" data-price="380"><span class="option-label">Hairstyling + Makeup</span><span class="option-price">380 €</span></div>
+          <div class="option-row" data-option="Complete Look" data-price="380"><span class="option-label">Complete Look</span><span class="option-price">380 €</span></div>
         </div>
         <a href="anfrage.html?service=Verlobung" class="cta-link card-cta inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
       </div>
 
       <!-- Karte: Gäste -->
-      <div class="anlass-card bg-near-white p-10 flex flex-col" data-service="Gäste">
+      <div class="anlass-card bg-[#f8f3ee] p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" data-service="Gäste">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">05</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Gäste</h3>
         <div class="h-px bg-champagne mb-4"></div>
         <div class="options-list flex flex-col mb-8 flex-1">
           <div class="option-row" data-option="Hairstyling" data-price="120"><span class="option-label">Hairstyling</span><span class="option-price">120 €</span></div>
           <div class="option-row" data-option="Makeup" data-price="120"><span class="option-label">Makeup</span><span class="option-price">120 €</span></div>
-          <div class="option-row" data-option="Hairstyling + Makeup" data-price="240"><span class="option-label">Hairstyling + Makeup</span><span class="option-price">240 €</span></div>
+          <div class="option-row" data-option="Complete Look" data-price="240"><span class="option-label">Complete Look</span><span class="option-price">240 €</span></div>
         </div>
         <a href="anfrage.html?service=Gäste" class="cta-link card-cta inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
       </div>
@@ -201,10 +202,10 @@
       <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose block mb-4">Weitere Leistungen</span>
       <h2 class="font-headline section-h2 text-dark-text">Workshops & Shooting</h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3">
+    <div class="flex flex-wrap justify-center gap-6">
 
       <!-- Shooting Makeup -->
-      <div class="bg-champagne p-10 flex flex-col">
+      <div class="bg-champagne p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">06</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Shooting Makeup</h3>
         <p class="body-text text-dark-text/70 mb-8 flex-1">Professionelles Make-up für Foto- und Video-Produktionen.</p>
@@ -213,7 +214,7 @@
       </div>
 
       <!-- 1:1 Workshop -->
-      <div class="bg-champagne p-10 flex flex-col">
+      <div class="bg-champagne p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">07</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">1:1 Workshop<br/>Hairstyling</h3>
         <ul class="space-y-2 mb-6 flex-1">
@@ -229,7 +230,7 @@
       </div>
 
       <!-- Online Masterclass -->
-      <div class="bg-champagne p-10 flex flex-col">
+      <div class="bg-champagne p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">08</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Online<br/>Masterclass</h3>
         <ul class="space-y-2 mb-8 flex-1">
