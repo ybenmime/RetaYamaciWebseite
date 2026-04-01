@@ -1,0 +1,222 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Montserrat:wght@200;300;400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#7c554e",
+              "surface-container": "#f2ede8",
+              "primary-container": "#d4a49c",
+              "surface-container-high": "#ece7e2",
+              "surface-container-low": "#f8f3ee",
+              "surface-container-highest": "#e7e2dd",
+              "surface": "#fef8f3",
+              "on-background": "#1d1b19",
+              "surface-container-lowest": "#ffffff",
+              "background": "#fef8f3",
+              "outline-variant": "#d5c2bf",
+              "on-surface": "#1d1b19",
+              "secondary": "#5d5f5d",
+              "on-primary": "#ffffff",
+            },
+            fontFamily: {
+              "headline": ["Playfair Display", "serif"],
+              "body": ["Montserrat", "sans-serif"],
+              "label": ["Montserrat", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        body {
+            background-color: #EEE9E4;
+            color: #242424;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+        @media (min-width: 768px) {
+            .editorial-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .cta-dash {
+            transition: transform 0.3s ease;
+        }
+        .cta-link:hover .cta-dash {
+            transform: translateX(8px);
+        }
+    </style>
+</head>
+<body class="bg-[#EEE9E4] text-on-surface">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 w-full z-50 bg-[#EEE9E4]/80 dark:bg-stone-900/80 backdrop-blur-xl flex justify-between items-center px-12 py-6 w-full">
+<div class="font-['Playfair_Display'] text-2xl tracking-tight text-[#242424] dark:text-[#EEE9E4]" style="">
+            Reta Yamaci</div>
+<div class="hidden md:flex space-x-12 items-center">
+<a class="font-['Montserrat'] text-sm tracking-widest uppercase text-[#D4A49C] border-b border-[#D4A49C] pb-1" href="#" style="">Services</a>
+<a class="font-['Montserrat'] text-sm tracking-widest uppercase text-[#242424] dark:text-[#EEE9E4] opacity-80 hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Portfolio</a>
+<a class="font-['Montserrat'] text-sm tracking-widest uppercase text-[#242424] dark:text-[#EEE9E4] opacity-80 hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">ÜBER MICH</a>
+<a class="font-['Montserrat'] text-sm tracking-widest uppercase text-[#242424] dark:text-[#EEE9E4] opacity-80 hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Masterclass</a>
+</div>
+<div class="font-['Montserrat'] text-sm tracking-widest uppercase text-[#242424] dark:text-[#EEE9E4] cursor-pointer hover:text-[#D4A49C] transition-colors duration-300" style="">
+            Member Login
+        </div>
+</nav>
+<main class="pt-32 pb-48">
+<!-- Hero Header -->
+<header class="px-12 mb-24 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-2xl">
+<span class="font-body text-sm tracking-[0.3em] uppercase opacity-60 mb-4 block" style="">Professional Artistry</span>
+<h1 class="font-headline text-6xl md:text-8xl leading-tight mb-8" style="">Meine Expertise</h1>
+<p class="font-body text-lg leading-[1.65] font-light max-w-md" style="">Eine kuratierte Auswahl hochwertiger Beauty-Services, gestaltet für den modernen Menschen. Von editorialem Haarstyling bis zur maßgeschneiderten Brautkunst.</p>
+</div>
+<div class="hidden md:block pb-2">
+<div class="w-px h-32 bg-outline-variant opacity-30 mx-auto"></div>
+</div>
+</div>
+</header>
+<!-- Service Grid -->
+<section class="px-4 md:px-12 max-w-screen-2xl mx-auto">
+<div class="editorial-grid gap-12">
+<!-- Service 1 -->
+<div class="group relative bg-surface-container-low aspect-square flex flex-col p-12 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest border border-outline-variant/10">
+<div class="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<span class="material-symbols-outlined text-primary-container" style="">north_east</span>
+</div>
+<span class="font-body text-xs tracking-widest uppercase opacity-40 mb-2" style="">01</span>
+<h3 class="font-headline text-3xl mb-8" style="">Tages &amp; Abend Make-Up</h3>
+<p class="font-body text-sm leading-relaxed font-light opacity-70 mb-auto" style="">inklusive Beratung</p>
+<a class="cta-link inline-flex items-center gap-2 font-body text-xs tracking-widest uppercase mt-8" href="#inquiry?service=editorial-hair" style="">
+                        Jetzt Informieren <span class="cta-dash" style="">——</span>
+</a>
+</div>
+<!-- Service 2 -->
+<div class="group relative bg-surface-container-low aspect-square flex flex-col p-12 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest border border-outline-variant/10">
+<div class="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<span class="material-symbols-outlined text-primary-container" style="">north_east</span>
+</div>
+<span class="font-body text-xs tracking-widest uppercase opacity-40 mb-2" style="">02</span>
+<h3 class="font-headline text-3xl mb-8" style="">Foto Make-Up</h3>
+<p class="font-body text-sm leading-relaxed font-light opacity-70 mb-auto" style="">inklusive Beratung</p>
+<a class="cta-link inline-flex items-center gap-2 font-body text-xs tracking-widest uppercase mt-8" href="#inquiry?service=bridal-makeup" style="">
+                        Jetzt Informieren <span class="cta-dash" style="">——</span>
+</a>
+</div>
+<!-- Service 3 -->
+<div class="group relative bg-surface-container-low aspect-square flex flex-col p-12 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest border border-outline-variant/10">
+<div class="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<span class="material-symbols-outlined text-primary-container" style="">north_east</span>
+</div>
+<span class="font-body text-xs tracking-widest uppercase opacity-40 mb-2" style="">03</span>
+<h3 class="font-headline text-3xl mb-8" style="">Styling</h3>
+<p class="font-body text-sm leading-relaxed font-light opacity-70 mb-auto" style="">Föhnen, inklusive Schaum, Spray<br>Locken und Glätten<br>Hochsteckfrisur</p>
+<a class="cta-link inline-flex items-center gap-2 font-body text-xs tracking-widest uppercase mt-8" href="#inquiry?service=color-atelier" style="">
+                        Jetzt Informieren <span class="cta-dash" style="">——</span>
+</a>
+</div>
+<!-- Service 4 -->
+<div class="group relative bg-surface-container-low aspect-square flex flex-col p-12 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest border border-outline-variant/10">
+<div class="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<span class="material-symbols-outlined text-primary-container" style="">north_east</span>
+</div>
+<span class="font-body text-xs tracking-widest uppercase opacity-40 mb-2" style="">04</span>
+<h3 class="font-headline text-3xl mb-8" style="">Augenbrauen Mikroblading</h3>
+<p class="font-body text-sm leading-relaxed font-light opacity-70 mb-auto" style="">inklusive 3 Behandlungen<br>(Häärchen Zeichnung)<br>Pigmentierung</p>
+<a class="cta-link inline-flex items-center gap-2 font-body text-xs tracking-widest uppercase mt-8" href="#inquiry?service=precision-cut" style="">
+                        Jetzt Informieren <span class="cta-dash" style="">——</span>
+</a>
+</div>
+<!-- Service 5 -->
+<div class="group relative bg-surface-container-low aspect-square flex flex-col p-12 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest border border-outline-variant/10">
+<div class="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<span class="material-symbols-outlined text-primary-container" style="">north_east</span>
+</div>
+<span class="font-body text-xs tracking-widest uppercase opacity-40 mb-2" style="">05</span>
+<h3 class="font-headline text-3xl mb-8" style="">Gesichts Haarentfernung</h3>
+<p class="font-body text-sm leading-relaxed font-light opacity-70 mb-auto" style="">mit Fadentechnik</p>
+<a class="cta-link inline-flex items-center gap-2 font-body text-xs tracking-widest uppercase mt-8" href="#inquiry?service=signature-glow" style="">
+                        Jetzt Informieren <span class="cta-dash" style="">——</span>
+</a>
+</div>
+<!-- Service 6 -->
+<div class="group relative bg-surface-container-low aspect-square flex flex-col p-12 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest border border-outline-variant/10">
+<div class="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<span class="material-symbols-outlined text-primary-container" style="">north_east</span>
+</div>
+<span class="font-body text-xs tracking-widest uppercase opacity-40 mb-2" style="">06</span>
+<h3 class="font-headline text-3xl mb-8" style="">Augenbrauen</h3>
+<p class="font-body text-sm leading-relaxed font-light opacity-70 mb-auto" style="">Zupfen<br>Formen nach Symmetrie<br>färben mit Henna <br>(bis zu 6 Wochen haltbar)</p>
+<a class="cta-link inline-flex items-center gap-2 font-body text-xs tracking-widest uppercase mt-8" href="#inquiry?service=male-grooming" style="">
+                        Jetzt Informieren <span class="cta-dash" style="">——</span>
+</a>
+</div>
+<!-- Service 7 -->
+<div class="group relative bg-surface-container-low aspect-square flex flex-col p-12 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest border border-outline-variant/10">
+<div class="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<span class="material-symbols-outlined text-primary-container" style="">north_east</span>
+</div>
+<span class="font-body text-xs tracking-widest uppercase opacity-40 mb-2" style="">07</span>
+<h3 class="font-headline text-3xl mb-8" style="">Make-Up Workshop</h3>
+<p class="font-body text-sm leading-relaxed font-light opacity-70 mb-auto" style="">inklusive Material und Unterlagen<br>Termin nach absprache<br>Einzelkurse ca. 3 Stunden<br>Teenie-Gruppen</p>
+<a class="cta-link inline-flex items-center gap-2 font-body text-xs tracking-widest uppercase mt-8" href="#inquiry?service=beauty-academy" style="">
+                        Jetzt Informieren <span class="cta-dash" style="">——</span>
+</a>
+</div>
+<!-- Service 8 -->
+<div class="group relative bg-surface-container-low aspect-square flex flex-col p-12 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest border border-outline-variant/10">
+<div class="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<span class="material-symbols-outlined text-primary-container" style="">north_east</span>
+</div>
+<span class="font-body text-xs tracking-widest uppercase opacity-40 mb-2" style="">08</span>
+<h3 class="font-headline text-3xl mb-8" style="">Braut Spezial</h3>
+<p class="font-body text-sm leading-relaxed font-light opacity-70 mb-auto" style="">Styling &amp; Make-Up<br>inklusive Probetermin&nbsp;<br>(Dauer ca. 2.5 bis 3 Stunden)<br>am Hochzeitstag Dauer ca. 1.5 bis 2 stunden</p>
+<a class="cta-link inline-flex items-center gap-2 font-body text-xs tracking-widest uppercase mt-8" href="#inquiry?service=editorial-styling" style="">
+                        Jetzt Informieren <span class="cta-dash" style="">——</span>
+</a>
+</div>
+<!-- Service 9 -->
+<div class="group relative bg-surface-container-low aspect-square flex flex-col p-12 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest border border-outline-variant/10">
+<div class="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<span class="material-symbols-outlined text-primary-container" style="">north_east</span>
+</div>
+<span class="font-body text-xs tracking-widest uppercase opacity-40 mb-2" style="">09</span>
+<h3 class="font-headline text-3xl mb-8" style="">Spezial Make-Up Effekt</h3>
+<p class="font-body text-sm leading-relaxed font-light opacity-70 mb-auto" style="">für Fernsehen<br>für Filme&nbsp;<br>für Theater&nbsp;<br>Airbrush</p>
+<a class="cta-link inline-flex items-center gap-2 font-body text-xs tracking-widest uppercase mt-8" href="#inquiry?service=skin-consult" style="">
+                        Jetzt Informieren <span class="cta-dash" style="">——</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-[#000000] dark:bg-black flex flex-col items-center text-center px-8 w-full full-width pt-24 pb-12">
+<div class="font-['Playfair_Display'] text-3xl text-white mb-8 block uppercase tracking-wider" style=""><br></div>
+<div class="flex flex-wrap justify-center gap-8 mb-16">
+<a class="font-['Montserrat'] font-light tracking-loose text-xs uppercase text-stone-400 hover:text-[#D4A49C] transition-all duration-300 hover:translate-x-2" href="#" style="">Privacy Policy</a>
+<a class="font-['Montserrat'] font-light tracking-loose text-xs uppercase text-stone-400 hover:text-[#D4A49C] transition-all duration-300 hover:translate-x-2" href="#" style="">Terms of Service</a>
+<a class="font-['Montserrat'] font-light tracking-loose text-xs uppercase text-stone-400 hover:text-[#D4A49C] transition-all duration-300 hover:translate-x-2" href="#" style="">Contact</a>
+<a class="font-['Montserrat'] font-light tracking-loose text-xs uppercase text-stone-400 hover:text-[#D4A49C] transition-all duration-300 hover:translate-x-2" href="#" style="">Instagram</a>
+<a class="font-['Montserrat'] font-light tracking-loose text-xs uppercase text-stone-400 hover:text-[#D4A49C] transition-all duration-300 hover:translate-x-2" href="#" style="">Careers</a>
+</div>
+<div class="font-['Montserrat'] font-light tracking-loose text-[10px] uppercase text-stone-600" style="">
+            © 2024 THE DIGITAL CURATOR ACADEMY. ALL RIGHTS RESERVED.
+        </div>
+</footer>
+</body></html>

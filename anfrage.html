@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="light" lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Anfrage — Reta Yamaci</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "champagne":    "#EEE9E4",
+            "near-white":   "#FAFAF8",
+            "accent-rose":  "#D4A49C",
+            "dark-text":    "#242424",
+            "footer-black": "#000000",
+          },
+          fontFamily: {
+            "headline": ["Playfair Display", "serif"],
+            "body":     ["Montserrat", "sans-serif"],
+            "label":    ["Montserrat", "sans-serif"],
+          },
+          borderRadius: {
+            "DEFAULT": "0px",
+            "lg":      "0px",
+            "xl":      "0px",
+            "full":    "9999px",
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .hero-title    { font-size: 96px; line-height: 1.05; }
+    .hero-subtitle { font-size: 42px; line-height: 1.2;  }
+    .section-h2    { font-size: 48px; }
+    .section-h3    { font-size: 32px; font-weight: 600; }
+    .body-text     { font-size: 17px; line-height: 1.65; }
+    .cta-dash      { display: inline-block; transition: transform 0.3s ease; }
+    .cta-link:hover .cta-dash { transform: translateX(8px); }
+    @media (max-width: 768px) {
+      .hero-title    { font-size: 48px; }
+      .hero-subtitle { font-size: 24px; }
+      .section-h2    { font-size: 32px; }
+    }
+    .input-base {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #D4A49C;
+      outline: none;
+      width: 100%;
+      padding: 12px 0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      color: #242424;
+      transition: border-color 0.3s;
+    }
+    .input-base:focus { border-bottom: 2px solid #7c554e; }
+    .input-base::placeholder { color: #242424; opacity: 0.4; font-size: 13px; letter-spacing: 0.05em; }
+  </style>
+</head>
+<body class="bg-near-white text-dark-text font-body selection:bg-accent-rose/30">
+
+  <!-- ========================
+       NAVIGATION
+  ========================= -->
+  <header class="fixed top-0 w-full z-50 bg-[#EEE9E4]/40 backdrop-blur-sm transition-colors duration-500 hover:bg-[#EEE9E4]/80">
+    <nav aria-label="Haupt-Navigation" class="flex justify-between items-center px-8 md:px-12 py-6 w-full max-w-[1920px] mx-auto">
+
+      <!-- Logo -->
+      <a href="index.html" class="font-headline text-2xl italic text-dark-text">Reta Yamaci</a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-10 font-label font-light tracking-wide text-sm uppercase text-dark-text">
+        <a href="leistungen.html" class="hover:text-accent-rose transition-colors duration-300">Leistungen</a>
+        <a href="portfolio.html" class="hover:text-accent-rose transition-colors duration-300">Portfolio</a>
+        <a href="ueber-mich.html" class="hover:text-accent-rose transition-colors duration-300">Über Mich</a>
+        <a href="masterclass.html" class="hover:text-accent-rose transition-colors duration-300">Masterclass</a>
+      </div>
+
+      <!-- Desktop CTA — active state since we're on anfrage.html -->
+      <a href="anfrage.html" class="cta-link hidden md:inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-accent-rose transition-colors duration-300">
+        Termin Buchen <span class="cta-dash">&nbsp;——</span>
+      </a>
+
+      <!-- Mobile Hamburger -->
+      <button id="menu-toggle" type="button" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menü öffnen" aria-expanded="false">
+        <span class="block w-6 h-px bg-dark-text transition-all duration-300" id="bar-top"></span>
+        <span class="block w-6 h-px bg-dark-text transition-all duration-300" id="bar-mid"></span>
+        <span class="block w-6 h-px bg-dark-text transition-all duration-300" id="bar-bot"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#EEE9E4]/95 backdrop-blur-sm px-8 pb-8 flex-col gap-6">
+      <a href="leistungen.html" class="font-label font-light text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300 pt-4">Leistungen</a>
+      <a href="portfolio.html" class="font-label font-light text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Portfolio</a>
+      <a href="ueber-mich.html" class="font-label font-light text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Über Mich</a>
+      <a href="masterclass.html" class="font-label font-light text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Masterclass</a>
+      <a href="anfrage.html" class="cta-link inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-accent-rose transition-colors duration-300 pt-2 border-t border-dark-text/10">
+        Termin Buchen <span class="cta-dash">&nbsp;——</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========================
+         INQUIRY FORM SECTION
+    ========================= -->
+    <section class="pt-40 pb-32 px-6 md:px-12">
+      <div class="max-w-2xl mx-auto">
+
+        <!-- Header -->
+        <div class="mb-16">
+          <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose mb-4 block">Terminanfrage</span>
+          <h1 class="font-headline text-5xl md:text-6xl text-dark-text mb-6">Jetzt anfragen</h1>
+          <p class="font-body text-base text-dark-text/70 leading-relaxed">
+            Teilen Sie mir Ihre Wünsche mit — alle weiteren Details wie Ort, Zeit und Ablauf klären wir gemeinsam im Gespräch.
+          </p>
+        </div>
+
+        <!-- Success Message (hidden by default) -->
+        <div id="success-msg" class="hidden text-center py-20">
+          <span class="material-symbols-outlined text-3xl text-accent-rose block mb-6">check_circle</span>
+          <p class="font-headline text-2xl text-dark-text mb-4">Vielen Dank!</p>
+          <p class="font-body text-sm text-dark-text/70">Ihre Anfrage wurde gesendet. Ich melde mich bald bei Ihnen.</p>
+        </div>
+
+        <!-- Inquiry Form -->
+        <form id="inquiry-form" class="flex flex-col gap-12" novalidate>
+
+          <!-- Name -->
+          <div>
+            <label for="field-name" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Name *</label>
+            <input
+              id="field-name"
+              name="name"
+              type="text"
+              required
+              placeholder="Ihr vollständiger Name"
+              class="input-base"
+            />
+          </div>
+
+          <!-- E-Mail -->
+          <div>
+            <label for="field-email" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">E-Mail *</label>
+            <input
+              id="field-email"
+              name="email"
+              type="email"
+              required
+              placeholder="ihre@email.de"
+              class="input-base"
+            />
+          </div>
+
+          <!-- Telefon -->
+          <div>
+            <label for="field-phone" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Telefon</label>
+            <input
+              id="field-phone"
+              name="telefon"
+              type="tel"
+              placeholder="+49 000 000 000"
+              class="input-base"
+            />
+          </div>
+
+          <!-- Gewünschte Leistung -->
+          <div>
+            <label for="field-service" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Gewünschte Leistung</label>
+            <select
+              id="field-service"
+              name="leistung"
+              class="input-base"
+            >
+              <option value="" disabled selected>Bitte wählen</option>
+              <option value="tages-abend-makeup">Tages &amp; Abend Make-Up</option>
+              <option value="foto-makeup">Foto Make-Up</option>
+              <option value="styling">Styling</option>
+              <option value="mikroblading">Augenbrauen Mikroblading</option>
+              <option value="gesichts-haarentfernung">Gesichts Haarentfernung</option>
+              <option value="augenbrauen">Augenbrauen</option>
+              <option value="makeup-workshop">Make-Up Workshop</option>
+              <option value="braut-spezial">Braut Spezial</option>
+              <option value="spezial-makeup-effekt">Spezial Make-Up Effekt</option>
+            </select>
+          </div>
+
+          <!-- Nachricht -->
+          <div>
+            <label for="field-message" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Ihre Nachricht</label>
+            <textarea
+              id="field-message"
+              name="nachricht"
+              rows="4"
+              placeholder="Beschreiben Sie kurz Ihr Anliegen..."
+              class="input-base resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="cta-link self-start inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300"
+          >
+            Anfrage absenden <span class="cta-dash">&nbsp;——</span>
+          </button>
+
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================
+       FOOTER
+  ========================= -->
+  <footer class="bg-footer-black w-full">
+    <div class="flex flex-col items-center gap-10 py-20 px-12 w-full max-w-[1920px] mx-auto">
+
+      <a href="index.html" class="font-headline text-xl italic text-white">Reta Yamaci</a>
+
+      <nav aria-label="Footer-Navigation" class="flex flex-wrap justify-center gap-8 md:gap-14">
+        <a href="impressum.html" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Impressum</a>
+        <a href="datenschutz.html" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Datenschutz</a>
+        <a href="anfrage.html" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Kontakt</a>
+        <a href="#0" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Instagram</a>
+        <a href="#0" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Pinterest</a>
+      </nav>
+
+      <p class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-500">
+        &copy; 2026 Reta Yamaci. Alle Rechte vorbehalten.
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- ========================
+       JAVASCRIPT
+  ========================= -->
+  <script>
+    // Mobile hamburger toggle
+    (function () {
+      var toggle   = document.getElementById('menu-toggle');
+      var menu     = document.getElementById('mobile-menu');
+      var barTop   = document.getElementById('bar-top');
+      var barMid   = document.getElementById('bar-mid');
+      var barBot   = document.getElementById('bar-bot');
+      var isOpen   = false;
+
+      toggle.addEventListener('click', function () {
+        isOpen = !isOpen;
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+        if (isOpen) {
+          menu.classList.remove('hidden');
+          menu.classList.add('flex');
+          // Animate to X
+          barTop.style.transform = 'translateY(6px) rotate(45deg)';
+          barMid.style.opacity   = '0';
+          barBot.style.transform = 'translateY(-6px) rotate(-45deg)';
+        } else {
+          menu.classList.add('hidden');
+          menu.classList.remove('flex');
+          // Reset bars
+          barTop.style.transform = '';
+          barMid.style.opacity   = '1';
+          barBot.style.transform = '';
+        }
+      });
+
+      // Close menu when a link is clicked
+      var links = menu.querySelectorAll('a');
+      links.forEach(function (link) {
+        link.addEventListener('click', function () {
+          menu.classList.add('hidden');
+          menu.classList.remove('flex');
+          barTop.style.transform = '';
+          barMid.style.opacity   = '1';
+          barBot.style.transform = '';
+          isOpen = false;
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    // Form validation helpers
+    function setFieldError(input, message) {
+      input.style.borderBottomColor = '#ba1a1a';
+      let errorEl = input.parentElement.querySelector('.field-error');
+      if (!errorEl) {
+        errorEl = document.createElement('p');
+        errorEl.className = 'field-error font-label text-xs tracking-widest uppercase text-red-700 mt-2';
+        input.parentElement.appendChild(errorEl);
+      }
+      errorEl.textContent = message;
+    }
+
+    function clearFieldError(input) {
+      input.style.borderBottomColor = '';
+      const errorEl = input.parentElement.querySelector('.field-error');
+      if (errorEl) errorEl.remove();
+    }
+
+    const form = document.getElementById('inquiry-form');
+    const nameInput  = form.querySelector('[name="name"]');
+    const emailInput = form.querySelector('[name="email"]');
+
+    nameInput.addEventListener('input',  () => clearFieldError(nameInput));
+    emailInput.addEventListener('input', () => clearFieldError(emailInput));
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+
+      if (!nameInput.value.trim()) {
+        setFieldError(nameInput, 'Bitte geben Sie Ihren Namen ein.');
+        valid = false;
+      }
+      if (!emailInput.value.trim()) {
+        setFieldError(emailInput, 'Bitte geben Sie Ihre E-Mail-Adresse ein.');
+        valid = false;
+      }
+      if (!valid) return;
+
+      // Success: hide form, show confirmation
+      Array.from(this.children).forEach(el => el.classList.add('hidden'));
+      document.getElementById('success-msg').classList.remove('hidden');
+    });
+  </script>
+
+</body>
+</html>

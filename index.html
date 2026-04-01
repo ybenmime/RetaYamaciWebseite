@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="light" lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Reta Yamaci — Hair & Makeup Stylistin</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "champagne":    "#EEE9E4",
+            "near-white":   "#FAFAF8",
+            "accent-rose":  "#D4A49C",
+            "dark-text":    "#242424",
+            "footer-black": "#000000",
+          },
+          fontFamily: {
+            "headline": ["Playfair Display", "serif"],
+            "body":     ["Montserrat", "sans-serif"],
+            "label":    ["Montserrat", "sans-serif"],
+          },
+          borderRadius: {
+            "DEFAULT": "0px",
+            "lg":      "0px",
+            "xl":      "0px",
+            "full":    "9999px",
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .hero-title    { font-size: 96px; line-height: 1.05; }
+    .hero-subtitle { font-size: 42px; line-height: 1.2;  }
+    .section-h2    { font-size: 48px; }
+    .section-h3    { font-size: 32px; font-weight: 600; }
+    .body-text     { font-size: 17px; line-height: 1.65; }
+    .cta-dash      { display: inline-block; transition: transform 0.3s ease; }
+    .cta-link:hover .cta-dash { transform: translateX(8px); }
+    @media (max-width: 768px) {
+      .hero-title    { font-size: 48px; }
+      .hero-subtitle { font-size: 24px; }
+      .section-h2    { font-size: 32px; }
+    }
+  </style>
+</head>
+<body class="bg-near-white text-dark-text font-body selection:bg-accent-rose/30">
+
+  <!-- ========================
+       NAVIGATION
+  ========================= -->
+  <header class="fixed top-0 w-full z-50 bg-[#EEE9E4]/40 backdrop-blur-sm transition-colors duration-500 hover:bg-[#EEE9E4]/80">
+    <nav aria-label="Haupt-Navigation" class="flex justify-between items-center px-8 md:px-12 py-6 w-full max-w-[1920px] mx-auto">
+
+      <!-- Logo -->
+      <a href="index.html" class="font-headline text-2xl italic text-dark-text">Reta Yamaci</a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-10 font-label font-light tracking-wide text-sm uppercase text-dark-text">
+        <a href="leistungen.html" class="hover:text-accent-rose transition-colors duration-300">Leistungen</a>
+        <a href="portfolio.html" class="hover:text-accent-rose transition-colors duration-300">Portfolio</a>
+        <a href="ueber-mich.html" class="hover:text-accent-rose transition-colors duration-300">Über Mich</a>
+        <a href="masterclass.html" class="hover:text-accent-rose transition-colors duration-300">Masterclass</a>
+      </div>
+
+      <!-- Desktop CTA -->
+      <a href="anfrage.html" class="cta-link hidden md:inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">
+        Termin Buchen <span class="cta-dash">&nbsp;——</span>
+      </a>
+
+      <!-- Mobile Hamburger -->
+      <button id="menu-toggle" type="button" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menü öffnen" aria-expanded="false">
+        <span class="block w-6 h-px bg-dark-text transition-all duration-300" id="bar-top"></span>
+        <span class="block w-6 h-px bg-dark-text transition-all duration-300" id="bar-mid"></span>
+        <span class="block w-6 h-px bg-dark-text transition-all duration-300" id="bar-bot"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#EEE9E4]/95 backdrop-blur-sm px-8 pb-8 flex-col gap-6">
+      <a href="leistungen.html" class="font-label font-light text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300 pt-4">Leistungen</a>
+      <a href="portfolio.html" class="font-label font-light text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Portfolio</a>
+      <a href="ueber-mich.html" class="font-label font-light text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Über Mich</a>
+      <a href="masterclass.html" class="font-label font-light text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Masterclass</a>
+      <a href="anfrage.html" class="cta-link inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300 pt-2 border-t border-dark-text/10">
+        Termin Buchen <span class="cta-dash">&nbsp;——</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========================
+         HERO SECTION
+    ========================= -->
+    <section class="relative min-h-screen flex items-center px-8 md:px-12 overflow-hidden">
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://lh3.googleusercontent.com/aida/ADBb0ug8jBcY8-yF0F64b_eIn5h_WuLCuGqpr-DNLJXOQIA6iWTI2CfPFknoW17PWWd6S5IOMMaaIqsH6WFIn32M7lm62Z8YWIwkrqHxWJhrTBGAAtMDg8ZDjxrMrquRui6pps3Gt36sTTHdQMbh__GpxktE0kZyFvP--Sxb34jxlRnyuf-pFtDKf8k0O_OqNFn_pvIzHNEC-s-70ZHfyEnPxtxSOU28xpQwtcQoNDSGwYpA7F2Tqo_1RmabYKkn-JFAoOJzUdUbQGg2Zw"
+          alt="Reta Yamaci – Hair &amp; Makeup Stylistin"
+          class="w-full h-full object-cover object-center"
+        />
+        <!-- Dark gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="relative z-10 max-w-[1440px] mx-auto w-full">
+        <span class="font-label text-xs tracking-[0.4em] uppercase text-accent-rose mb-6 block">est. 2014</span>
+        <h1 class="font-headline hero-title text-white mb-8 max-w-4xl">
+          Die Kunst der <br/><span>Verfeinerung.</span>
+        </h1>
+        <p class="font-body hero-subtitle text-white max-w-2xl mb-12 font-light">
+          Ein exklusives Erlebnis für Haar und Make-up.
+        </p>
+        <a href="leistungen.html" class="cta-link inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-white hover:text-accent-rose transition-colors duration-300">
+          Leistungen entdecken <span class="cta-dash">&nbsp;——</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================
+         PHILOSOPHY QUOTE SECTION
+    ========================= -->
+    <section class="py-32 bg-near-white">
+      <div class="max-w-4xl mx-auto text-center px-6">
+        <span class="material-symbols-outlined text-4xl text-accent-rose mb-8 block">format_quote</span>
+        <blockquote class="font-headline text-3xl md:text-4xl text-dark-text italic leading-snug">
+          „Bei mir sind Sie in sicheren Händen – mobil, flexibel und mit echter Leidenschaft für Ihr perfektes Styling."
+        </blockquote>
+        <cite class="mt-8 block font-label text-xs tracking-[0.3em] text-dark-text/60 uppercase not-italic">— Reta Yamaci</cite>
+      </div>
+    </section>
+
+    <!-- ========================
+         SERVICES PREVIEW SECTION
+    ========================= -->
+    <section class="py-32 px-8 md:px-12 bg-champagne">
+      <div class="max-w-7xl mx-auto">
+
+        <!-- Header Row -->
+        <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div class="max-w-xl">
+            <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose mb-4 block">Exklusive Auswahl</span>
+            <h2 class="font-headline section-h2 text-dark-text">Unsere Signatur-Services</h2>
+          </div>
+          <a href="leistungen.html" class="cta-link inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300 whitespace-nowrap">
+            Alle Services ansehen <span class="cta-dash">&nbsp;——</span>
+          </a>
+        </div>
+
+        <!-- Asymmetric 3-column grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <!-- Large Card (col-span-2) -->
+          <div class="md:col-span-2 relative overflow-hidden group min-h-[600px]">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtrY79UGuutnDinaC056Dn1N6ftcxV64QYxHIj6_KrFn8Th7_vcat7fmxyFaFQG4N54a1K1eQYX1sNVh7r05WYD73uM-wcCmHJgfRehs32Z-WDj68Y5Y9SreOc1Ccnn8h-il-fPjf3h2L8vw2idtbyWFttM9U4ubq_7EdVjfyON2k8f_LsnTZQGFxST156zPMu63-q_yl3PkXc0IfV5_gYoHkFxGQ4fIEPxy8jAmZ2ptB2RXNpIoTGG1wSZypKzq7hb5rLgXSaFos"
+              alt="Editorial Hair Design"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-10 md:p-12 text-white">
+              <span class="font-label text-xs tracking-widest uppercase mb-4 block text-accent-rose">Premium Styling</span>
+              <h3 class="font-headline section-h3 mb-4">Editorial Hair Design</h3>
+              <p class="font-body body-text text-white/80 max-w-sm">Maßgeschneiderte Schnitte und Stylings für den perfekten Auftritt bei jedem Anlass.</p>
+            </div>
+          </div>
+
+          <!-- Small Card (col-span-1) -->
+          <div class="bg-near-white p-10 md:p-12 flex flex-col justify-between">
+            <div>
+              <h3 class="font-headline section-h3 mb-4 text-dark-text">The Nude Glow</h3>
+              <p class="font-body body-text text-dark-text/80 mb-10">Ein minimalistisches Make-up, das Ihre natürliche Schönheit zum Strahlen bringt.</p>
+            </div>
+            <div class="aspect-square overflow-hidden">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxY1VQBd6uchrReO7zvCBU6EqE6gZ8StiZWv0vJ22h8-kIqJYLNGBpkUBh4aZOd2m-sNcfuMBkbcj1lxQcZC7f6d7Tgflx_5eSkIUhPzp_ir9disMX2ww8QI3wI9XJUpYfuR-yayEVDI8l2YpaIxiMr_wvPgxDkttHvn6zdnlIU6AGL-MgHYKDNkMXCdVjw4kRLdFoGMtorf_chOyiBdM5EaLeJ9O_ad3w9hMpYmyoSHeHhMNalFiXK6cgULTYbNIPCFi8JZyh8"
+                alt="The Nude Glow Make-up"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <!-- Full-Width Banner (col-span-3) -->
+          <div class="md:col-span-3 py-16 px-10 md:px-16 bg-near-white flex flex-col md:flex-row items-center justify-between gap-10">
+            <div class="max-w-2xl">
+              <h3 class="font-headline section-h3 mb-4 text-dark-text">Individual Coaching</h3>
+              <p class="font-body body-text text-dark-text/80">Lernen Sie die Techniken der Profis in privaten Einzelsitzungen – individuell abgestimmt auf Ihre Bedürfnisse.</p>
+            </div>
+            <a href="anfrage.html" class="cta-link inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300 whitespace-nowrap">
+              Termin vereinbaren <span class="cta-dash">&nbsp;——</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         PORTFOLIO PREVIEW SECTION
+    ========================= -->
+    <section class="py-32 px-8 md:px-12 bg-near-white">
+      <div class="max-w-7xl mx-auto">
+
+        <!-- Header Row -->
+        <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div class="max-w-xl">
+            <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose mb-4 block">Ausgewählte Arbeiten</span>
+            <h2 class="font-headline section-h2 text-dark-text">Portfolio</h2>
+          </div>
+          <a href="portfolio.html" class="cta-link inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300 whitespace-nowrap">
+            Alle Arbeiten <span class="cta-dash">&nbsp;——</span>
+          </a>
+        </div>
+
+        <!-- 3-column square image grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="aspect-square overflow-hidden group">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBYEM7_P7sfXPN94r8cywrdqXI-9g8chOYoGzTwPxTucBiyAklTh1yXwNqnBAkOJduHVeUBrh6ut4zsYjRNqxc4THXhIDh8X8-i8rzT7ByR_6CR0GvjY0iUgl-HuKiTh1htyl7aHmMlNENFpAQSxIpDJ4WdrL-UmxUt5u6MtcNUJAjTgnSqAPXOF8QG3RBGGOmZILHjhmLhQboopDdlZveQP4e3yLtaDHME_MMwOKFTjynj9hABcro3RwSy9ZRNzFPpx7XfOjIDCk"
+              alt="Portfolio Bild 1"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+
+          <div class="aspect-square overflow-hidden group">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIg-sPW_CyAiVB0lwLD0jC9Fdu_xOVa_1RHUioGCO-37NQZ9PXdB7P_2ZDk9lY2daNaxEk1XE8yN8lApsQEXR42DfiBPnXgCSZprQCaZuCG8OopzR9vcxffkDZc9QDYjsmC8B-TcZEybO_Dx3Nz-uGZA5EaYFfOAQN40B1paI9ewlzcEYh_KS00qFTwRWGqemy-K-urTBRgbRkN-3MeubUGZHBYButPzInWEieC1CjetwXpMYcQ_flh5Fw38"
+              alt="Portfolio Bild 2"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+
+          <div class="aspect-square overflow-hidden group">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8QE5dSBQPXIOX6SHmIHp9c_DePmpnRH0Jz2mRmP6a-AFGqoyWVHm19fi_SfHUw2UcQ4Q2ff4jEt_CiNBGYxaMHsa7FhTrritequFaAPBV-X8u8HN1G7l_68RZPIMIhDKKBRFWst_pCDnRxwPcn8f9C6K42VtsHEBqHEcljJAb2GC2wh7ukYJ4T4pSLeky4MzCyx0-p9S3fdrtYucHO_p5ZYE2M4YyOles86alFDPmnWTTe2dz_H0"
+              alt="Portfolio Bild 3"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         MASTERCLASS TEASER SECTION
+    ========================= -->
+    <section class="py-32 px-8 md:px-12 bg-dark-text text-near-white">
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+
+        <!-- Image Left -->
+        <div class="lg:w-1/2 relative w-full aspect-video">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8AxqkFhvDE03n80wjwPDxr89F4z-cjvO4X84WBwnE5eguTOfP08ZTDBE7QKjQyht7YieAzYwGnq3oIIWeA6yQtjjcaJgnYRunHAEiNtyjZe9LajrwXQZ68IhmWa7i62RbQL-Otp8slsmm9Z0-YFZBPir3vRaS_3s172oPs3YmPA3XL2fymqgVvHBHJL8DVJJzPOCiiqBWZCX-pGJz1abuyxWXKMr604Z8GI5iO7sQdf6QDznXFUjHZ0lM0t41Zi39q9TC9uASqtc"
+            alt="Masterclass Vorschau"
+            class="w-full h-full object-cover opacity-50"
+          />
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="material-symbols-outlined text-6xl text-accent-rose">play_circle</span>
+          </div>
+        </div>
+
+        <!-- Text Right -->
+        <div class="lg:w-1/2">
+          <span class="font-label text-xs tracking-[0.4em] uppercase text-accent-rose mb-6 block">The Digital Atelier</span>
+          <h2 class="font-headline section-h2 mb-8 leading-tight text-near-white">Masterclasses für Zuhause</h2>
+          <p class="font-body body-text text-near-white/60 mb-12">
+            Erhalten Sie exklusiven Zugang zu unserer kuratierten Bibliothek von Lernvideos. Von täglichen Hair-Hacks bis hin zu fortgeschrittenen Editorial-Make-up-Techniken.
+          </p>
+          <ul class="space-y-6 mb-12">
+            <li class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-accent-rose text-lg">check</span>
+              <span class="font-body body-text text-near-white/80">Monatlich neue Video-Inhalte</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-accent-rose text-lg">check</span>
+              <span class="font-body body-text text-near-white/80">Exklusive Produkt-Empfehlungen</span>
+            </li>
+          </ul>
+          <a href="masterclass.html" class="cta-link inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-near-white hover:text-accent-rose transition-colors duration-300">
+            Mitglied werden <span class="cta-dash">&nbsp;——</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================
+       FOOTER
+  ========================= -->
+  <footer class="bg-footer-black w-full">
+    <div class="flex flex-col items-center gap-10 py-20 px-12 w-full max-w-[1920px] mx-auto">
+
+      <a href="index.html" class="font-headline text-xl italic text-white">Reta Yamaci</a>
+
+      <nav aria-label="Footer-Navigation" class="flex flex-wrap justify-center gap-8 md:gap-14">
+        <a href="impressum.html" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Impressum</a>
+        <a href="datenschutz.html" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Datenschutz</a>
+        <a href="anfrage.html" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Kontakt</a>
+        <a href="#0" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Instagram</a>
+        <a href="#0" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Pinterest</a>
+      </nav>
+
+      <p class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-500">
+        &copy; 2026 Reta Yamaci. Alle Rechte vorbehalten.
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- ========================
+       MOBILE NAV TOGGLE JS
+  ========================= -->
+  <script>
+    (function () {
+      var toggle   = document.getElementById('menu-toggle');
+      var menu     = document.getElementById('mobile-menu');
+      var barTop   = document.getElementById('bar-top');
+      var barMid   = document.getElementById('bar-mid');
+      var barBot   = document.getElementById('bar-bot');
+      var isOpen   = false;
+
+      toggle.addEventListener('click', function () {
+        isOpen = !isOpen;
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+        if (isOpen) {
+          menu.classList.remove('hidden');
+          menu.classList.add('flex');
+          // Animate to X
+          barTop.style.transform = 'translateY(6px) rotate(45deg)';
+          barMid.style.opacity   = '0';
+          barBot.style.transform = 'translateY(-6px) rotate(-45deg)';
+        } else {
+          menu.classList.add('hidden');
+          menu.classList.remove('flex');
+          // Reset bars
+          barTop.style.transform = '';
+          barMid.style.opacity   = '1';
+          barBot.style.transform = '';
+        }
+      });
+
+      // Close menu when a link is clicked
+      var links = menu.querySelectorAll('a');
+      links.forEach(function (link) {
+        link.addEventListener('click', function () {
+          menu.classList.add('hidden');
+          menu.classList.remove('flex');
+          barTop.style.transform = '';
+          barMid.style.opacity   = '1';
+          barBot.style.transform = '';
+          isOpen = false;
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

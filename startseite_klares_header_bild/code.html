@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html class="light" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Montserrat:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "champagne": "#EEE9E4",
+              "near-white": "#FAFAF8",
+              "accent-rose": "#D4A49C",
+              "dark-text": "#242424"
+            },
+            fontFamily: {
+              "headline": ["Playfair Display", "serif"],
+              "body": ["Montserrat", "sans-serif"],
+              "label": ["Montserrat", "sans-serif"]
+            },
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      }
+      .hero-title {
+        font-size: 96px;
+        line-height: 1.1;
+      }
+      .hero-subtitle {
+        font-size: 42px;
+        line-height: 1.2;
+      }
+      .section-h2 {
+        font-size: 48px;
+      }
+      .section-h3 {
+        font-size: 32px;
+        font-weight: 700;
+      }
+      .body-text {
+        font-size: 17px;
+        line-height: 1.65;
+      }
+      @media (max-width: 768px) {
+        .hero-title { font-size: 48px; }
+        .hero-subtitle { font-size: 24px; }
+      }
+    </style>
+</head>
+<body class="bg-near-white text-dark-text font-body selection:bg-accent-rose/30">
+<!-- TopAppBar Component (from COMPONENTS_8) -->
+<header class="fixed top-0 w-full z-50 bg-[#EEE9E4]/40 dark:bg-stone-900/40 backdrop-blur-sm transition-colors duration-500 hover:bg-[#EEE9E4]/80">
+<nav class="flex justify-between items-center px-12 py-6 w-full max-w-[1920px] mx-auto">
+<div class="font-['Playfair_Display'] text-2xl italic text-[#242424] dark:text-stone-100" style="">Reta Yamaci</div>
+<div class="hidden md:flex items-center gap-12 font-['Montserrat'] font-light tracking-wide text-sm uppercase text-[#242424] dark:text-stone-400">
+<a class="text-[#D4A49C] font-medium hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Services</a>
+<a class="hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Portfolio</a>
+<a class="hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Über Mich</a>
+<a class="hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Mitglieder-Login</a>
+</div>
+<button class="font-['Montserrat'] font-light tracking-wide text-sm uppercase text-[#242424] dark:text-stone-100 hover:text-[#D4A49C] transition-colors duration-300 active:translate-x-2 transition-transform" style="">
+            Termin Buchen ——
+        </button>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center px-6 md:px-12 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover object-center" data-alt="Couple with wedding cake" src="https://lh3.googleusercontent.com/aida/ADBb0ug8jBcY8-yF0F64b_eIn5h_WuLCuGqpr-DNLJXOQIA6iWTI2CfPFknoW17PWWd6S5IOMMaaIqsH6WFIn32M7lm62Z8YWIwkrqHxWJhrTBGAAtMDg8ZDjxrMrquRui6pps3Gt36sTTHdQMbh__GpxktE0kZyFvP--Sxb34jxlRnyuf-pFtDKf8k0O_OqNFn_pvIzHNEC-s-70ZHfyEnPxtxSOU28xpQwtcQoNDSGwYpA7F2Tqo_1RmabYKkn-JFAoOJzUdUbQGg2Zw" style=""/>
+<!-- Sophisticated gradient overlay for readability and blending -->
+</div>
+<div class="relative z-10 max-w-[1440px] mx-auto w-full">
+<span class="font-label text-xs tracking-[0.4em] uppercase text-accent-rose mb-6 block drop-shadow-sm" style="">est 2014<br/></span>
+<h1 class="font-headline hero-title text-white mb-8 drop-shadow-lg" style="text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                Die Kunst der <br/><span class="italic font-normal" style="">Verfeinerung.</span>
+</h1>
+<p class="font-body hero-subtitle text-white max-w-2xl mb-12 font-light drop-shadow-md" style="text-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                Ein exklusives Erlebnis für Haar und Make-up.
+            </p>
+<div class="flex items-center gap-8">
+<a class="font-label text-sm uppercase tracking-widest text-white hover:text-accent-rose transition-colors duration-300 drop-shadow" href="#" style="">
+                    Dienstleistungen Entdecken ——
+                </a>
+</div>
+</div>
+</section>
+<!-- Philosophy Quote -->
+<section class="py-32 bg-near-white">
+<div class="max-w-4xl mx-auto text-center px-6">
+<span class="material-symbols-outlined text-4xl text-accent-rose mb-8" data-icon="format_quote" style="">format_quote</span>
+<blockquote class="font-headline text-3xl md:text-4xl text-dark-text italic leading-snug" style="">„Bei mir sind Sie in sicheren Händen – mobil, flexibel und mit echter Leidenschaft für Ihr perfektes Styling."</blockquote>
+<cite class="mt-8 block font-label text-xs tracking-[0.3em] text-dark-text/60 uppercase">— Unsere Philosophie</cite>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-32 px-6 md:px-12 bg-champagne">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+<div class="max-w-xl">
+<span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose mb-4 block" style="">Exklusive Auswahl</span>
+<h2 class="font-headline section-h2 text-dark-text" style="">Unsere Signatur-Services</h2>
+</div>
+<a class="group font-label text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors" href="#" style="">
+                    Alle Services ansehen ——
+                </a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Large Feature Card -->
+<div class="md:col-span-2 group relative overflow-hidden aspect-video md:aspect-auto md:h-[600px]">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" data-alt="Stylist working on a woman's hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtrY79UGuutnDinaC056Dn1N6ftcxV64QYxHIj6_KrFn8Th7_vcat7fmxyFaFQG4N54a1K1eQYX1sNVh7r05WYD73uM-wcCmHJgfRehs32Z-WDj68Y5Y9SreOc1Ccnn8h-il-fPjf3h2L8vw2idtbyWFttM9U4ubq_7EdVjfyON2k8f_LsnTZQGFxST156zPMu63-q_yl3PkXc0IfV5_gYoHkFxGQ4fIEPxy8jAmZ2ptB2RXNpIoTGG1wSZypKzq7hb5rLgXSaFos" style=""/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 p-12 text-white">
+<span class="font-label text-xs tracking-widest uppercase mb-4 block text-accent-rose" style="">Premium Styling</span>
+<h3 class="font-headline section-h3 mb-4" style="">Editorial Hair Design</h3>
+<p class="font-body body-text text-white/80 max-w-sm" style="">Maßgeschneiderte Schnitte und Stylings für den perfekten Auftritt.</p>
+</div>
+</div>
+<!-- Small Info Card -->
+<div class="bg-near-white p-12 flex flex-col justify-between">
+<div>
+<span class="font-label text-xs tracking-widest uppercase text-accent-rose mb-6 block" style="">Make-Up</span>
+<h3 class="font-headline section-h3 mb-4 text-dark-text" style="">The Nude Glow</h3>
+<p class="font-body body-text text-dark-text/80 mb-12" style="">Ein minimalistisches Make-up, das Ihre Haut zum Strahlen bringt.</p>
+</div>
+<div class="aspect-square overflow-hidden">
+<img class="w-full h-full object-cover grayscale-[20%]" data-alt="Nude makeup close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxY1VQBd6uchrReO7zvCBU6EqE6gZ8StiZWv0vJ22h8-kIqJYLNGBpkUBh4aZOd2m-sNcfuMBkbcj1lxQcZC7f6d7Tgflx_5eSkIUhPzp_ir9disMX2ww8QI3wI9XJUpYfuR-yayEVDI8l2YpaIxiMr_wvPgxDkttHvn6zdnlIU6AGL-MgHYKDNkMXCdVjw4kRLdFoGMpTMorf_chOyiBdM5EaLeJ9O_ad3w9hMpYmyoSHeHhMNalFiXK6cgULTYbNIPCFi8JZyh8" style=""/>
+</div>
+</div>
+<!-- Center Banner -->
+<div class="md:col-span-3 py-20 px-12 bg-near-white flex flex-col md:flex-row items-center justify-between gap-12">
+<div class="max-w-2xl">
+<h3 class="font-headline section-h3 mb-6" style="">Individual Coaching</h3>
+<p class="font-body body-text text-dark-text/80" style="">Lernen Sie die Techniken der Profis in privaten Einzelsitzungen direkt im Atelier.</p>
+</div>
+<a class="font-label text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors" href="#" style="">
+                        Termin vereinbaren ——
+                    </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Masterclasses (Digital Atelier) -->
+<section class="py-32 px-6 md:px-12 bg-dark-text text-near-white">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20">
+<div class="lg:w-1/2 relative w-full aspect-video">
+<img class="w-full h-full object-cover opacity-50" data-alt="Luxury beauty tutorial" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8AxqkFhvDE03n80wjwPDxr89F4z-cjvO4X84WBwnE5eguTOfP08ZTDBE7QKjQyht7YieAzYwGnq3oIIWeA6yQtjjcaJgnYRunHAEiNtyjZe9LajrwXQZ68IhmWa7i62RbQL-Otp8slsmm9Z0-YFZBPir3vRaS_3s172oPs3YmPA3XL2fymqgVvHBHJL8DVJJzPOCiiqBWZCX-pGJz1abuyxWXKMr604Z8GI5iO7sQdf6QDznXFUjHZ0lM0t41Zi39q9TC9uASqtc" style=""/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-accent-rose" data-icon="play_circle" style="">play_circle</span>
+</div>
+</div>
+<div class="lg:w-1/2">
+<span class="font-label text-xs tracking-[0.4em] uppercase text-accent-rose mb-6 block" style="">The Digital Atelier</span>
+<h2 class="font-headline section-h2 mb-8 leading-tight" style="">Masterclasses für Zuhause</h2>
+<p class="font-body body-text text-near-white/60 mb-12" style="">
+                    Erhalten Sie exklusiven Zugang zu unserer kuratierten Bibliothek von Lernvideos. Von täglichen Hair-Hacks bis hin zu fortgeschrittenen Editorial-Make-up-Techniken.
+                </p>
+<div class="space-y-6 mb-12">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-accent-rose text-sm" data-icon="check" style="">check</span>
+<p class="font-body text-xs tracking-widest uppercase" style="">Monatlich neue Video-Inhalte</p>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-accent-rose text-sm" data-icon="check" style="">check</span>
+<p class="font-body text-xs tracking-widest uppercase" style="">Exklusive Produkt-Empfehlungen</p>
+</div>
+</div>
+<a class="font-label text-sm uppercase tracking-widest text-near-white hover:text-accent-rose transition-colors" href="#" style="">
+                    Mitglied werden ——
+                </a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component (from COMPONENTS_8) -->
+<footer class="bg-black dark:bg-black w-full">
+<div class="flex flex-col items-center gap-12 py-20 px-12 w-full">
+<div class="font-['Playfair_Display'] text-xl text-white" style="">Editorial Elegance</div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-16">
+<a class="font-['Montserrat'] font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-opacity duration-300" href="#" style="">Impressum</a>
+<a class="font-['Montserrat'] font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-opacity duration-300" href="#" style="">Datenschutz</a>
+<a class="font-['Montserrat'] font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-opacity duration-300" href="#" style="">Kontakt</a>
+<a class="font-['Montserrat'] font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-opacity duration-300" href="#" style="">Instagram</a>
+<a class="font-['Montserrat'] font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-opacity duration-300" href="#" style="">Pinterest</a>
+</div>
+<div class="font-['Montserrat'] font-light text-xs tracking-[0.2em] uppercase text-stone-400" style="">
+            © 2024 Editorial Elegance. All Rights Reserved.
+        </div>
+</div>
+</footer>
+</body></html>

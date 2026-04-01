@@ -1,0 +1,278 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="de"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Montserrat:wght@200;300;400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#D4A49C",
+              "background-light": "#f7f6f6",
+              "background-dark": "#1A1A1A",
+              "on-tertiary-fixed": "#1b1b1b",
+              "on-error-container": "#93000a",
+              "tertiary-fixed": "#e2e2e2",
+              "on-error": "#ffffff",
+              "tertiary": "#5e5e5e",
+              "secondary": "#5d5f5d",
+              "surface-dim": "#ded9d4",
+              "outline": "#837471",
+              "on-tertiary": "#ffffff",
+              "tertiary-container": "#afafaf",
+              "surface-container-lowest": "#ffffff",
+              "surface-variant": "#e7e2dd",
+              "secondary-fixed-dim": "#c6c7c5",
+              "on-secondary-container": "#636563",
+              "secondary-fixed": "#e2e3e1",
+              "on-secondary-fixed-variant": "#454746",
+              "on-secondary": "#ffffff",
+              "surface-bright": "#fef8f3",
+              "error": "#ba1a1a",
+              "primary-fixed": "#ffdad4",
+              "primary-container": "#d4a49c",
+              "on-surface-variant": "#504442",
+              "on-primary-fixed": "#2f140f",
+              "surface-container": "#f2ede8",
+              "on-background": "#1d1b19",
+              "surface-container-highest": "#e7e2dd",
+              "on-tertiary-container": "#424242",
+              "on-primary-container": "#5c3934",
+              "surface": "#fef8f3",
+              "on-primary-fixed-variant": "#613e38",
+              "inverse-on-surface": "#f5f0eb",
+              "on-tertiary-fixed-variant": "#474747",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#32302d",
+              "background": "#fef8f3",
+              "on-secondary-fixed": "#1a1c1b",
+              "on-surface": "#1d1b19",
+              "surface-container-low": "#f8f3ee",
+              "surface-container-high": "#ece7e2",
+              "surface-tint": "#7c554e",
+              "outline-variant": "#d5c2bf",
+              "error-container": "#ffdad6",
+              "secondary-container": "#e2e3e1",
+              "inverse-primary": "#edbbb2",
+              "tertiary-fixed-dim": "#c6c6c6",
+              "primary-fixed-dim": "#edbbb2"
+            },
+            fontFamily: {
+              "display": ["Noto Serif"],
+              "headline": ["Playfair Display", "serif"],
+              "body": ["Montserrat", "sans-serif"],
+              "label": ["Montserrat", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+        }
+        body {
+            background-color: #1A1A1A;
+        }
+    </style>
+</head>
+<body class="font-body text-white antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl flex justify-between items-center w-full px-12 py-6">
+<div class="font-['Playfair_Display'] text-2xl italic text-white" style="">Digital Curator</div>
+<div class="hidden md:flex items-center gap-12">
+<a class="font-['Playfair_Display'] text-lg tracking-tight text-white/60 hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Portfolio</a>
+<a class="font-['Playfair_Display'] text-lg tracking-tight text-[#D4A49C] border-b-0 font-medium translate-y-[-1px] transition-transform" href="#" style="">Services</a>
+<a class="font-['Playfair_Display'] text-lg tracking-tight text-white/60 hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Expertise</a>
+<a class="font-['Playfair_Display'] text-lg tracking-tight text-white/60 hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">About</a>
+<a class="font-['Playfair_Display'] text-lg tracking-tight text-white/60 hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Contact</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-white/60 cursor-pointer hover:text-white" style="">search</span>
+<a class="font-['Playfair_Display'] text-lg tracking-tight text-white/60 hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Logout</a>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 md:px-12 lg:px-24">
+<!-- Hero Section -->
+<header class="mb-24 flex flex-col items-center text-center">
+<span class="text-[12px] uppercase tracking-[0.4em] text-[#D4A49C] mb-6 block" style="">Premium Member Area</span>
+<h1 class="font-headline text-5xl md:text-7xl lg:text-8xl font-normal leading-tight mb-8" style="">
+                Willkommen in deiner <br><span class="italic" style="">Masterclass</span>
+</h1>
+<p class="max-w-2xl text-white/60 text-lg leading-relaxed font-light" style="">
+                Entdecke exklusive Techniken und künstlerische Einblicke, kuratiert für die digitale Avantgarde. Deine Reise zur kreativen Meisterschaft beginnt hier.
+            </p>
+</header>
+<!-- Category Filters -->
+<section class="mb-16">
+<div class="flex flex-wrap justify-center gap-x-12 gap-y-4 border-y border-white/10 py-8">
+<a class="text-[13px] uppercase tracking-[0.2em] text-[#D4A49C] hover:text-white transition-colors duration-300" href="#" style="">All Masterclasses</a>
+<a class="text-[13px] uppercase tracking-[0.2em] text-white/40 hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Hair Styling</a>
+<a class="text-[13px] uppercase tracking-[0.2em] text-white/40 hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Bridal Makeup</a>
+<a class="text-[13px] uppercase tracking-[0.2em] text-white/40 hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Editorial Techniques</a>
+<a class="text-[13px] uppercase tracking-[0.2em] text-white/40 hover:text-[#D4A49C] transition-colors duration-300" href="#" style="">Lighting Design</a>
+</div>
+</section>
+<!-- Featured Video -->
+<section class="mb-32">
+<div class="relative group cursor-pointer overflow-hidden">
+<div class="aspect-video w-full bg-zinc-900 overflow-hidden relative">
+<img class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" data-alt="Cinematic wide shot of a luxury creative studio with soft dramatic lighting and professional equipment in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaCT_6qqr_wz2l2LYS0UwfixxHe3F0GKHjKtfjLTGBdLcMK5TLTo_KLCwszkxWipUj7WCwRjZlx1izHSS8fF-hK6nX6SzoMhtgvrEjp4jOBf4j4C2mrR0s-UuuaURXSgoDrLc7NNm1ZM702BUvpBaODLPQ2GI2Zp9b178HSvvbsEPBUa9GsWtmIQhpXK8MYgR9EEZtENPNUrc6dFhChdwm3g1VT--bF_A4i0a5AyIBRFADwhPu_38M5Wy8HO_FDIpOdfaVMP3ErwU" style="">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-24 h-24 border border-white/20 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 group-hover:bg-[#D4A49C]/20 transition-all duration-500">
+<span class="material-symbols-outlined text-4xl text-white ml-2" data-weight="fill" style="">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-12 left-12 right-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-xl">
+<span class="text-[11px] uppercase tracking-[0.3em] text-[#D4A49C] mb-4 block" style="">Aktuell Angesagt</span>
+<h2 class="font-headline text-4xl md:text-5xl text-white mb-4" style="">Die Kunst der digitalen Textur</h2>
+<p class="text-white/70 font-light leading-relaxed" style="">Ein tiefgehender Einblick in die Techniken, die moderne Editorials definieren. Lerne den Umgang mit Licht und Schatten in einer digitalen Umgebung.</p>
+</div>
+<a class="text-[14px] font-medium tracking-widest text-white hover:text-[#D4A49C] transition-all group/link" href="#" style="">
+                            JETZT ANSEHEN <span class="inline-block transition-transform duration-300 group-hover/link:translate-x-2" style="">——</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Video Grid -->
+<section>
+<div class="flex justify-between items-end mb-16">
+<div>
+<h3 class="font-headline text-3xl md:text-4xl" style="">Die Bibliothek</h3>
+<div class="h-[1px] w-24 bg-[#D4A49C] mt-4"></div>
+</div>
+<div class="hidden md:block text-white/40 text-[12px] uppercase tracking-[0.2em]" style="">9 MASTERCLASSES VERFÜGBAR</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
+<!-- Card 1 -->
+<article class="flex flex-col gap-6">
+<div class="aspect-[4/5] bg-zinc-900 overflow-hidden relative group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Close-up portrait of a model with intricate avant-garde makeup and high-fashion hair styling in soft warm light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBYEM7_P7sfXPN94r8cywrdqXI-9g8chOYoGzTwPxTucBiyAklTh1yXwNqnBAkOJduHVeUBrh6ut4zsYjRNqxc4THXhIDh8X8-i8rzT7ByR_6CR0GvjY0iUgl-HuKiTh1htyl7aHmMlNENFpAQSxIpDJ4WdrL-UmxUt5u6MtcNUJAjTgnSqAPXOF8QG3RBGGOmZILHjhmLhQboopDdlZveQP4e3yLtaDHME_MMwOKFTjynj9hABcro3RwSy9ZRNzFPpx7XfOjIDCk" style="">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl text-white" style="">play_circle</span>
+</div>
+<div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 text-[10px] tracking-widest text-white" style="">45 MIN</div>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-headline text-2xl group-hover:text-[#D4A49C] transition-colors" style="">Editorial Sculpting</h4>
+<p class="text-white/50 text-sm leading-relaxed font-light" style="">Die Definition von Gesichtszügen durch gezielte Lichtführung und Texturkontrast.</p>
+<a class="text-[12px] font-medium tracking-widest text-[#D4A49C] mt-2 group/link" href="#" style="">
+                            JETZT ANSEHEN <span class="inline-block transition-transform duration-300 group-hover/link:translate-x-2" style="">——</span>
+</a>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="flex flex-col gap-6">
+<div class="aspect-[4/5] bg-zinc-900 overflow-hidden relative group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Artistic shot of bridal styling with delicate lace and soft morning light filtering through a window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIg-sPW_CyAiVB0lwLD0jC9Fdu_xOVa_1RHUioGCO-37NQZ9PXdB7P_2ZDn_qLfZedw_BDYCttLdQgYo2dNaxEk1XE8yN8lApsQEXR42DfiBPnXgCSZprQCaZuCG8OopzR9vcxffkDZc9QDYjsmC8B-TcZEybO_Dx3Nz-uGZA5EaYFfOAQN40B1paI9ewlzcEYh_KS00qFTwRWGqemy-K-urTBRgbRkN-3MeubUGZHBYButPzInWEieC1CjetwXpMYcQ_flh5Fw38" style="">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl text-white" style="">play_circle</span>
+</div>
+<div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 text-[10px] tracking-widest text-white" style="">62 MIN</div>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-headline text-2xl group-hover:text-[#D4A49C] transition-colors" style="">Bridal Minimalism</h4>
+<p class="text-white/50 text-sm leading-relaxed font-light" style="">Zeitlose Eleganz durch Reduktion. Ein Leitfaden für moderne Braut-Looks.</p>
+<a class="text-[12px] font-medium tracking-widest text-[#D4A49C] mt-2 group/link" href="#" style="">
+                            JETZT ANSEHEN <span class="inline-block transition-transform duration-300 group-hover/link:translate-x-2" style="">——</span>
+</a>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="flex flex-col gap-6">
+<div class="aspect-[4/5] bg-zinc-900 overflow-hidden relative group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Dramatic lighting on professional makeup tools arranged neatly on a dark marble surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8QE5dSBQPXIOX6SHmIHp9c_DePmpnRH0Jz2mRmP6a-AFGqoyWVHm19fi_SfHUw2UcQ4Q2ff4jEt_CiNBGYxaMHsa7FhTrritequFaAPBV-X8u8HN1G7l_68RZPIMIhDKKBRFWst_3YLwt1ndQ_jRFjAKK7MxnX2waGDnRxwPcn8f9C6K42VtsHEBqHEcljJAb2GC2wh7ukYJ4T4pSLeky4MzCyx0-p9S3fdrtYucHO_p5ZYE2M4YyOles86alFDPmnWTTe2dz_H0" style="">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl text-white" style="">play_circle</span>
+</div>
+<div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 text-[10px] tracking-widest text-white" style="">38 MIN</div>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-headline text-2xl group-hover:text-[#D4A49C] transition-colors" style="">Tools of the Trade</h4>
+<p class="text-white/50 text-sm leading-relaxed font-light" style="">Kuratierung des perfekten Kits für High-End Produktionen und Editorials.</p>
+<a class="text-[12px] font-medium tracking-widest text-[#D4A49C] mt-2 group/link" href="#" style="">
+                            JETZT ANSEHEN <span class="inline-block transition-transform duration-300 group-hover/link:translate-x-2" style="">——</span>
+</a>
+</div>
+</article>
+<!-- Row 2 -->
+<article class="flex flex-col gap-6">
+<div class="aspect-[4/5] bg-zinc-900 overflow-hidden relative group">
+<div class="w-full h-full bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="High-fashion model with sleek wet-look hair and bold aesthetic makeup against a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMSF6yvI4kZ1H4ZhMbpdfheWLdHCshfuE0qdPAroq-VmS7QlPmAjM5mcDxkhLESy5sgispzx68dfJ_IrfKA5MOC3IvuIAFZmdhoKpdc762MprwU0rGs0GBUYEEP6ExS6E3WEtyQPF0AQvm9LpKq2wxbobjARhMZcLtu_Ih-PG1H3lfYXTKfheWDnil3VIvZ0khGtnyx2yqpTjAUZf0A15Lf4Nq5ew39WzoFjbNjeKcyniltdNOl2ji5OTgqL5R4i2_DfduP6sjH8M" style="">
+</div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl text-white" style="">play_circle</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-headline text-2xl group-hover:text-[#D4A49C] transition-colors" style="">Liquid Textures</h4>
+<p class="text-white/50 text-sm leading-relaxed font-light" style="">Techniken zur Erzeugung von Glanz und Reflexion in der digitalen Fotografie.</p>
+<a class="text-[12px] font-medium tracking-widest text-[#D4A49C] mt-2 group/link" href="#" style="">
+                            JETZT ANSEHEN <span class="inline-block transition-transform duration-300 group-hover/link:translate-x-2" style="">——</span>
+</a>
+</div>
+</article>
+<article class="flex flex-col gap-6">
+<div class="aspect-[4/5] bg-zinc-900 overflow-hidden relative group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Ethereal soft focus portrait with dreamy lighting and delicate pastel color palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRB_gZr8uk4FPJOV4aZeThWftg5_t97gAGaLKf6XTOhvCsrICUi7Zy0LP_yBM6kTKJ5hMAR-5ePFOK3E0JTQr9zwyVgye1PGPKaSHavx4IWwiv0Qr2KrrXpX2EGTrd2VPx0QcGjYzs7JLH0XWVZs2OBL4Y8uEi9eL4H-RdYaa3mTONUc5j_ZxcsWopXlYmTVAixFRXu-buL-IO7mSkM3rfZp8kKIReDqY84AmJDVM2a-seFxpYuqShQVZtA9mwZ0hVX-pnE2-qa-c" style="">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl text-white" style="">play_circle</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-headline text-2xl group-hover:text-[#D4A49C] transition-colors" style="">Lighting Moods</h4>
+<p class="text-white/50 text-sm leading-relaxed font-light" style="">Wie man Emotionen durch atmosphärische Lichtsetzung verstärkt.</p>
+<a class="text-[12px] font-medium tracking-widest text-[#D4A49C] mt-2 group/link" href="#" style="">
+                            JETZT ANSEHEN <span class="inline-block transition-transform duration-300 group-hover/link:translate-x-2" style="">——</span>
+</a>
+</div>
+</article>
+<article class="flex flex-col gap-6">
+<div class="aspect-[4/5] bg-zinc-900 overflow-hidden relative group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Minimalist architectural space with strong shadows and clean lines for a high-end background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmKbap2B0tVM6P15C3HhjX0UCPNf-c_8HzNYZhalu-apMUcLpdUPg2Aae9qhxoW5_QCjy9eYE6ISkxu7tZPQKvu2FtBWhUNzJlgzPiK0PL9GtcZSxgX5OPVH2fNo_LdFxVc4gwCC0r8sUlEUndjgP_ACr2AFjsd0BEefsO-TI49Dbr7dz5d9T09eIpdxIyJwbAW-BaI6i1LGLBj1wnyzUCcwMJGye4T1TuXJ7M0OHGNC8Xegpy9BFHwwx2ea-acXxJepUJEdNuBlM" style="">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl text-white" style="">play_circle</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-headline text-2xl group-hover:text-[#D4A49C] transition-colors" style="">Modern Composition</h4>
+<p class="text-white/50 text-sm leading-relaxed font-light" style="">Asymmetrie und Leerraum als gestalterische Werkzeuge in der Bildkomposition.</p>
+<a class="text-[12px] font-medium tracking-widest text-[#D4A49C] mt-2 group/link" href="#" style="">
+                            JETZT ANSEHEN <span class="inline-block transition-transform duration-300 group-hover/link:translate-x-2" style="">——</span>
+</a>
+</div>
+</article>
+</div>
+<div class="mt-24 flex justify-center">
+<button class="px-12 py-5 border border-white/20 text-[13px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500" style="">
+                    Weitere Masterclasses laden
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-[#1A1A1A]">
+<div class="w-full px-12 py-16 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/5">
+<div class="font-['Playfair_Display'] text-xl text-white" style=""><br></div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-['Montserrat'] text-[12px] uppercase tracking-[0.2em] leading-relaxed text-white/60 hover:text-white transition-opacity hover:opacity-100" href="#" style="">Privacy Policy</a>
+<a class="font-['Montserrat'] text-[12px] uppercase tracking-[0.2em] leading-relaxed text-white/60 hover:text-white transition-opacity hover:opacity-100" href="#" style="">Terms of Service</a>
+<a class="font-['Montserrat'] text-[12px] uppercase tracking-[0.2em] leading-relaxed text-white/60 hover:text-white transition-opacity hover:opacity-100" href="#" style="">Member Support</a>
+<a class="font-['Montserrat'] text-[12px] uppercase tracking-[0.2em] leading-relaxed text-[#D4A49C] hover:text-white transition-opacity hover:opacity-100" href="#" style="">Instagram</a>
+</div>
+<div class="font-['Montserrat'] text-[10px] uppercase tracking-[0.2em] text-white/40" style="">
+                © 2024 DIGITAL CURATOR ACADEMY. ALL RIGHTS RESERVED.
+            </div>
+</div>
+</footer>
+</body></html>
