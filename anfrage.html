@@ -324,6 +324,18 @@
             </div>
           </div>
 
+          <!-- Adresse (erscheint bei Vor Ort / Hausbesuch) -->
+          <div id="field-adresse-wrap" style="display:none">
+            <label for="field-adresse" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Adresse</label>
+            <input
+              id="field-adresse"
+              name="adresse"
+              type="text"
+              placeholder="Straße, Hausnummer, PLZ, Stadt"
+              class="input-base"
+            />
+          </div>
+
           <!-- Nachricht -->
           <div>
             <label for="field-message" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Ihre Nachricht</label>
@@ -447,6 +459,16 @@
 
     nameInput.addEventListener('input',  () => clearFieldError(nameInput));
     emailInput.addEventListener('input', () => clearFieldError(emailInput));
+
+    // Adressfeld bei Vor Ort / Hausbesuch einblenden
+    const adresseWrap = document.getElementById('field-adresse-wrap');
+    document.querySelectorAll('input[name="ort"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        const needsAddress = ['Vor Ort (Eventlocation)', 'Hausbesuch'].includes(this.value);
+        adresseWrap.style.display = needsAddress ? 'block' : 'none';
+        if (!needsAddress) document.getElementById('field-adresse').value = '';
+      });
+    });
 
     // Probe-Styling Checkboxen: Complete Probelook schließt Einzeloptionen aus
     (function() {
