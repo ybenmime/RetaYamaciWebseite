@@ -372,6 +372,24 @@
     nameInput.addEventListener('input',  () => clearFieldError(nameInput));
     emailInput.addEventListener('input', () => clearFieldError(emailInput));
 
+    // Probe-Styling Checkboxen: Complete Probelook schließt Einzeloptionen aus
+    (function() {
+      const probeHairstyling = document.getElementById('probe-hairstyling');
+      const probeMakeup      = document.getElementById('probe-makeup');
+      const probeComplete    = document.getElementById('probe-complete');
+      probeComplete.addEventListener('change', function() {
+        if (this.checked) {
+          probeHairstyling.checked = false;
+          probeMakeup.checked      = false;
+        }
+      });
+      [probeHairstyling, probeMakeup].forEach(function(cb) {
+        cb.addEventListener('change', function() {
+          if (this.checked) probeComplete.checked = false;
+        });
+      });
+    })();
+
     // Probe-Styling ein/ausblenden je nach Service-Auswahl im Dropdown
     const probeServices = ['Braut', 'Verlobung'];
     const leistungSelect = form.querySelector('[name="leistung"]');
