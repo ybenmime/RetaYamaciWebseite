@@ -380,12 +380,11 @@
         const alreadySelected = row.classList.contains('selected');
         card.querySelectorAll('.option-row').forEach(function(r) { r.classList.remove('selected'); });
         if (alreadySelected) {
-          // Auswahl aufheben → Probe-Bereich zuklappen + Probe-Auswahl reset
-          probeSection.classList.remove('visible');
+          if (probeSection) { probeSection.classList.remove('visible'); }
           card.querySelectorAll('.probe-row').forEach(function(r) { r.classList.remove('selected'); });
         } else {
           row.classList.add('selected');
-          probeSection.classList.add('visible');
+          if (probeSection) probeSection.classList.add('visible');
         }
         updateCta(card);
       });
@@ -408,7 +407,7 @@
     document.querySelectorAll('.anlass-card').forEach(function(card) {
       card.querySelectorAll('.option-row').forEach(function(r) { r.classList.remove('selected'); });
       card.querySelectorAll('.probe-row').forEach(function(r) { r.classList.remove('selected'); });
-      card.querySelector('.probe-section').classList.remove('visible');
+      const ps = card.querySelector('.probe-section'); if (ps) ps.classList.remove('visible');
       updateCta(card);
     });
   });
