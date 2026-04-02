@@ -64,7 +64,7 @@
       <a href="index.html" class="font-headline text-2xl italic text-dark-text">Reta Yamaci</a>
 
       <!-- Desktop Nav Links -->
-      <div class="hidden md:flex items-center gap-10 font-label font-light tracking-wide text-sm uppercase text-dark-text">
+      <div class="hidden md:flex items-center gap-10 font-label text-xs tracking-[0.2em] uppercase text-dark-text">
         <a href="leistungen.html" class="hover:text-accent-rose transition-colors duration-300">Leistungen</a>
         <a href="portfolio.html" class="hover:text-accent-rose transition-colors duration-300">Portfolio</a>
         <a href="ueber-mich.html" class="hover:text-accent-rose transition-colors duration-300">Über Mich</a>
@@ -72,7 +72,7 @@
       </div>
 
       <!-- Desktop CTA -->
-      <a href="anfrage.html" class="cta-link hidden md:inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">
+      <a href="anfrage.html" class="cta-link hidden md:flex items-center gap-1 font-label text-xs tracking-[0.2em] uppercase text-dark-text hover:text-accent-rose transition-colors duration-300">
         Termin Buchen <span class="cta-dash">&nbsp;——</span>
       </a>
 
@@ -115,7 +115,7 @@
 
       <!-- Hero Content -->
       <div class="relative z-10 max-w-[1440px] mx-auto w-full">
-        <span class="font-label text-xs tracking-[0.4em] uppercase text-accent-rose mb-6 block">est. 2014</span>
+        <span class="font-label text-xs tracking-[0.4em] uppercase text-accent-rose mb-6 block">est. 2018</span>
         <h1 class="font-headline hero-title text-white mb-8 max-w-4xl">
           Die Kunst der <br/><span>Verfeinerung.</span>
         </h1>
@@ -142,64 +142,50 @@
     </section>
 
     <!-- ========================
-         SERVICES PREVIEW SECTION
+         PORTFOLIO PREVIEW SECTION
     ========================= -->
     <section class="py-32 px-8 md:px-12 bg-champagne">
       <div class="max-w-7xl mx-auto">
 
         <!-- Header Row -->
-        <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div class="max-w-xl">
-            <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose mb-4 block">Exklusive Auswahl</span>
-            <h2 class="font-headline section-h2 text-dark-text">Unsere Signatur-Services</h2>
+            <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose mb-4 block">Ausgewählte Arbeiten</span>
+            <h2 class="font-headline section-h2 text-dark-text">Mein Portfolio</h2>
           </div>
-          <a href="leistungen.html" class="cta-link inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300 whitespace-nowrap">
-            Alle Services ansehen <span class="cta-dash">&nbsp;——</span>
+          <a href="portfolio.html" class="cta-link inline-flex items-center gap-1 font-label text-xs tracking-[0.2em] uppercase text-dark-text hover:text-accent-rose transition-colors duration-300 whitespace-nowrap">
+            Alle Arbeiten <span class="cta-dash ml-1">——</span>
           </a>
         </div>
 
-        <!-- Asymmetric 3-column grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 3 Portrait Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
 
-          <!-- Large Card (col-span-2) -->
-          <div class="md:col-span-2 relative overflow-hidden group min-h-[600px]">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtrY79UGuutnDinaC056Dn1N6ftcxV64QYxHIj6_KrFn8Th7_vcat7fmxyFaFQG4N54a1K1eQYX1sNVh7r05WYD73uM-wcCmHJgfRehs32Z-WDj68Y5Y9SreOc1Ccnn8h-il-fPjf3h2L8vw2idtbyWFttM9U4ubq_7EdVjfyON2k8f_LsnTZQGFxST156zPMu63-q_yl3PkXc0IfV5_gYoHkFxGQ4fIEPxy8jAmZ2ptB2RXNpIoTGG1wSZypKzq7hb5rLgXSaFos"
-              alt="Editorial Hair Design"
-              class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-            <div class="absolute bottom-0 p-10 md:p-12 text-white">
-              <span class="font-label text-xs tracking-widest uppercase mb-4 block text-accent-rose">Premium Styling</span>
-              <h3 class="font-headline section-h3 mb-4">Editorial Hair Design</h3>
-              <p class="font-body body-text text-white/80 max-w-sm">Maßgeschneiderte Schnitte und Stylings für den perfekten Auftritt bei jedem Anlass.</p>
+          <!-- Bridal -->
+          <div class="flex flex-col gap-4">
+            <div class="w-full aspect-[3/4] overflow-hidden bg-[#cfc8c0] flex items-center justify-center">
+              <!-- TODO: Portfolio Foto Bridal einfügen -->
+              <span class="font-label text-xs tracking-[0.2em] uppercase text-[#a09890] opacity-60">Foto folgt</span>
             </div>
+            <p class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 text-center">Bridal</p>
           </div>
 
-          <!-- Small Card (col-span-1) -->
-          <div class="bg-near-white p-10 md:p-12 flex flex-col justify-between">
-            <div>
-              <h3 class="font-headline section-h3 mb-4 text-dark-text">The Nude Glow</h3>
-              <p class="font-body body-text text-dark-text/80 mb-10">Ein minimalistisches Make-up, das Ihre natürliche Schönheit zum Strahlen bringt.</p>
+          <!-- Editorial -->
+          <div class="flex flex-col gap-4">
+            <div class="w-full aspect-[3/4] overflow-hidden bg-[#b8b0a8] flex items-center justify-center">
+              <!-- TODO: Portfolio Foto Editorial einfügen -->
+              <span class="font-label text-xs tracking-[0.2em] uppercase text-[#8a8078] opacity-60">Foto folgt</span>
             </div>
-            <div class="aspect-square overflow-hidden">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxY1VQBd6uchrReO7zvCBU6EqE6gZ8StiZWv0vJ22h8-kIqJYLNGBpkUBh4aZOd2m-sNcfuMBkbcj1lxQcZC7f6d7Tgflx_5eSkIUhPzp_ir9disMX2ww8QI3wI9XJUpYfuR-yayEVDI8l2YpaIxiMr_wvPgxDkttHvn6zdnlIU6AGL-MgHYKDNkMXCdVjw4kRLdFoGMtorf_chOyiBdM5EaLeJ9O_ad3w9hMpYmyoSHeHhMNalFiXK6cgULTYbNIPCFi8JZyh8"
-                alt="The Nude Glow Make-up"
-                class="w-full h-full object-cover"
-              />
-            </div>
+            <p class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 text-center">Editorial</p>
           </div>
 
-          <!-- Full-Width Banner (col-span-3) -->
-          <div class="md:col-span-3 py-16 px-10 md:px-16 bg-near-white flex flex-col md:flex-row items-center justify-between gap-10">
-            <div class="max-w-2xl">
-              <h3 class="font-headline section-h3 mb-4 text-dark-text">Individual Coaching</h3>
-              <p class="font-body body-text text-dark-text/80">Lernen Sie die Techniken der Profis in privaten Einzelsitzungen – individuell abgestimmt auf Ihre Bedürfnisse.</p>
+          <!-- Lifestyle -->
+          <div class="flex flex-col gap-4">
+            <div class="w-full aspect-[3/4] overflow-hidden bg-[#d8d0c8] flex items-center justify-center">
+              <!-- TODO: Portfolio Foto Lifestyle einfügen -->
+              <span class="font-label text-xs tracking-[0.2em] uppercase text-[#a09890] opacity-60">Foto folgt</span>
             </div>
-            <a href="anfrage.html" class="cta-link inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300 whitespace-nowrap">
-              Termin vereinbaren <span class="cta-dash">&nbsp;——</span>
-            </a>
+            <p class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 text-center">Lifestyle</p>
           </div>
 
         </div>
@@ -207,50 +193,29 @@
     </section>
 
     <!-- ========================
-         PORTFOLIO PREVIEW SECTION
+         1:1 WORKSHOP BANNER
     ========================= -->
-    <section class="py-32 px-8 md:px-12 bg-near-white">
-      <div class="max-w-7xl mx-auto">
+    <section class="bg-near-white">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row">
 
-        <!-- Header Row -->
-        <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-          <div class="max-w-xl">
-            <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose mb-4 block">Ausgewählte Arbeiten</span>
-            <h2 class="font-headline section-h2 text-dark-text">Portfolio</h2>
-          </div>
-          <a href="portfolio.html" class="cta-link inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300 whitespace-nowrap">
-            Alle Arbeiten <span class="cta-dash">&nbsp;——</span>
+        <!-- Image Left -->
+        <div class="md:w-1/2 aspect-[4/3] md:aspect-auto overflow-hidden bg-[#cfc8c0] flex items-center justify-center relative">
+          <!-- TODO: Workshop/Coaching Foto einfügen -->
+          <span class="font-label text-xs tracking-[0.2em] uppercase text-[#a09890] opacity-60">Foto folgt</span>
+        </div>
+
+        <!-- Text Right -->
+        <div class="md:w-1/2 bg-champagne px-12 md:px-16 py-20 flex flex-col justify-center">
+          <span class="font-label text-xs tracking-[0.2em] uppercase text-accent-rose mb-4 block">Exklusiv</span>
+          <h2 class="font-headline text-4xl md:text-5xl text-dark-text mb-6 leading-tight">Exklusives<br/>1:1 Coaching</h2>
+          <p class="body-text font-body text-dark-text/70 mb-10">
+            Meistern Sie professionelle Techniken und entwickeln Sie Ihren eigenen Stil in privaten Einzelsitzungen — individuell abgestimmt auf Ihre Bedürfnisse.
+          </p>
+          <a href="anfrage.html?service=1%3A1+Workshop+Hairstyling" class="cta-link inline-flex items-center font-label text-xs tracking-[0.2em] uppercase text-dark-text hover:text-accent-rose transition-colors duration-300">
+            Termin vereinbaren <span class="cta-dash ml-2">——</span>
           </a>
         </div>
 
-        <!-- 3-column square image grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-          <div class="aspect-square overflow-hidden group">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBYEM7_P7sfXPN94r8cywrdqXI-9g8chOYoGzTwPxTucBiyAklTh1yXwNqnBAkOJduHVeUBrh6ut4zsYjRNqxc4THXhIDh8X8-i8rzT7ByR_6CR0GvjY0iUgl-HuKiTh1htyl7aHmMlNENFpAQSxIpDJ4WdrL-UmxUt5u6MtcNUJAjTgnSqAPXOF8QG3RBGGOmZILHjhmLhQboopDdlZveQP4e3yLtaDHME_MMwOKFTjynj9hABcro3RwSy9ZRNzFPpx7XfOjIDCk"
-              alt="Portfolio Bild 1"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-          </div>
-
-          <div class="aspect-square overflow-hidden group">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIg-sPW_CyAiVB0lwLD0jC9Fdu_xOVa_1RHUioGCO-37NQZ9PXdB7P_2ZDk9lY2daNaxEk1XE8yN8lApsQEXR42DfiBPnXgCSZprQCaZuCG8OopzR9vcxffkDZc9QDYjsmC8B-TcZEybO_Dx3Nz-uGZA5EaYFfOAQN40B1paI9ewlzcEYh_KS00qFTwRWGqemy-K-urTBRgbRkN-3MeubUGZHBYButPzInWEieC1CjetwXpMYcQ_flh5Fw38"
-              alt="Portfolio Bild 2"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-          </div>
-
-          <div class="aspect-square overflow-hidden group">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8QE5dSBQPXIOX6SHmIHp9c_DePmpnRH0Jz2mRmP6a-AFGqoyWVHm19fi_SfHUw2UcQ4Q2ff4jEt_CiNBGYxaMHsa7FhTrritequFaAPBV-X8u8HN1G7l_68RZPIMIhDKKBRFWst_pCDnRxwPcn8f9C6K42VtsHEBqHEcljJAb2GC2wh7ukYJ4T4pSLeky4MzCyx0-p9S3fdrtYucHO_p5ZYE2M4YyOles86alFDPmnWTTe2dz_H0"
-              alt="Portfolio Bild 3"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-          </div>
-
-        </div>
       </div>
     </section>
 
