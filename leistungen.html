@@ -65,6 +65,15 @@
     .option-row.selected .option-label { opacity: 1; }
     .option-row .option-price { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 500; opacity: 0.7; }
     .option-row.selected .option-price { opacity: 1; color: #D4A49C; }
+    .card-cta-inactive {
+      opacity: 0.3;
+      pointer-events: none;
+      cursor: default;
+    }
+    .card-cta-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
   </style>
 </head>
 <body class="bg-near-white text-dark-text font-body">
@@ -131,12 +140,13 @@
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">01</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Braut</h3>
         <div class="h-px bg-champagne mb-4"></div>
+        <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-3">Option wählen</p>
         <div class="options-list flex flex-col mb-8 flex-1">
           <div class="option-row" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
           <div class="option-row" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
           <div class="option-row" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
         </div>
-        <a href="anfrage.html?service=Braut" class="cta-link card-cta inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
+        <a href="anfrage.html?service=Braut" class="cta-link card-cta card-cta-inactive inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
       </div>
 
       <!-- Karte: Henna -->
@@ -144,12 +154,13 @@
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">02</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Henna</h3>
         <div class="h-px bg-champagne mb-4"></div>
+        <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-3">Option wählen</p>
         <div class="options-list flex flex-col mb-8 flex-1">
           <div class="option-row" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
           <div class="option-row" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
           <div class="option-row" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
         </div>
-        <a href="anfrage.html?service=Henna" class="cta-link card-cta inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
+        <a href="anfrage.html?service=Henna" class="cta-link card-cta card-cta-inactive inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
       </div>
 
       <!-- Karte: Standesamt -->
@@ -157,12 +168,13 @@
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">03</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Standesamt</h3>
         <div class="h-px bg-champagne mb-4"></div>
+        <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-3">Option wählen</p>
         <div class="options-list flex flex-col mb-8 flex-1">
           <div class="option-row" data-option="Hairstyling" data-price="200"><span class="option-label">Hairstyling</span><span class="option-price">200 €</span></div>
           <div class="option-row" data-option="Makeup" data-price="200"><span class="option-label">Makeup</span><span class="option-price">200 €</span></div>
           <div class="option-row" data-option="Complete Look" data-price="380"><span class="option-label">Complete Look</span><span class="option-price">380 €</span></div>
         </div>
-        <a href="anfrage.html?service=Standesamt" class="cta-link card-cta inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
+        <a href="anfrage.html?service=Standesamt" class="cta-link card-cta card-cta-inactive inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
       </div>
 
       <!-- Karte: Verlobung -->
@@ -170,12 +182,13 @@
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">04</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Verlobung</h3>
         <div class="h-px bg-champagne mb-4"></div>
+        <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-3">Option wählen</p>
         <div class="options-list flex flex-col mb-8 flex-1">
           <div class="option-row" data-option="Hairstyling" data-price="200"><span class="option-label">Hairstyling</span><span class="option-price">200 €</span></div>
           <div class="option-row" data-option="Makeup" data-price="200"><span class="option-label">Makeup</span><span class="option-price">200 €</span></div>
           <div class="option-row" data-option="Complete Look" data-price="380"><span class="option-label">Complete Look</span><span class="option-price">380 €</span></div>
         </div>
-        <a href="anfrage.html?service=Verlobung" class="cta-link card-cta inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
+        <a href="anfrage.html?service=Verlobung" class="cta-link card-cta card-cta-inactive inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
       </div>
 
       <!-- Karte: Gäste -->
@@ -183,12 +196,13 @@
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">05</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Gäste</h3>
         <div class="h-px bg-champagne mb-4"></div>
+        <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-3">Option wählen</p>
         <div class="options-list flex flex-col mb-8 flex-1">
           <div class="option-row" data-option="Hairstyling" data-price="120"><span class="option-label">Hairstyling</span><span class="option-price">120 €</span></div>
           <div class="option-row" data-option="Makeup" data-price="120"><span class="option-label">Makeup</span><span class="option-price">120 €</span></div>
           <div class="option-row" data-option="Complete Look" data-price="240"><span class="option-label">Complete Look</span><span class="option-price">240 €</span></div>
         </div>
-        <a href="anfrage.html?service=Gäste" class="cta-link card-cta inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
+        <a href="anfrage.html?service=Gäste" class="cta-link card-cta card-cta-inactive inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
       </div>
 
     </div>
@@ -297,6 +311,9 @@
         row.classList.add('selected');
         const option = row.dataset.option;
         cta.href = 'anfrage.html?service=' + encodeURIComponent(service) + '&option=' + encodeURIComponent(option);
+        // CTA aktivieren
+        cta.classList.remove('card-cta-inactive');
+        cta.classList.add('card-cta-active');
       });
     });
   });
