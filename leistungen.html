@@ -402,8 +402,9 @@
     });
   });
 
-  // Klick außerhalb → alles zurücksetzen
-  document.addEventListener('click', function() {
+  // Klick außerhalb → alles zurücksetzen (nicht wenn CTA geklickt)
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.card-cta')) return; // CTA-Klick: nicht resetten
     document.querySelectorAll('.anlass-card').forEach(function(card) {
       card.querySelectorAll('.option-row').forEach(function(r) { r.classList.remove('selected'); });
       card.querySelectorAll('.probe-row').forEach(function(r) { r.classList.remove('selected'); });
