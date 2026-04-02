@@ -372,6 +372,20 @@
     nameInput.addEventListener('input',  () => clearFieldError(nameInput));
     emailInput.addEventListener('input', () => clearFieldError(emailInput));
 
+    // Probe-Styling ein/ausblenden je nach Service-Auswahl im Dropdown
+    const probeServices = ['Braut', 'Verlobung'];
+    const leistungSelect = form.querySelector('[name="leistung"]');
+    const probeWrapEl   = document.getElementById('field-probe-wrap');
+    leistungSelect.addEventListener('change', function() {
+      if (probeServices.includes(this.value)) {
+        probeWrapEl.style.display = 'block';
+      } else {
+        probeWrapEl.style.display = 'none';
+        // Checkboxen zurücksetzen
+        probeWrapEl.querySelectorAll('input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
+      }
+    });
+
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       let valid = true;
