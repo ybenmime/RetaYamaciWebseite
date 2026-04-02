@@ -196,7 +196,7 @@
           </div>
 
           <!-- Gewählte Option (erscheint nur wenn via URL vorausgefüllt) -->
-          <div id="field-option-wrap" class="hidden">
+          <div id="field-option-wrap" style="display:none">
             <label class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Gewählte Option</label>
             <input
               id="field-option"
@@ -208,7 +208,7 @@
           </div>
 
           <!-- Probe-Styling -->
-          <div id="field-probe-wrap" class="hidden">
+          <div id="field-probe-wrap" style="display:none">
             <label class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-4">Probe-Styling</label>
             <label class="flex items-start gap-4 cursor-pointer group">
               <span class="relative mt-0.5 flex-shrink-0">
@@ -392,7 +392,7 @@
         const input = document.getElementById('field-option');
         if (wrap && input) {
           input.value = option;
-          wrap.classList.remove('hidden');
+          wrap.style.display = 'block';
         }
       }
 
@@ -400,17 +400,16 @@
       const probeWrap  = document.getElementById('field-probe-wrap');
       const probeCheck = document.getElementById('field-probe-check');
       const probeLabel = document.getElementById('field-probe-label');
-      if (probe && probeWrap && probeCheck && probeLabel) {
-        const probePrice = probe === 'Complete Probelook' ? '300 €' : '150 €';
-        probeLabel.textContent = probe + ' — ' + probePrice + ' (Probetermin vor dem Event)';
-        probeCheck.checked = true;
-        probeWrap.classList.remove('hidden');
-      } else if (probeWrap) {
-        // Probe-Bereich trotzdem anzeigen wenn Service ein Anlass-Service ist
-        const anlassServices = ['Braut','Henna','Standesamt','Verlobung'];
-        if (service && anlassServices.includes(service)) {
+      const anlassServices = ['Braut','Henna','Standesamt','Verlobung'];
+      if (probeWrap && probeLabel) {
+        if (probe) {
+          const probePrice = probe === 'Complete Probelook' ? '300 €' : '150 €';
+          probeLabel.textContent = probe + ' — ' + probePrice + ' (Probetermin vor dem Event)';
+          probeCheck.checked = true;
+          probeWrap.style.display = 'block';
+        } else if (service && anlassServices.includes(service)) {
           probeLabel.textContent = 'Probe-Styling vor dem Event hinzufügen (Hairstyling / Makeup je 150 €, Complete Probelook 300 €)';
-          probeWrap.classList.remove('hidden');
+          probeWrap.style.display = 'block';
         }
       }
     })();
