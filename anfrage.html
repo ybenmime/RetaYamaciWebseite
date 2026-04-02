@@ -195,18 +195,6 @@
             </select>
           </div>
 
-          <!-- Probe-Styling als Zusatz-Leistung (erscheint direkt unter Service) -->
-          <div id="field-probe-service-wrap" style="display:none">
-            <label class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Probe-Styling</label>
-            <input
-              id="field-probe-service"
-              name="probe_service"
-              type="text"
-              readonly
-              class="input-base opacity-70 cursor-default"
-            />
-          </div>
-
           <!-- Gewählte Option (erscheint nur wenn via URL vorausgefüllt) -->
           <div id="field-option-wrap" style="display:none">
             <label class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Gewählte Option</label>
@@ -219,16 +207,45 @@
             />
           </div>
 
-          <!-- Probe-Styling -->
+          <!-- Probe-Styling (3 Checkboxen, erscheint bei Anlass-Services) -->
           <div id="field-probe-wrap" style="display:none">
-            <label class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-4">Probe-Styling</label>
-            <label class="flex items-start gap-4 cursor-pointer group">
-              <span class="relative mt-0.5 flex-shrink-0">
-                <input id="field-probe-check" name="probe_styling" type="checkbox" class="peer sr-only"/>
-                <span class="block w-4 h-4 border border-accent-rose/50 peer-checked:bg-accent-rose peer-checked:border-accent-rose transition-colors duration-200"></span>
-              </span>
-              <span id="field-probe-label" class="font-body text-sm text-dark-text/70 group-hover:text-dark-text transition-colors duration-200 leading-relaxed"></span>
-            </label>
+            <label class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-4">Probe-Styling gewünscht?</label>
+            <div class="flex flex-col gap-0 border-t border-[#e7e2dd]">
+
+              <label class="probe-check-row flex items-center justify-between py-4 px-2 cursor-pointer border-b border-[#e7e2dd] hover:bg-accent-rose/5 transition-colors duration-200">
+                <span class="flex items-center gap-4">
+                  <span class="relative flex-shrink-0">
+                    <input id="probe-hairstyling" name="probe_styling" value="Probe Hairstyling" type="checkbox" class="peer sr-only"/>
+                    <span class="block w-4 h-4 border border-accent-rose/40 peer-checked:bg-accent-rose peer-checked:border-accent-rose transition-colors duration-200"></span>
+                  </span>
+                  <span class="font-body text-sm text-dark-text/70">Probe Hairstyling</span>
+                </span>
+                <span class="font-body text-sm font-medium text-dark-text/50">150 €</span>
+              </label>
+
+              <label class="probe-check-row flex items-center justify-between py-4 px-2 cursor-pointer border-b border-[#e7e2dd] hover:bg-accent-rose/5 transition-colors duration-200">
+                <span class="flex items-center gap-4">
+                  <span class="relative flex-shrink-0">
+                    <input id="probe-makeup" name="probe_styling" value="Probe Makeup" type="checkbox" class="peer sr-only"/>
+                    <span class="block w-4 h-4 border border-accent-rose/40 peer-checked:bg-accent-rose peer-checked:border-accent-rose transition-colors duration-200"></span>
+                  </span>
+                  <span class="font-body text-sm text-dark-text/70">Probe Makeup</span>
+                </span>
+                <span class="font-body text-sm font-medium text-dark-text/50">150 €</span>
+              </label>
+
+              <label class="probe-check-row flex items-center justify-between py-4 px-2 cursor-pointer border-b border-[#e7e2dd] hover:bg-accent-rose/5 transition-colors duration-200">
+                <span class="flex items-center gap-4">
+                  <span class="relative flex-shrink-0">
+                    <input id="probe-complete" name="probe_styling" value="Complete Probelook" type="checkbox" class="peer sr-only"/>
+                    <span class="block w-4 h-4 border border-accent-rose/40 peer-checked:bg-accent-rose peer-checked:border-accent-rose transition-colors duration-200"></span>
+                  </span>
+                  <span class="font-body text-sm text-dark-text/70">Complete Probelook</span>
+                </span>
+                <span class="font-body text-sm font-medium text-dark-text/50">300 €</span>
+              </label>
+
+            </div>
           </div>
 
           <!-- Nachricht -->
@@ -408,27 +425,20 @@
         }
       }
 
-      // Probe-Styling anzeigen + voranhaken
-      const probeWrap  = document.getElementById('field-probe-wrap');
-      const probeCheck = document.getElementById('field-probe-check');
-      const probeLabel = document.getElementById('field-probe-label');
+      // Probe-Styling: bei Anlass-Services einblenden + ggf. voranhaken
       const anlassServices = ['Braut','Henna','Standesamt','Verlobung'];
-      if (probeWrap && probeLabel) {
+      if (service && anlassServices.includes(service)) {
+        document.getElementById('field-probe-wrap').style.display = 'block';
         if (probe) {
-          const probePrice = probe === 'Complete Probelook' ? '300 €' : '150 €';
-          probeLabel.textContent = probe + ' — ' + probePrice + ' (Probetermin vor dem Event)';
-          probeCheck.checked = true;
-          probeWrap.style.display = 'block';
-          // Auch im Service-Bereich anzeigen
-          const probeServiceWrap  = document.getElementById('field-probe-service-wrap');
-          const probeServiceInput = document.getElementById('field-probe-service');
-          if (probeServiceWrap && probeServiceInput) {
-            probeServiceInput.value = probe + ' — ' + probePrice;
-            probeServiceWrap.style.display = 'block';
-          }
-        } else if (service && anlassServices.includes(service)) {
-          probeLabel.textContent = 'Probe-Styling vor dem Event hinzufügen (Hairstyling / Makeup je 150 €, Complete Probelook 300 €)';
-          probeWrap.style.display = 'block';
+          const map = {
+            'Hairstyling':       'probe-hairstyling',
+            'Probe Hairstyling': 'probe-hairstyling',
+            'Makeup':            'probe-makeup',
+            'Probe Makeup':      'probe-makeup',
+            'Complete Probelook':'probe-complete',
+          };
+          const id = map[probe];
+          if (id) document.getElementById(id).checked = true;
         }
       }
     })();
