@@ -306,15 +306,26 @@
     const cta     = card.querySelector('.card-cta');
     const service = card.dataset.service;
     card.querySelectorAll('.option-row').forEach(function(row) {
-      row.addEventListener('click', function() {
+      row.addEventListener('click', function(e) {
+        e.stopPropagation();
         card.querySelectorAll('.option-row').forEach(function(r) { r.classList.remove('selected'); });
         row.classList.add('selected');
         const option = row.dataset.option;
         cta.href = 'anfrage.html?service=' + encodeURIComponent(service) + '&option=' + encodeURIComponent(option);
-        // CTA aktivieren
         cta.classList.remove('card-cta-inactive');
         cta.classList.add('card-cta-active');
       });
+    });
+  });
+
+  // Klick außerhalb → Auswahl zurücksetzen
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.anlass-card').forEach(function(card) {
+      card.querySelectorAll('.option-row').forEach(function(r) { r.classList.remove('selected'); });
+      const cta = card.querySelector('.card-cta');
+      cta.classList.add('card-cta-inactive');
+      cta.classList.remove('card-cta-active');
+      cta.href = 'anfrage.html?service=' + encodeURIComponent(card.dataset.service);
     });
   });
 })();
