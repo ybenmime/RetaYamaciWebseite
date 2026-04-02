@@ -308,12 +308,20 @@
     card.querySelectorAll('.option-row').forEach(function(row) {
       row.addEventListener('click', function(e) {
         e.stopPropagation();
+        const alreadySelected = row.classList.contains('selected');
         card.querySelectorAll('.option-row').forEach(function(r) { r.classList.remove('selected'); });
-        row.classList.add('selected');
-        const option = row.dataset.option;
-        cta.href = 'anfrage.html?service=' + encodeURIComponent(service) + '&option=' + encodeURIComponent(option);
-        cta.classList.remove('card-cta-inactive');
-        cta.classList.add('card-cta-active');
+        if (alreadySelected) {
+          // Auswahl aufheben
+          cta.classList.add('card-cta-inactive');
+          cta.classList.remove('card-cta-active');
+          cta.href = 'anfrage.html?service=' + encodeURIComponent(service);
+        } else {
+          row.classList.add('selected');
+          const option = row.dataset.option;
+          cta.href = 'anfrage.html?service=' + encodeURIComponent(service) + '&option=' + encodeURIComponent(option);
+          cta.classList.remove('card-cta-inactive');
+          cta.classList.add('card-cta-active');
+        }
       });
     });
   });
