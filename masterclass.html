@@ -22,7 +22,7 @@
             "body":     ["Montserrat", "sans-serif"],
           },
           borderRadius: {
-            "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px",
+            "DEFAULT": "8px", "sm": "4px", "md": "10px", "lg": "12px", "xl": "18px", "2xl": "24px", "full": "9999px",
           },
         },
       },
@@ -154,7 +154,7 @@
     <section class="px-8 md:px-12 pb-24 max-w-[1280px] mx-auto">
       <p class="font-body text-xs tracking-[0.2em] uppercase text-white/30 mb-6">Featured</p>
 
-      <div class="relative bg-[#111] overflow-hidden">
+      <div class="relative bg-[#111] overflow-hidden rounded-2xl">
         <!-- Vimeo Embed (TODO: Video-ID ersetzen) -->
         <div class="video-wrapper">
           <!--
@@ -203,7 +203,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
           <!-- Video 1 -->
-          <div class="video-card flex flex-col">
+          <div class="video-card flex flex-col rounded-xl overflow-hidden">
             <div class="video-wrapper">
               <iframe
                 src="https://player.vimeo.com/video/VIMEO_ID_1?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
@@ -232,7 +232,7 @@
           </div>
 
           <!-- Video 2 -->
-          <div class="video-card flex flex-col">
+          <div class="video-card flex flex-col rounded-xl overflow-hidden">
             <div class="video-wrapper">
               <iframe
                 src="https://player.vimeo.com/video/VIMEO_ID_2?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
@@ -260,7 +260,7 @@
           </div>
 
           <!-- Video 3 -->
-          <div class="video-card flex flex-col">
+          <div class="video-card flex flex-col rounded-xl overflow-hidden">
             <div class="video-wrapper">
               <iframe
                 src="https://player.vimeo.com/video/VIMEO_ID_3?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
