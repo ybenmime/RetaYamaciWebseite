@@ -54,18 +54,18 @@
       .section-h2    { font-size: 32px; }
     }
     .input-base {
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid #D4A49C;
+      background: #faf8f6;
+      border: 1px solid rgba(212,164,156,0.35);
+      border-radius: 12px;
       outline: none;
       width: 100%;
-      padding: 12px 0;
+      padding: 14px 18px;
       font-family: 'Montserrat', sans-serif;
       font-size: 15px;
       color: #242424;
-      transition: border-color 0.3s;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
-    .input-base:focus { border-bottom: 2px solid #7c554e; }
+    .input-base:focus { border-color: #D4A49C; box-shadow: 0 0 0 3px rgba(212,164,156,0.15); }
     .input-base::placeholder { color: #242424; opacity: 0.4; font-size: 13px; letter-spacing: 0.05em; }
     /* Datum + Uhrzeit native Picker dezent stylen */
     input[type="date"], input[type="time"] { cursor: pointer; }
@@ -217,7 +217,7 @@
           <!-- Probe-Styling (3 Checkboxen, erscheint bei Anlass-Services) -->
           <div id="field-probe-wrap" style="display:none">
             <label class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-4">Probe-Styling gewünscht?</label>
-            <div class="flex flex-col gap-0 border-t border-[#e7e2dd]">
+            <div class="flex flex-col gap-0 border border-[#e7e2dd]" style="border-radius:12px;overflow:hidden;">
 
               <label class="probe-check-row flex items-center justify-between py-4 px-2 cursor-pointer border-b border-[#e7e2dd] hover:bg-accent-rose/5 transition-colors duration-200">
                 <span class="flex items-center gap-4">
@@ -280,7 +280,7 @@
           <!-- Ort des Stylings -->
           <div>
             <label class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-4">Ort des Stylings</label>
-            <div class="flex flex-col gap-0 border-t border-[#e7e2dd]">
+            <div class="flex flex-col gap-0 border border-[#e7e2dd]" style="border-radius:12px;overflow:hidden;">
 
               <label class="flex items-center justify-between py-4 px-2 cursor-pointer border-b border-[#e7e2dd] hover:bg-accent-rose/5 transition-colors duration-200">
                 <span class="flex items-center gap-4">

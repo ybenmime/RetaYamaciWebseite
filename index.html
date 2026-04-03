@@ -53,7 +53,7 @@
 
     /* Carousel — modern slide styling */
     .carousel-slide .slide-img-wrap {
-      border-radius: 14px;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 6px 24px rgba(36,36,36,0.08);
       transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -62,6 +62,9 @@
       box-shadow: 0 14px 40px rgba(36,36,36,0.14);
       transform: translateY(-3px);
     }
+    /* Coaching + Masterclass sections — soft containers */
+    .coaching-img-wrap { border-radius: 20px; overflow: hidden; }
+    .quote-card { border-radius: 24px; }
     /* Dot pills */
     #carousel-dots button { border-radius: 9999px; }
 
@@ -158,7 +161,7 @@
          PHILOSOPHY QUOTE SECTION
     ========================= -->
     <section class="py-32 bg-near-white">
-      <div class="max-w-4xl mx-auto text-center px-6">
+      <div class="max-w-4xl mx-auto text-center px-6 py-16 quote-card">
         <span class="material-symbols-outlined text-4xl text-accent-rose mb-8 block">format_quote</span>
         <blockquote class="font-headline text-3xl md:text-4xl text-dark-text italic leading-snug">
           „Bei mir sind Sie in sicheren Händen – mobil, flexibel und mit echter Leidenschaft für Ihr perfektes Styling."
@@ -283,13 +286,13 @@
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row">
 
         <!-- Image Left -->
-        <div class="md:w-1/2 aspect-[4/3] md:aspect-auto overflow-hidden bg-[#cfc8c0] flex items-center justify-center relative">
+        <div class="coaching-img-wrap md:w-1/2 aspect-[4/3] md:aspect-auto overflow-hidden bg-[#cfc8c0] flex items-center justify-center relative">
           <!-- TODO: Workshop/Coaching Foto einfügen -->
           <span class="font-label text-xs tracking-[0.2em] uppercase text-[#a09890] opacity-60">Foto folgt</span>
         </div>
 
         <!-- Text Right -->
-        <div class="md:w-1/2 bg-champagne px-12 md:px-16 py-20 flex flex-col justify-center">
+        <div class="md:w-1/2 bg-champagne px-12 md:px-16 py-20 flex flex-col justify-center" style="border-radius:0 20px 20px 0;">
           <span class="font-label text-xs tracking-[0.2em] uppercase text-accent-rose mb-4 block">Exklusiv</span>
           <h2 class="font-headline text-4xl md:text-5xl text-dark-text mb-6 leading-tight">Exklusives<br/>1:1 Coaching</h2>
           <p class="body-text font-body text-dark-text/70 mb-10">
