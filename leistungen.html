@@ -108,6 +108,8 @@
     .probe-row.selected .probe-label { opacity: 1; }
     .probe-row .probe-price { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 500; opacity: 0.65; }
     .probe-row.selected .probe-price { opacity: 1; color: #D4A49C; }
+    /* Abgerundete Karten */
+    .anlass-card, .service-card { border-radius: 20px; overflow: hidden; }
   </style>
 </head>
 <body class="bg-near-white text-dark-text font-body">
@@ -265,7 +267,7 @@
     <div class="flex flex-wrap justify-center gap-6">
 
       <!-- Shooting Makeup -->
-      <div class="bg-champagne p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)] rounded-2xl">
+      <div class="service-card bg-champagne p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)] rounded-2xl">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">06</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Shooting Makeup</h3>
         <p class="body-text text-dark-text/70 mb-8 flex-1">Professionelles Make-up für Foto- und Video-Produktionen.</p>
@@ -274,7 +276,7 @@
       </div>
 
       <!-- 1:1 Workshop -->
-      <div class="bg-champagne p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)] rounded-2xl">
+      <div class="service-card bg-champagne p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)] rounded-2xl">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">07</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">1:1 Workshop<br/>Hairstyling</h3>
         <ul class="space-y-2 mb-6 flex-1">
@@ -290,7 +292,7 @@
       </div>
 
       <!-- Online Masterclass -->
-      <div class="bg-champagne p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)] rounded-2xl">
+      <div class="service-card bg-champagne p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)] rounded-2xl">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">08</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Online<br/>Masterclass</h3>
         <ul class="space-y-2 mb-8 flex-1">
