@@ -46,7 +46,7 @@
 
 <!-- NAV -->
 <header class="fixed top-0 w-full z-50 bg-[#EEE9E4]/40 backdrop-blur-sm transition-colors duration-500 hover:bg-[#EEE9E4]/90">
-  <nav aria-label="Haupt-Navigation" class="flex justify-between items-center px-8 md:px-12 py-6 max-w-[1920px] mx-auto">
+  <nav aria-label="Haupt-Navigation" class="flex justify-between items-center px-8 md:px-12 py-4 max-w-[1920px] mx-auto">
     <a href="index.html" class="font-headline text-2xl italic text-dark-text tracking-tight">Reta Yamaci</a>
     <div class="hidden md:flex items-center gap-10 font-label text-xs tracking-[0.2em] uppercase text-dark-text">
       <a href="leistungen.html" class="hover:text-accent-rose transition-colors duration-300">Leistungen</a>
@@ -73,58 +73,38 @@
 <main>
 
   <!-- ========================
-       HERO
-  ========================= -->
-  <section class="relative min-h-[70vh] flex items-center justify-center bg-[#242424] overflow-hidden">
-    <!-- Tonal overlay gradient for depth -->
-    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] via-[#242424] to-[#2e2820] opacity-90"></div>
-    <!-- Subtle warm texture hint -->
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(212,164,156,0.06)_0%,_transparent_70%)]"></div>
-
-    <div class="relative z-10 text-center px-6 py-32 md:py-40">
-      <p class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose/80 mb-6">Hair & Makeup Stylistin</p>
-      <h1 class="hero-title font-headline text-white mb-8">Über Mich</h1>
-      <p class="font-body font-light text-white/60 text-xl md:text-2xl tracking-wide max-w-xl mx-auto leading-relaxed">
-        Leidenschaft für Perfektion<br>seit über einem Jahrzehnt
-      </p>
-    </div>
-  </section>
-
-  <!-- ========================
        STORY SECTION
   ========================= -->
-  <section class="bg-near-white py-24 px-6 md:px-12">
-    <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-start">
+  <section class="bg-near-white pt-36 pb-24 px-6 md:px-12">
+    <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row gap-10 md:gap-14 items-center">
 
       <!-- Portrait (links) -->
-      <div class="w-full">
+      <div class="w-full md:w-[38%] flex-shrink-0">
         <div class="w-full aspect-[3/4] overflow-hidden rounded-2xl">
           <img src="assets/images/abfc07cd_b6ab_4130_b9fe_371c0d8b98b2.jpg.png" alt="Reta Yamaci bei der Arbeit" class="w-full h-full object-cover object-center">
         </div>
       </div>
 
       <!-- Content (rechts) -->
-      <div class="flex flex-col justify-center pt-4 md:pt-12">
+      <div class="flex flex-col justify-center flex-1">
 
         <!-- Heading -->
+        <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose mb-4 block">Hair & Makeup Stylistin</span>
         <h2 class="section-h2 font-headline text-dark-text mb-4 leading-tight">Von der Kunst<br>zur Expertise</h2>
 
         <!-- Tonal divider -->
         <div class="h-px bg-champagne w-16 mb-6"></div>
 
-        <!-- Italic subtitle -->
-        <p class="font-headline italic text-xl text-dark-text/70 mb-10">Meine Reise im Detail</p>
-
         <!-- Bio text -->
-        <div class="flex flex-col gap-6 mb-12">
-          <p class="body-text font-body text-dark-text/80">
-            Seit über einem Jahrzehnt ist Beauty meine Leidenschaft – von Make-up und Hairstyling bis hin zu Augenbrauen-Design. Was 2018 mit professionellen Ausbildungen in Make-up, Hairstyling und Maskenbildnerei für Medien, TV, Theater und Spezialeffekte (SFX) begann, mündete 2020 in die Selbstständigkeit als mobile Make-up Artistin, Hairstylistin und Augenbrauen-Stylistin.
+        <div class="flex flex-col gap-5 mb-10">
+          <p class="font-body text-dark-text/75 leading-relaxed text-base">
+            Seit über einem Jahrzehnt ist Beauty meine Leidenschaft – von Make-up und Hairstyling bis hin zu Augenbrauen-Design. Was 2018 mit professionellen Ausbildungen in Make-up, Hairstyling und Maskenbildnerei für Medien, TV, Theater und Spezialeffekte (SFX) begann, mündete 2020 in die Selbstständigkeit.
           </p>
-          <p class="body-text font-body text-dark-text/80">
-            Von 2023 bis 2025 arbeitete ich in Köln eng mit dem renommierten türkischen Make-up Artist Serhat Şen zusammen – mit Schwerpunkt auf Bridal Styling und wertvoller Erfahrung auf internationalem Niveau. Ergänzt wird mein Portfolio durch meine Expertise als Fachfrau für Schminke und Handel, sodass ich meine Kundinnen von Kopf bis Fuß perfekt begleiten kann.
+          <p class="font-body text-dark-text/75 leading-relaxed text-base">
+            Von 2023 bis 2025 arbeitete ich in Köln eng mit dem renommierten Make-up Artist Serhat Şen zusammen – Schwerpunkt Bridal Styling auf internationalem Niveau.
           </p>
-          <p class="body-text font-body text-dark-text/80">
-            Ob Alltags-Look, Hochzeits-Make-up, Hochzeitsfrisur, Produktionsshooting oder Theaterproduktion – ich bin flexibel in meinem Studio, mobil bei Ihnen oder an einem Wunschort. Neue Projekte und kreative Ideen begeistern mich jederzeit.
+          <p class="font-body text-dark-text/75 leading-relaxed text-base">
+            Ob Hochzeit, Shooting oder Bühne – ich bin mobil, flexibel und immer mit echter Leidenschaft dabei.
           </p>
         </div>
 
@@ -147,7 +127,7 @@
       <p class="font-label text-xs tracking-[0.25em] uppercase text-accent-rose mb-16">Expertise</p>
 
       <!-- 3 columns -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
         <!-- Bridal Excellence -->
         <div class="bg-white p-10 flex flex-col gap-4" style="border-radius:20px;box-shadow:0 4px 24px rgba(36,36,36,0.07);">

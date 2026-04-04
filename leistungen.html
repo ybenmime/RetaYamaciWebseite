@@ -114,13 +114,38 @@
       overflow: hidden;
       box-shadow: 0 2px 16px rgba(36,36,36,0.08), 0 0 0 1px rgba(36,36,36,0.04);
     }
+    /* Spotlight-Effekt */
+    .anlass-card, .service-card {
+      position: relative;
+    }
+    .anlass-card::before, .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(212, 164, 156, 0.18),
+        transparent 65%
+      );
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .anlass-card:hover::before, .service-card:hover::before {
+      opacity: 1;
+    }
+    .anlass-card > *, .service-card > * {
+      position: relative;
+      z-index: 1;
+    }
   </style>
 </head>
 <body class="bg-near-white text-dark-text font-body">
 
 <!-- NAV -->
 <header class="fixed top-0 w-full z-50 bg-[#EEE9E4]/40 backdrop-blur-sm transition-colors duration-500 hover:bg-[#EEE9E4]/90">
-  <nav aria-label="Haupt-Navigation" class="flex justify-between items-center px-8 md:px-12 py-6 max-w-[1920px] mx-auto">
+  <nav aria-label="Haupt-Navigation" class="flex justify-between items-center px-8 md:px-12 py-4 max-w-[1920px] mx-auto">
     <a href="index.html" class="font-headline text-2xl italic text-dark-text tracking-tight">Reta Yamaci</a>
     <div class="hidden md:flex items-center gap-10 font-label text-xs tracking-[0.2em] uppercase text-dark-text">
       <a href="leistungen.html" class="text-accent-rose">Leistungen</a>
@@ -146,26 +171,8 @@
 
 <main>
 
-<!-- HERO HEADER -->
-<section class="pt-40 pb-24 px-6 md:px-12 bg-near-white">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
-      <div class="max-w-2xl">
-        <span class="font-label text-xs tracking-[0.3em] uppercase opacity-60 mb-4 block">Professional Artistry</span>
-        <h1 class="font-headline hero-title text-dark-text mb-8">Meine Leistungen</h1>
-        <p class="body-text text-dark-text/70 max-w-md">
-          Eine kuratierte Auswahl hochwertiger Beauty-Services, gestaltet für Ihren besonderen Moment.
-        </p>
-      </div>
-      <div class="hidden md:block pb-2">
-        <div class="w-px h-32 bg-accent-rose/30 mx-auto"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- BESONDERE ANLÄSSE -->
-<section class="py-24 px-6 md:px-12 bg-champagne">
+<section class="pt-36 pb-24 px-6 md:px-12 bg-champagne">
   <div class="max-w-7xl mx-auto">
     <div class="mb-16">
       <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose block mb-4">Besondere Anlässe</span>
@@ -271,7 +278,7 @@
     <div class="flex flex-wrap justify-center gap-6">
 
       <!-- Shooting Makeup -->
-      <div class="service-card bg-white p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" style="border-radius:24px;overflow:hidden;box-shadow:0 4px 28px rgba(36,36,36,0.09);">
+      <div class="service-card bg-champagne p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" style="border-radius:24px;overflow:hidden;box-shadow:0 4px 28px rgba(36,36,36,0.09);">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">06</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Shooting Makeup</h3>
         <p class="body-text text-dark-text/70 mb-8 flex-1">Professionelles Make-up für Foto- und Video-Produktionen.</p>
@@ -280,7 +287,7 @@
       </div>
 
       <!-- 1:1 Workshop -->
-      <div class="service-card bg-white p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" style="border-radius:24px;overflow:hidden;box-shadow:0 4px 28px rgba(36,36,36,0.09);">
+      <div class="service-card bg-champagne p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" style="border-radius:24px;overflow:hidden;box-shadow:0 4px 28px rgba(36,36,36,0.09);">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">07</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">1:1 Workshop<br/>Hairstyling</h3>
         <ul class="space-y-2 mb-6 flex-1">
@@ -296,7 +303,7 @@
       </div>
 
       <!-- Online Masterclass -->
-      <div class="service-card bg-white p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" style="border-radius:24px;overflow:hidden;box-shadow:0 4px 28px rgba(36,36,36,0.09);">
+      <div class="service-card bg-champagne p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" style="border-radius:24px;overflow:hidden;box-shadow:0 4px 28px rgba(36,36,36,0.09);">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">08</span>
         <h3 class="font-headline text-4xl text-dark-text mb-6">Online<br/>Masterclass</h3>
         <ul class="space-y-2 mb-8 flex-1">
@@ -417,6 +424,15 @@
     });
   });
 })();
+
+// Spotlight-Effekt
+document.querySelectorAll('.anlass-card, .service-card').forEach(function(card) {
+  card.addEventListener('mousemove', function(e) {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+    card.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+  });
+});
 </script>
 
 </body>

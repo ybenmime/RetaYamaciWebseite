@@ -65,6 +65,42 @@
     /* Coaching + Masterclass sections — soft containers */
     .coaching-img-wrap { border-radius: 20px; overflow: hidden; }
     .quote-card { border-radius: 24px; }
+    /* Border-Glow Effekt für Coaching-Karten */
+    @keyframes glow-rotate {
+      from { --glow-angle: 0deg; }
+      to   { --glow-angle: 360deg; }
+    }
+    @property --glow-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+    .coaching-glow {
+      position: relative;
+      isolation: isolate;
+    }
+    .coaching-glow::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      background: conic-gradient(
+        from var(--glow-angle, 0deg) at var(--glow-x, 50%) var(--glow-y, 50%),
+        #D4A49C,
+        #EEE9E4,
+        #7c554e,
+        #D4A49C
+      );
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 2s ease;
+      pointer-events: none;
+      animation: glow-rotate 10s linear infinite paused;
+    }
+    .coaching-glow.glow-active::before {
+      opacity: 0.85;
+      animation-play-state: running;
+    }
     /* Dot pills */
     #carousel-dots button { border-radius: 9999px; }
 
@@ -88,7 +124,7 @@
        NAVIGATION
   ========================= -->
   <header class="fixed top-0 w-full z-50 bg-[#EEE9E4]/40 backdrop-blur-sm transition-colors duration-500 hover:bg-[#EEE9E4]/80">
-    <nav aria-label="Haupt-Navigation" class="flex justify-between items-center px-8 md:px-12 py-6 w-full max-w-[1920px] mx-auto">
+    <nav aria-label="Haupt-Navigation" class="flex justify-between items-center px-8 md:px-12 py-4 w-full max-w-[1920px] mx-auto">
 
       <!-- Logo -->
       <a href="index.html" aria-current="page" class="font-headline text-2xl italic text-dark-text">Reta Yamaci</a>
@@ -160,13 +196,12 @@
     <!-- ========================
          PHILOSOPHY QUOTE SECTION
     ========================= -->
-    <section class="py-32 bg-near-white">
-      <div class="max-w-4xl mx-auto text-center px-6 py-16 quote-card">
-        <span class="material-symbols-outlined text-4xl text-accent-rose mb-8 block">format_quote</span>
-        <blockquote class="font-headline text-3xl md:text-4xl text-dark-text italic leading-snug">
+    <section class="py-16 bg-champagne">
+      <div class="max-w-3xl mx-auto text-center px-6">
+        <blockquote class="font-headline text-2xl md:text-3xl text-dark-text italic leading-snug">
           „Bei mir sind Sie in sicheren Händen – mobil, flexibel und mit echter Leidenschaft für Ihr perfektes Styling."
         </blockquote>
-        <cite class="mt-8 block font-label text-xs tracking-[0.3em] text-dark-text/60 uppercase not-italic">— Reta Yamaci</cite>
+        <cite class="mt-6 block font-label text-xs tracking-[0.3em] text-dark-text/50 uppercase not-italic">— Reta Yamaci</cite>
       </div>
     </section>
 
@@ -214,43 +249,38 @@
           -->
 
           <!-- Bild 1 -->
-          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)] flex flex-col gap-3">
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
             <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
               <img src="assets/images/wetransfer_image00001-jpeg_2026-04-03_1522/image00001.jpeg" alt="Hairstyling Bridal" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
             </div>
-            <p class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/50">Bridal</p>
           </div>
 
           <!-- Bild 2 -->
-          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)] flex flex-col gap-3">
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
             <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
               <img src="assets/images/wetransfer_image00001-jpeg_2026-04-03_1522/image00003.jpeg" alt="Hairstyling Editorial" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
             </div>
-            <p class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/50">Hairstyling</p>
           </div>
 
           <!-- Bild 3 -->
-          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)] flex flex-col gap-3">
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
             <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
               <img src="assets/images/wetransfer_image00001-jpeg_2026-04-03_1522/image00006.jpeg" alt="Hairstyling Waves" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
             </div>
-            <p class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/50">Hairstyling</p>
           </div>
 
           <!-- Bild 4 -->
-          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)] flex flex-col gap-3">
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
             <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
               <img src="assets/images/wetransfer_image00001-jpeg_2026-04-03_1522/image00011.jpeg" alt="Hairstyling Updo" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
             </div>
-            <p class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/50">Bridal</p>
           </div>
 
           <!-- Bild 5 -->
-          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)] flex flex-col gap-3">
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
             <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
               <img src="assets/images/wetransfer_image00001-jpeg_2026-04-03_1522/image00012.jpeg" alt="Hairstyling Chignon" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
             </div>
-            <p class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/50">Bridal</p>
           </div>
 
         </div>
@@ -276,27 +306,53 @@
     <!-- ========================
          1:1 WORKSHOP BANNER
     ========================= -->
-    <section class="bg-near-white">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row">
+    <section class="py-24 px-6 md:px-12 bg-champagne">
+      <div class="max-w-7xl mx-auto">
 
-        <!-- Image Left -->
-        <div class="coaching-img-wrap md:w-1/2 aspect-[4/3] md:aspect-auto overflow-hidden bg-[#cfc8c0] flex items-center justify-center relative">
-          <!-- TODO: Workshop/Coaching Foto einfügen -->
-          <span class="font-label text-xs tracking-[0.2em] uppercase text-[#a09890] opacity-60">Foto folgt</span>
+        <div class="flex flex-col md:flex-row gap-6">
+
+          <!-- Hauptkarte -->
+          <div class="coaching-glow flex flex-col md:w-[40%] bg-white p-10 flex-shrink-0" style="border-radius:24px;box-shadow:0 4px 28px rgba(36,36,36,0.09);">
+            <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose mb-4 block">Exklusiv</span>
+            <h2 class="font-headline text-4xl md:text-5xl text-dark-text mb-6 leading-tight">Exklusives<br/>1:1 Coaching</h2>
+            <p class="body-text font-body text-dark-text/70 mb-8 flex-1">
+              Meistern Sie professionelle Techniken und entwickeln Sie Ihren eigenen Stil — individuell abgestimmt auf Ihre Bedürfnisse.
+            </p>
+            <div class="h-px bg-champagne mb-8"></div>
+            <p class="font-headline text-3xl italic text-accent-rose mb-8">950 €</p>
+            <a href="anfrage.html?service=1%3A1+Workshop+Hairstyling" class="tap cta-link inline-flex items-center font-label text-xs tracking-[0.2em] uppercase text-dark-text hover:text-accent-rose transition-colors duration-300">
+              Termin vereinbaren <span class="cta-dash ml-2">——</span>
+            </a>
+          </div>
+
+          <!-- Rechte Karten -->
+          <div class="flex flex-col gap-6 flex-1">
+
+            <!-- Format-Karte -->
+            <div class="coaching-glow bg-white p-10 flex flex-col flex-1" style="border-radius:24px;box-shadow:0 4px 28px rgba(36,36,36,0.09);">
+              <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-4 block">Format</span>
+              <div class="h-px bg-champagne mb-6"></div>
+              <ul class="flex flex-col gap-3">
+                <li class="font-label text-xs tracking-[0.1em] uppercase text-dark-text/70">2 Tage · 5 Stunden pro Tag</li>
+                <li class="font-label text-xs tracking-[0.1em] uppercase text-dark-text/70">In Person</li>
+                <li class="font-label text-xs tracking-[0.1em] uppercase text-dark-text/70">Goodie Bag & Verpflegung inbegriffen</li>
+              </ul>
+            </div>
+
+            <!-- Inhalte-Karte -->
+            <div class="coaching-glow bg-white p-10 flex flex-col flex-1" style="border-radius:24px;box-shadow:0 4px 28px rgba(36,36,36,0.09);">
+              <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-4 block">Inhalte</span>
+              <div class="h-px bg-champagne mb-6"></div>
+              <ul class="flex flex-col gap-3 mb-6">
+                <li class="font-label text-xs tracking-[0.1em] uppercase text-dark-text/70">Wasserwelle · Messy Bun · Hochsteck</li>
+                <li class="font-label text-xs tracking-[0.1em] uppercase text-dark-text/70">Materialien · Geräte · Technik</li>
+              </ul>
+              <p class="font-body text-sm italic text-dark-text/50 leading-relaxed">Nutze beide Tage in Person — du lernst, welche Materialien, Geräte und Techniken wann und wie eingesetzt werden.</p>
+            </div>
+
+          </div>
+
         </div>
-
-        <!-- Text Right -->
-        <div class="md:w-1/2 bg-champagne px-12 md:px-16 py-20 flex flex-col justify-center" style="border-radius:0 20px 20px 0;">
-          <span class="font-label text-xs tracking-[0.2em] uppercase text-accent-rose mb-4 block">Exklusiv</span>
-          <h2 class="font-headline text-4xl md:text-5xl text-dark-text mb-6 leading-tight">Exklusives<br/>1:1 Coaching</h2>
-          <p class="body-text font-body text-dark-text/70 mb-10">
-            Meistern Sie professionelle Techniken und entwickeln Sie Ihren eigenen Stil in privaten Einzelsitzungen — individuell abgestimmt auf Ihre Bedürfnisse.
-          </p>
-          <a href="anfrage.html?service=1%3A1+Workshop+Hairstyling" class="tap cta-link inline-flex items-center font-label text-xs tracking-[0.2em] uppercase text-dark-text hover:text-accent-rose transition-colors duration-300">
-            Termin vereinbaren <span class="cta-dash ml-2">——</span>
-          </a>
-        </div>
-
       </div>
     </section>
 
@@ -314,9 +370,6 @@
             class="w-full h-full object-cover opacity-50"
             loading="lazy"
           />
-          <div class="absolute inset-0 flex items-center justify-center">
-            <span class="material-symbols-outlined text-6xl text-accent-rose">play_circle</span>
-          </div>
         </div>
 
         <!-- Text Right -->
@@ -464,6 +517,26 @@
       track.addEventListener('touchend', function(e) {
         const diff = startX - e.changedTouches[0].clientX;
         if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+      });
+    })();
+
+    // Border-Glow für Coaching-Karten
+    (function() {
+      const edgeSensitivity = 30;
+      document.querySelectorAll('.coaching-glow').forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const nearEdge = x < edgeSensitivity || x > rect.width - edgeSensitivity
+                        || y < edgeSensitivity || y > rect.height - edgeSensitivity;
+          card.style.setProperty('--glow-x', (x / rect.width * 100) + '%');
+          card.style.setProperty('--glow-y', (y / rect.height * 100) + '%');
+          card.classList.toggle('glow-active', nearEdge);
+        });
+        card.addEventListener('mouseleave', function() {
+          card.classList.remove('glow-active');
+        });
       });
     })();
   </script>
