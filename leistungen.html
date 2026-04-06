@@ -509,5 +509,47 @@ document.querySelectorAll('.anlass-card, .service-card').forEach(function(card) 
 });
 </script>
 
+<!-- BUCHUNGS-OVERLAY -->
+<div id="booking-overlay" class="booking-overlay" role="dialog" aria-modal="true" aria-label="Buchungsübersicht">
+  <div class="booking-panel">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="font-headline text-3xl text-dark-text">Deine Buchung</h2>
+      <button id="overlay-close" class="font-label text-xl text-dark-text/30 hover:text-dark-text transition-colors leading-none" aria-label="Schließen">✕</button>
+    </div>
+
+    <!-- Hauptbuchung (read-only, wird per JS befüllt) -->
+    <div class="bg-champagne rounded-xl p-4 mb-6">
+      <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-3">Hauptservice</p>
+      <div class="flex justify-between items-center">
+        <span id="overlay-service-label" class="font-label text-sm text-dark-text"></span>
+        <span id="overlay-service-price" class="font-headline text-xl italic text-accent-rose"></span>
+      </div>
+    </div>
+
+    <!-- Gäste-Sektion -->
+    <div class="mb-6">
+      <p class="font-label text-[10px] tracking-[0.2em] uppercase text-accent-rose mb-4">Gäste-Styling hinzufügen</p>
+      <div id="guest-list" class="flex flex-col gap-3"></div>
+      <button id="add-guest-btn" class="cta-link mt-4 inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">
+        + Gast hinzufügen
+      </button>
+    </div>
+
+    <!-- Gesamtpreis -->
+    <div class="border-t border-dark-text/10 pt-5 mb-6 flex justify-between items-center">
+      <span class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/40">Gesamt (geschätzt)</span>
+      <span id="overlay-total" class="font-headline text-2xl italic text-accent-rose"></span>
+    </div>
+
+    <!-- CTA -->
+    <a id="overlay-cta" href="#" class="cta-link overlay-cta-inactive inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">
+      Weiter zum Formular <span class="cta-dash ml-2">——</span>
+    </a>
+
+  </div>
+</div>
+
 </body>
 </html>
