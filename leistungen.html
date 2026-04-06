@@ -499,6 +499,170 @@
   });
 })();
 
+// ── Buchungs-Overlay ──────────────────────────────────────────────
+(function() {
+  var overlay     = document.getElementById('booking-overlay');
+  var closeBtn    = document.getElementById('overlay-close');
+  var serviceLabel = document.getElementById('overlay-service-label');
+  var servicePrice = document.getElementById('overlay-service-price');
+  var totalEl     = document.getElementById('overlay-total');
+  var overlayCta  = document.getElementById('overlay-cta');
+  var addGuestBtn = document.getElementById('add-guest-btn');
+  var guestList   = document.getElementById('guest-list');
+
+  // State
+  var currentService = '';
+  var currentOption  = '';
+  var currentPrice   = 0;
+  var currentProbe   = '';
+  var currentProbePrice = 0;
+  var guests = []; // [{option: 'Hairstyling', price: 120}, ...]
+
+  var GUEST_OPTIONS = [
+    { label: 'Hairstyling',   price: 120 },
+    { label: 'Makeup',        price: 120 },
+    { label: 'Complete Look', price: 240 },
+  ];
+
+  // Overlay öffnen
+  function openOverlay(card) {
+    var optRow   = card.querySelector('.option-row.selected');
+    var probeRow = card.querySelector('.probe-row.selected');
+    if (!optRow) return;
+
+    currentService    = card.dataset.service;
+    currentOption     = optRow.dataset.option;
+    currentPrice      = parseInt(optRow.dataset.price, 10);
+    currentProbe      = probeRow ? probeRow.dataset.probe : '';
+    currentProbePrice = probeRow ? parseInt(probeRow.dataset.probePrice, 10) : 0;
+    guests = [];
+
+    var label = currentService + ' · ' + currentOption;
+    if (currentProbe) label += ' + Probe';
+    serviceLabel.textContent = label;
+    servicePrice.textContent = (currentPrice + currentProbePrice) + ' €';
+
+    renderGuests();
+    updateTotal();
+    updateOverlayCta();
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Overlay schließen
+  function closeOverlay() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // CTA-Klicks abfangen — Overlay öffnen statt navigieren
+  document.querySelectorAll('.anlass-card').forEach(function(card) {
+    card.querySelector('.card-cta').addEventListener('click', function(e) {
+      if (!this.classList.contains('card-cta-active')) return;
+      e.preventDefault();
+      openOverlay(card);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeOverlay);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeOverlay();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeOverlay();
+  });
+
+  // Gast-Zeile rendern
+  function renderGuests() {
+    guestList.innerHTML = '';
+    guests.forEach(function(guest, i) {
+      var row = document.createElement('div');
+      row.className = 'bg-near-white rounded-xl p-4';
+
+      var header = '<div class="flex justify-between items-center mb-3">'
+        + '<span class="font-label text-xs text-dark-text/40 uppercase tracking-widest">Gast ' + (i + 1) + '</span>'
+        + '<button class="font-label text-sm text-dark-text/25 hover:text-dark-text transition-colors remove-guest" data-index="' + i + '" aria-label="Gast entfernen">✕</button>'
+        + '</div>';
+
+      var chips = '<div class="flex flex-wrap gap-2">';
+      GUEST_OPTIONS.forEach(function(opt) {
+        var sel = guest.option === opt.label ? ' selected' : '';
+        chips += '<div class="guest-chip' + sel + '" data-guest="' + i + '" data-option="' + opt.label + '" data-price="' + opt.price + '">'
+          + '<span class="chip-label">' + opt.label + '</span>'
+          + '<span class="chip-price">' + opt.price + ' €</span>'
+          + '</div>';
+      });
+      chips += '</div>';
+
+      row.innerHTML = header + chips;
+      guestList.appendChild(row);
+    });
+
+    // Events: Chip-Auswahl
+    guestList.querySelectorAll('.guest-chip').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        var idx   = parseInt(this.dataset.guest, 10);
+        var opt   = this.dataset.option;
+        var price = parseInt(this.dataset.price, 10);
+        guests[idx] = { option: opt, price: price };
+        renderGuests();
+        updateTotal();
+        updateOverlayCta();
+      });
+    });
+
+    // Events: Gast entfernen
+    guestList.querySelectorAll('.remove-guest').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var idx = parseInt(this.dataset.index, 10);
+        guests.splice(idx, 1);
+        renderGuests();
+        updateTotal();
+        updateOverlayCta();
+      });
+    });
+  }
+
+  // Gast hinzufügen
+  addGuestBtn.addEventListener('click', function() {
+    guests.push({ option: null, price: 0 });
+    renderGuests();
+    updateTotal();
+    updateOverlayCta();
+  });
+
+  // Gesamtpreis berechnen
+  function updateTotal() {
+    var guestSum = guests.reduce(function(sum, g) { return sum + (g.price || 0); }, 0);
+    totalEl.textContent = (currentPrice + currentProbePrice + guestSum) + ' €';
+  }
+
+  // Overlay-CTA URL bauen & aktivieren
+  function updateOverlayCta() {
+    var url = 'anfrage.html?service=' + encodeURIComponent(currentService)
+            + '&option='  + encodeURIComponent(currentOption)
+            + '&price='   + currentPrice;
+
+    if (currentProbe) {
+      url += '&probe=' + encodeURIComponent(currentProbe)
+           + '&probePrice=' + currentProbePrice;
+    }
+
+    guests.forEach(function(g, i) {
+      if (g.option) {
+        url += '&g' + i + '=' + encodeURIComponent(g.option)
+             + '&gp' + i + '=' + g.price;
+      }
+    });
+
+    overlayCta.href = url;
+    overlayCta.classList.add('overlay-cta-active');
+    overlayCta.classList.remove('overlay-cta-inactive');
+  }
+
+})();
+
 // Spotlight-Effekt
 document.querySelectorAll('.anlass-card, .service-card').forEach(function(card) {
   card.addEventListener('mousemove', function(e) {
