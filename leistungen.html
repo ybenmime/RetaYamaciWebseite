@@ -5,7 +5,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Leistungen — Reta Yamaci</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <script id="tailwind-config">
     tailwind.config = {
@@ -20,7 +20,7 @@
             "footer-black": "#000000",
           },
           fontFamily: {
-            "headline": ["Playfair Display", "serif"],
+            "headline": ["Cormorant", "serif"],
             "body":     ["Montserrat", "sans-serif"],
             "label":    ["Montserrat", "sans-serif"],
           },
@@ -33,6 +33,7 @@
   </script>
   <style>
     .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    .font-logo { font-family: 'Abril Fatface', serif; }
     .hero-title  { font-size: 96px; line-height: 1.05; }
     .section-h2  { font-size: 48px; }
     .body-text   { font-size: 17px; line-height: 1.65; }
@@ -42,103 +43,97 @@
       .hero-title { font-size: 48px; }
       .section-h2 { font-size: 32px; }
     }
+    /* Anlass Rows — horizontales Layout */
+    .anlass-row {
+      border-bottom: 1px solid rgba(36,36,36,0.08);
+      padding: 2.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+    .anlass-row:first-of-type { border-top: 1px solid rgba(36,36,36,0.08); }
+    /* Option Chips */
     .option-row {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 16px;
+      flex-direction: column;
+      gap: 3px;
+      padding: 10px 16px;
       cursor: pointer;
       transition: background-color 0.2s;
       position: relative;
-      border-bottom: 1px solid #e7e2dd;
+      background: rgba(255,255,255,0.5);
+      border-radius: 8px;
+      min-width: 120px;
     }
-    .option-row:hover { background-color: rgba(212,164,156,0.08); }
-    .option-row.selected { background-color: rgba(212,164,156,0.12); }
+    .option-row:hover { background: rgba(255,255,255,0.85); }
+    .option-row.selected { background: white; }
     .option-row.selected::before {
       content: '';
       position: absolute;
       left: 0; top: 0; bottom: 0;
       width: 2px;
       background-color: #D4A49C;
+      border-radius: 2px 0 0 2px;
     }
-    .option-row .option-label { font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 0.05em; opacity: 0.7; }
+    .option-row .option-label { font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
     .option-row.selected .option-label { opacity: 1; }
-    .option-row .option-price { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 500; opacity: 0.7; }
+    .option-row .option-price { font-family: 'Cormorant', serif; font-size: 28px; font-style: italic; opacity: 0.65; color: #242424; }
     .option-row.selected .option-price { opacity: 1; color: #D4A49C; }
-    .card-cta-inactive {
-      opacity: 0.3;
-      pointer-events: none;
-      cursor: default;
-    }
-    .card-cta-active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    /* Probe-Styling Bereich */
+    .card-cta-inactive { opacity: 0.3; pointer-events: none; cursor: default; }
+    .card-cta-active   { opacity: 1; pointer-events: auto; }
+    /* Probe-Styling */
     .probe-section {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s ease, opacity 0.3s ease;
       opacity: 0;
     }
-    .probe-section.visible {
-      max-height: 300px;
-      opacity: 1;
-    }
+    .probe-section.visible { max-height: 150px; opacity: 1; margin-top: 12px; }
     .probe-row {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 16px;
+      flex-direction: column;
+      gap: 3px;
+      padding: 8px 14px;
       cursor: pointer;
       transition: background-color 0.2s;
       position: relative;
-      border-bottom: 1px solid #e7e2dd;
+      background: rgba(255,255,255,0.4);
+      border-radius: 6px;
+      min-width: 110px;
     }
-    .probe-row:hover { background-color: rgba(212,164,156,0.08); }
-    .probe-row.selected { background-color: rgba(212,164,156,0.12); }
+    .probe-row:hover { background: rgba(255,255,255,0.75); }
+    .probe-row.selected { background: white; }
     .probe-row.selected::before {
       content: '';
       position: absolute;
       left: 0; top: 0; bottom: 0;
       width: 2px;
       background-color: #D4A49C;
+      border-radius: 2px 0 0 2px;
     }
-    .probe-row .probe-label { font-family: 'Montserrat', sans-serif; font-size: 12px; letter-spacing: 0.05em; opacity: 0.65; }
+    .probe-row .probe-label { font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
     .probe-row.selected .probe-label { opacity: 1; }
-    .probe-row .probe-price { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 500; opacity: 0.65; }
+    .probe-row .probe-price { font-family: 'Cormorant', serif; font-size: 24px; font-style: italic; opacity: 0.6; color: #242424; }
     .probe-row.selected .probe-price { opacity: 1; color: #D4A49C; }
-    /* Abgerundete Karten */
+    /* Spotlight für Anlass- und Service-Karten */
     .anlass-card, .service-card {
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 2px 16px rgba(36,36,36,0.08), 0 0 0 1px rgba(36,36,36,0.04);
-    }
-    /* Spotlight-Effekt */
-    .anlass-card, .service-card {
+      box-shadow: 0 2px 16px rgba(36,36,36,0.08);
       position: relative;
     }
     .anlass-card::before, .service-card::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(
-        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(212, 164, 156, 0.18),
-        transparent 65%
-      );
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(212,164,156,0.18), transparent 65%);
       opacity: 0;
       transition: opacity 0.4s ease;
       pointer-events: none;
       z-index: 0;
     }
-    .anlass-card:hover::before, .service-card:hover::before {
-      opacity: 1;
-    }
-    .anlass-card > *, .service-card > * {
-      position: relative;
-      z-index: 1;
-    }
+    .anlass-card:hover::before, .service-card:hover::before { opacity: 1; }
+    .anlass-card > *, .service-card > * { position: relative; z-index: 1; }
   </style>
 </head>
 <body class="bg-near-white text-dark-text font-body">
@@ -146,7 +141,7 @@
 <!-- NAV -->
 <header class="fixed top-0 w-full z-50 bg-[#EEE9E4]/40 backdrop-blur-sm transition-colors duration-500 hover:bg-[#EEE9E4]/90">
   <nav aria-label="Haupt-Navigation" class="flex justify-between items-center px-8 md:px-12 py-4 max-w-[1920px] mx-auto">
-    <a href="index.html" class="font-headline text-2xl italic text-dark-text tracking-tight">Reta Yamaci</a>
+    <a href="index.html" class="font-logo text-2xl text-dark-text">Reta Yamaci</a>
     <div class="hidden md:flex items-center gap-10 font-label text-xs tracking-[0.2em] uppercase text-dark-text">
       <a href="leistungen.html" class="text-accent-rose">Leistungen</a>
       <a href="ueber-mich.html" class="hover:text-accent-rose transition-colors duration-300">Über Mich</a>
@@ -176,94 +171,100 @@
   <div class="max-w-7xl mx-auto">
     <div class="mb-16">
       <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose block mb-4">Besondere Anlässe</span>
-      <h2 class="font-headline section-h2 text-dark-text">Für Ihren besonderen Tag</h2>
+      <h2 class="font-headline section-h2 text-dark-text">Für deinen besonderen Tag</h2>
     </div>
-    <div class="flex flex-wrap justify-center gap-6">
+    <div class="flex flex-col gap-5">
 
-      <!-- Karte: Braut -->
-      <div class="anlass-card bg-white p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" style="border-radius:24px;overflow:hidden;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Braut">
-        <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">01</span>
-        <h3 class="font-headline text-4xl text-dark-text mb-6">Braut</h3>
-        <div class="h-px bg-champagne mb-4"></div>
-        <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-3">Option wählen</p>
-        <div class="options-list flex flex-col mb-8 flex-1">
+      <!-- Hero-Karte: Braut (volle Breite, zentriert) -->
+      <div class="anlass-card bg-white p-12 flex flex-col items-center text-center" style="border-radius:24px;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Braut">
+        <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-4 block">01</span>
+        <h3 class="font-headline text-6xl text-dark-text leading-tight mb-4">Braut</h3>
+        <div class="h-px bg-champagne w-16 mb-8"></div>
+        <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-4">Option wählen</p>
+        <div class="options-list flex flex-wrap justify-center gap-3 w-full">
           <div class="option-row" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
           <div class="option-row" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
           <div class="option-row" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
         </div>
-        <!-- Probe-Styling -->
-        <div class="probe-section mb-6">
-          <p class="font-label text-[10px] tracking-[0.2em] uppercase text-accent-rose/70 mb-2 px-1">Probe-Styling gewünscht?</p>
-          <div class="probe-row" data-probe="Hairstyling" data-probe-price="150"><span class="probe-label">Probe Hairstyling</span><span class="probe-price">150 €</span></div>
-          <div class="probe-row" data-probe="Makeup" data-probe-price="150"><span class="probe-label">Probe Makeup</span><span class="probe-price">150 €</span></div>
-          <div class="probe-row" data-probe="Complete Probelook" data-probe-price="300"><span class="probe-label">Complete Probelook</span><span class="probe-price">300 €</span></div>
+        <div class="probe-section w-full">
+          <p class="font-label text-[10px] tracking-[0.2em] uppercase text-accent-rose/70 mb-3">Probe-Styling gewünscht?</p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <div class="probe-row" data-probe="Hairstyling" data-probe-price="150"><span class="probe-label">Probe Hairstyling</span><span class="probe-price">150 €</span></div>
+            <div class="probe-row" data-probe="Makeup" data-probe-price="150"><span class="probe-label">Probe Makeup</span><span class="probe-price">150 €</span></div>
+            <div class="probe-row" data-probe="Complete Probelook" data-probe-price="300"><span class="probe-label">Complete Probelook</span><span class="probe-price">300 €</span></div>
+          </div>
         </div>
-        <a href="anfrage.html?service=Braut" class="cta-link card-cta card-cta-inactive inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
+        <a href="anfrage.html?service=Braut" class="cta-link card-cta card-cta-inactive mt-8 inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Anfragen <span class="cta-dash ml-2">——</span></a>
       </div>
 
-      <!-- Karte: Henna -->
-      <div class="anlass-card bg-white p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" style="border-radius:24px;overflow:hidden;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Henna">
-        <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">02</span>
-        <h3 class="font-headline text-4xl text-dark-text mb-6">Henna</h3>
-        <div class="h-px bg-champagne mb-4"></div>
-        <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-3">Option wählen</p>
-        <div class="options-list flex flex-col mb-8 flex-1">
-          <div class="option-row" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
-          <div class="option-row" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
-          <div class="option-row" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
-        </div>
-        <a href="anfrage.html?service=Henna" class="cta-link card-cta card-cta-inactive inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
-      </div>
+      <!-- 2×2 Raster: Henna, Standesamt, Verlobung, Gäste -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-      <!-- Karte: Standesamt -->
-      <div class="anlass-card bg-white p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" style="border-radius:24px;overflow:hidden;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Standesamt">
-        <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">03</span>
-        <h3 class="font-headline text-4xl text-dark-text mb-6">Standesamt</h3>
-        <div class="h-px bg-champagne mb-4"></div>
-        <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-3">Option wählen</p>
-        <div class="options-list flex flex-col mb-8 flex-1">
-          <div class="option-row" data-option="Hairstyling" data-price="200"><span class="option-label">Hairstyling</span><span class="option-price">200 €</span></div>
-          <div class="option-row" data-option="Makeup" data-price="200"><span class="option-label">Makeup</span><span class="option-price">200 €</span></div>
-          <div class="option-row" data-option="Complete Look" data-price="380"><span class="option-label">Complete Look</span><span class="option-price">380 €</span></div>
+        <!-- Karte: Henna -->
+        <div class="anlass-card bg-white p-12 flex flex-col" style="border-radius:24px;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Henna">
+          <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-4 block">02</span>
+          <h3 class="font-headline text-5xl text-dark-text mb-6 leading-tight">Henna</h3>
+          <div class="h-px bg-champagne mb-6"></div>
+          <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-4">Option wählen</p>
+          <div class="options-list flex flex-row flex-wrap gap-3 mb-auto">
+            <div class="option-row flex-1" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
+            <div class="option-row flex-1" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
+            <div class="option-row flex-1" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
+          </div>
+          <a href="anfrage.html?service=Henna" class="cta-link card-cta card-cta-inactive mt-10 inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Anfragen <span class="cta-dash ml-2">——</span></a>
         </div>
-        <a href="anfrage.html?service=Standesamt" class="cta-link card-cta card-cta-inactive inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
-      </div>
 
-      <!-- Karte: Verlobung -->
-      <div class="anlass-card bg-white p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" style="border-radius:24px;overflow:hidden;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Verlobung">
-        <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">04</span>
-        <h3 class="font-headline text-4xl text-dark-text mb-6">Verlobung</h3>
-        <div class="h-px bg-champagne mb-4"></div>
-        <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-3">Option wählen</p>
-        <div class="options-list flex flex-col mb-8 flex-1">
-          <div class="option-row" data-option="Hairstyling" data-price="200"><span class="option-label">Hairstyling</span><span class="option-price">200 €</span></div>
-          <div class="option-row" data-option="Makeup" data-price="200"><span class="option-label">Makeup</span><span class="option-price">200 €</span></div>
-          <div class="option-row" data-option="Complete Look" data-price="380"><span class="option-label">Complete Look</span><span class="option-price">380 €</span></div>
+        <!-- Karte: Standesamt -->
+        <div class="anlass-card bg-white p-12 flex flex-col" style="border-radius:24px;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Standesamt">
+          <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-4 block">03</span>
+          <h3 class="font-headline text-5xl text-dark-text mb-6 leading-tight">Standesamt</h3>
+          <div class="h-px bg-champagne mb-6"></div>
+          <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-4">Option wählen</p>
+          <div class="options-list flex flex-row flex-wrap gap-3 mb-auto">
+            <div class="option-row flex-1" data-option="Hairstyling" data-price="200"><span class="option-label">Hairstyling</span><span class="option-price">200 €</span></div>
+            <div class="option-row flex-1" data-option="Makeup" data-price="200"><span class="option-label">Makeup</span><span class="option-price">200 €</span></div>
+            <div class="option-row flex-1" data-option="Complete Look" data-price="380"><span class="option-label">Complete Look</span><span class="option-price">380 €</span></div>
+          </div>
+          <a href="anfrage.html?service=Standesamt" class="cta-link card-cta card-cta-inactive mt-10 inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Anfragen <span class="cta-dash ml-2">——</span></a>
         </div>
-        <!-- Probe-Styling -->
-        <div class="probe-section mb-6">
-          <p class="font-label text-[10px] tracking-[0.2em] uppercase text-accent-rose/70 mb-2 px-1">Probe-Styling gewünscht?</p>
-          <div class="probe-row" data-probe="Hairstyling" data-probe-price="150"><span class="probe-label">Probe Hairstyling</span><span class="probe-price">150 €</span></div>
-          <div class="probe-row" data-probe="Makeup" data-probe-price="150"><span class="probe-label">Probe Makeup</span><span class="probe-price">150 €</span></div>
-          <div class="probe-row" data-probe="Complete Probelook" data-probe-price="300"><span class="probe-label">Complete Probelook</span><span class="probe-price">300 €</span></div>
-        </div>
-        <a href="anfrage.html?service=Verlobung" class="cta-link card-cta card-cta-inactive inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
-      </div>
 
-      <!-- Karte: Gäste -->
-      <div class="anlass-card bg-white p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" style="border-radius:24px;overflow:hidden;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Gäste">
-        <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">05</span>
-        <h3 class="font-headline text-4xl text-dark-text mb-6">Gäste</h3>
-        <div class="h-px bg-champagne mb-4"></div>
-        <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-3">Option wählen</p>
-        <div class="options-list flex flex-col mb-8 flex-1">
-          <div class="option-row" data-option="Hairstyling" data-price="120"><span class="option-label">Hairstyling</span><span class="option-price">120 €</span></div>
-          <div class="option-row" data-option="Makeup" data-price="120"><span class="option-label">Makeup</span><span class="option-price">120 €</span></div>
-          <div class="option-row" data-option="Complete Look" data-price="240"><span class="option-label">Complete Look</span><span class="option-price">240 €</span></div>
+        <!-- Karte: Verlobung -->
+        <div class="anlass-card bg-white p-12 flex flex-col" style="border-radius:24px;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Verlobung">
+          <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-4 block">04</span>
+          <h3 class="font-headline text-5xl text-dark-text mb-6 leading-tight">Verlobung</h3>
+          <div class="h-px bg-champagne mb-6"></div>
+          <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-4">Option wählen</p>
+          <div class="options-list flex flex-row flex-wrap gap-3 mb-auto">
+            <div class="option-row flex-1" data-option="Hairstyling" data-price="200"><span class="option-label">Hairstyling</span><span class="option-price">200 €</span></div>
+            <div class="option-row flex-1" data-option="Makeup" data-price="200"><span class="option-label">Makeup</span><span class="option-price">200 €</span></div>
+            <div class="option-row flex-1" data-option="Complete Look" data-price="380"><span class="option-label">Complete Look</span><span class="option-price">380 €</span></div>
+          </div>
+          <div class="probe-section">
+            <p class="font-label text-[10px] tracking-[0.2em] uppercase text-accent-rose/70 mb-3 px-1">Probe-Styling gewünscht?</p>
+            <div class="flex flex-row flex-wrap gap-3">
+              <div class="probe-row flex-1" data-probe="Hairstyling" data-probe-price="150"><span class="probe-label">Probe Hairstyling</span><span class="probe-price">150 €</span></div>
+              <div class="probe-row flex-1" data-probe="Makeup" data-probe-price="150"><span class="probe-label">Probe Makeup</span><span class="probe-price">150 €</span></div>
+              <div class="probe-row flex-1" data-probe="Complete Probelook" data-probe-price="300"><span class="probe-label">Complete Probelook</span><span class="probe-price">300 €</span></div>
+            </div>
+          </div>
+          <a href="anfrage.html?service=Verlobung" class="cta-link card-cta card-cta-inactive mt-10 inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Anfragen <span class="cta-dash ml-2">——</span></a>
         </div>
-        <a href="anfrage.html?service=Gäste" class="cta-link card-cta card-cta-inactive inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Jetzt anfragen <span class="cta-dash ml-2">——</span></a>
-      </div>
 
+        <!-- Karte: Gäste -->
+        <div class="anlass-card bg-white p-12 flex flex-col" style="border-radius:24px;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Gäste">
+          <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-4 block">05</span>
+          <h3 class="font-headline text-5xl text-dark-text mb-6 leading-tight">Gäste</h3>
+          <div class="h-px bg-champagne mb-6"></div>
+          <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-4">Option wählen</p>
+          <div class="options-list flex flex-row flex-wrap gap-3 mb-auto">
+            <div class="option-row flex-1" data-option="Hairstyling" data-price="120"><span class="option-label">Hairstyling</span><span class="option-price">120 €</span></div>
+            <div class="option-row flex-1" data-option="Makeup" data-price="120"><span class="option-label">Makeup</span><span class="option-price">120 €</span></div>
+            <div class="option-row flex-1" data-option="Complete Look" data-price="240"><span class="option-label">Complete Look</span><span class="option-price">240 €</span></div>
+          </div>
+          <a href="anfrage.html?service=Gäste" class="cta-link card-cta card-cta-inactive mt-10 inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Anfragen <span class="cta-dash ml-2">——</span></a>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
@@ -324,7 +325,7 @@
 <!-- FOOTER -->
 <footer class="bg-footer-black w-full">
   <div class="flex flex-col items-center gap-10 py-20 px-8">
-    <a href="index.html" class="font-headline text-xl italic text-white">Reta Yamaci</a>
+    <a href="index.html" class="font-logo text-xl text-white">Reta Yamaci</a>
     <nav aria-label="Footer-Navigation" class="flex flex-wrap justify-center gap-8 md:gap-14">
       <a href="#" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Impressum</a>
       <a href="#" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Datenschutz</a>
@@ -380,7 +381,7 @@
     cta.href = url;
   }
 
-  // Optionswahl in Anlass-Karten
+  // Optionswahl in Anlass-Reihen
   document.querySelectorAll('.anlass-card').forEach(function(card) {
     const probeSection = card.querySelector('.probe-section');
 
