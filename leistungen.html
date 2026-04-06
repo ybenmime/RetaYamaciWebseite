@@ -489,7 +489,7 @@
 
   // Klick außerhalb → alles zurücksetzen (nicht wenn CTA geklickt)
   document.addEventListener('click', function(e) {
-    if (e.target.closest('.card-cta')) return; // CTA-Klick: nicht resetten
+    if (e.target.closest('.card-cta') || e.target.closest('#booking-overlay')) return;
     document.querySelectorAll('.anlass-card').forEach(function(card) {
       card.querySelectorAll('.option-row').forEach(function(r) { r.classList.remove('selected'); });
       card.querySelectorAll('.probe-row').forEach(function(r) { r.classList.remove('selected'); });
