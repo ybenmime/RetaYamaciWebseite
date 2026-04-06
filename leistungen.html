@@ -134,6 +134,79 @@
     }
     .anlass-card:hover::before, .service-card:hover::before { opacity: 1; }
     .anlass-card > *, .service-card > * { position: relative; z-index: 1; }
+    /* Buchungs-Overlay */
+    .booking-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(36,36,36,0.45);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .booking-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .booking-panel {
+      background: white;
+      border-radius: 24px;
+      padding: 36px;
+      width: 100%;
+      max-width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 16px 64px rgba(36,36,36,0.18);
+      transform: translateY(16px);
+      transition: transform 0.3s ease;
+    }
+    .booking-overlay.open .booking-panel {
+      transform: translateY(0);
+    }
+    .guest-chip {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 8px 14px;
+      cursor: pointer;
+      background: #EEE9E4;
+      border-radius: 8px;
+      transition: background 0.2s;
+      position: relative;
+    }
+    .guest-chip:hover { background: #e4ddd7; }
+    .guest-chip.selected { background: #EEE9E4; }
+    .guest-chip.selected::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: #D4A49C;
+      border-radius: 2px 0 0 2px;
+    }
+    .guest-chip .chip-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+    .guest-chip.selected .chip-label { opacity: 1; }
+    .guest-chip .chip-price {
+      font-family: 'Cormorant', serif;
+      font-size: 20px;
+      font-style: italic;
+      opacity: 0.65;
+      color: #242424;
+    }
+    .guest-chip.selected .chip-price { opacity: 1; color: #D4A49C; }
+    .overlay-cta-inactive { opacity: 0.3; pointer-events: none; cursor: default; }
+    .overlay-cta-active   { opacity: 1; pointer-events: auto; }
   </style>
 </head>
 <body class="bg-near-white text-dark-text font-body">
