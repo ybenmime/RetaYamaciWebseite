@@ -126,6 +126,16 @@
     <section class="pt-40 pb-32 px-6 md:px-12">
       <div class="max-w-2xl mx-auto">
 
+        <!-- Buchungsübersicht (erscheint nur wenn URL-Parameter vorhanden) -->
+        <div id="booking-summary" class="hidden mb-16 bg-champagne rounded-2xl p-8">
+          <p class="font-label text-[10px] tracking-[0.3em] uppercase text-accent-rose mb-5">Deine Anfrage</p>
+          <div id="summary-lines" class="flex flex-col gap-2 mb-5"></div>
+          <div class="border-t border-dark-text/10 pt-4 flex justify-between items-center">
+            <span class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/40">Gesamt (geschätzt)</span>
+            <span id="summary-total" class="font-headline text-2xl italic text-accent-rose"></span>
+          </div>
+        </div>
+
         <!-- Header -->
         <div class="mb-16">
           <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose mb-4 block">Terminanfrage</span>
@@ -573,6 +583,48 @@
           if (id) document.getElementById(id).checked = true;
         }
       }
+    })();
+
+    // Buchungsübersicht aus URL-Parametern
+    (function() {
+      var params  = new URLSearchParams(window.location.search);
+      var service = params.get('service');
+      var option  = params.get('option');
+      var price   = parseInt(params.get('price') || '0', 10);
+      var probe   = params.get('probe');
+      var probePrice = parseInt(params.get('probePrice') || '0', 10);
+
+      if (!service || !option) return; // kein Overlay-Flow → nichts anzeigen
+
+      var summary = document.getElementById('booking-summary');
+      var lines   = document.getElementById('summary-lines');
+      var totalEl = document.getElementById('summary-total');
+      summary.classList.remove('hidden');
+
+      var total = price + probePrice;
+
+      function addLine(label, amount) {
+        var div = document.createElement('div');
+        div.className = 'flex justify-between items-center';
+        div.innerHTML = '<span class="font-label text-sm text-dark-text">' + label + '</span>'
+                      + '<span class="font-headline text-lg italic text-dark-text/70">' + amount + ' €</span>';
+        lines.appendChild(div);
+      }
+
+      addLine(service + ' · ' + option, price);
+      if (probe) addLine('Probe · ' + probe, probePrice);
+
+      // Gäste auslesen: g0, g1, g2, ...
+      var i = 0;
+      while (params.get('g' + i)) {
+        var gOpt   = params.get('g' + i);
+        var gPrice = parseInt(params.get('gp' + i) || '0', 10);
+        addLine('Gast ' + (i + 1) + ' · ' + gOpt, gPrice);
+        total += gPrice;
+        i++;
+      }
+
+      totalEl.textContent = total + ' €';
     })();
   </script>
 
