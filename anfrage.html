@@ -56,16 +56,17 @@
     }
     /* Form card — rounded container mit internen Trennlinien */
     .form-card {
-      border: 1px solid rgba(212,164,156,0.3);
+      border: 1px solid rgba(212,164,156,0.45);
       border-radius: 16px;
       overflow: hidden;
-      background: #FAFAF8;
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(36,36,36,0.05);
     }
     .form-field {
       display: flex;
       flex-direction: column;
-      padding: 14px 20px;
-      border-bottom: 1px solid rgba(212,164,156,0.18);
+      padding: 16px 22px;
+      border-bottom: 1px solid rgba(212,164,156,0.2);
     }
     .form-field:last-child { border-bottom: none; }
     .form-field label {
@@ -74,7 +75,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: rgba(36,36,36,0.4);
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
     .form-field input,
     .form-field select,
@@ -93,7 +94,7 @@
     .form-field select option[value=""] { color: rgba(36,36,36,0.3); }
     .form-card:focus-within {
       border-color: #D4A49C;
-      box-shadow: 0 0 0 3px rgba(212,164,156,0.12);
+      box-shadow: 0 0 0 3px rgba(212,164,156,0.15), 0 2px 12px rgba(36,36,36,0.05);
     }
     /* Datum + Uhrzeit native Picker dezent stylen */
     input[type="date"], input[type="time"] { cursor: pointer; }
@@ -101,17 +102,18 @@
     input[type="time"]::-webkit-calendar-picker-indicator { opacity: 0.35; cursor: pointer; }
     /* Probe-Styling & Ort — Auswahl-Karte */
     .select-card {
-      border: 1px solid rgba(212,164,156,0.3);
+      border: 1px solid rgba(212,164,156,0.45);
       border-radius: 16px;
       overflow: hidden;
-      background: #FAFAF8;
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(36,36,36,0.05);
     }
     .select-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 20px;
-      border-bottom: 1px solid rgba(212,164,156,0.18);
+      padding: 15px 22px;
+      border-bottom: 1px solid rgba(212,164,156,0.2);
       cursor: pointer;
       transition: background 0.2s;
     }
