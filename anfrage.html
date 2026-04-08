@@ -66,7 +66,8 @@
       color: #242424;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
-    .input-base:focus { border-color: #D4A49C; box-shadow: 0 0 0 3px rgba(212,164,156,0.15); }
+    .input-base:focus,
+    .input-base:focus-visible { border-color: #D4A49C; box-shadow: 0 0 0 3px rgba(212,164,156,0.15); outline: none; }
     .input-base::placeholder { color: #242424; opacity: 0.4; font-size: 13px; letter-spacing: 0.05em; }
     /* Datum + Uhrzeit native Picker dezent stylen */
     input[type="date"], input[type="time"] { cursor: pointer; }
@@ -141,7 +142,7 @@
           <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose mb-4 block">Terminanfrage</span>
           <h1 class="font-headline text-5xl md:text-6xl text-dark-text mb-6">Jetzt anfragen</h1>
           <p class="font-body text-base text-dark-text/70 leading-relaxed">
-            Teilen Sie mir Ihre Wünsche mit — alle weiteren Details wie Ort, Zeit und Ablauf klären wir gemeinsam im Gespräch.
+            Teile mir deine Wünsche mit — alle weiteren Details wie Ort, Zeit und Ablauf klären wir gemeinsam im Gespräch.
           </p>
         </div>
 
@@ -149,7 +150,7 @@
         <div id="success-msg" class="hidden text-center py-20">
           <span class="material-symbols-outlined text-3xl text-accent-rose block mb-6">check_circle</span>
           <p class="font-headline text-2xl text-dark-text mb-4">Vielen Dank!</p>
-          <p class="font-body text-sm text-dark-text/70">Ihre Anfrage wurde gesendet. Ich melde mich bald bei Ihnen.</p>
+          <p class="font-body text-sm text-dark-text/70">Deine Anfrage wurde gesendet. Ich melde mich bald bei dir.</p>
         </div>
 
         <!-- Inquiry Form -->
@@ -202,14 +203,20 @@
               class="input-base"
             >
               <option value="" disabled selected>Bitte wählen</option>
-              <option>Braut</option>
-              <option>Henna</option>
-              <option>Standesamt</option>
-              <option>Verlobung</option>
-              <option>Gäste</option>
-              <option>Shooting Makeup</option>
-              <option>1:1 Workshop Hairstyling</option>
-              <option>Online Masterclass</option>
+              <optgroup label="Besondere Anlässe">
+                <option>Braut</option>
+                <option>Henna</option>
+                <option>Standesamt</option>
+                <option>Verlobung</option>
+                <option>Gäste</option>
+              </optgroup>
+              <optgroup label="Weitere Leistungen">
+                <option>Shooting Makeup</option>
+              </optgroup>
+              <optgroup label="Workshops &amp; Masterclass">
+                <option>1:1 Workshop Hairstyling</option>
+                <option>Online Masterclass</option>
+              </optgroup>
             </select>
           </div>
 
@@ -350,12 +357,12 @@
 
           <!-- Nachricht -->
           <div>
-            <label for="field-message" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Ihre Nachricht</label>
+            <label for="field-message" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Deine Nachricht</label>
             <textarea
               id="field-message"
               name="nachricht"
               rows="4"
-              placeholder="Beschreiben Sie kurz Ihr Anliegen..."
+              placeholder="Beschreibe kurz dein Anliegen..."
               class="input-base resize-none"
             ></textarea>
           </div>
@@ -519,11 +526,11 @@
       let valid = true;
 
       if (!nameInput.value.trim()) {
-        setFieldError(nameInput, 'Bitte geben Sie Ihren Namen ein.');
+        setFieldError(nameInput, 'Bitte gib deinen Namen ein.');
         valid = false;
       }
       if (!emailInput.value.trim()) {
-        setFieldError(emailInput, 'Bitte geben Sie Ihre E-Mail-Adresse ein.');
+        setFieldError(emailInput, 'Bitte gib deine E-Mail-Adresse ein.');
         valid = false;
       }
       if (!valid) return;
