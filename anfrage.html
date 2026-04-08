@@ -234,12 +234,8 @@
           </p>
         </div>
 
-        <!-- Success Message (hidden by default) -->
-        <div id="success-msg" class="hidden text-center py-20">
-          <span class="material-symbols-outlined text-3xl text-accent-rose block mb-6">check_circle</span>
-          <p class="font-headline text-2xl text-dark-text mb-4">Vielen Dank!</p>
-          <p class="font-body text-sm text-dark-text/70">Deine Anfrage wurde gesendet. Ich melde mich bald bei dir.</p>
-        </div>
+        <!-- Success Message (hidden by default, shown fullscreen after submit) -->
+        <div id="success-msg" class="hidden"></div>
 
         <!-- Inquiry Form -->
         <form id="inquiry-form" class="flex flex-col gap-8" novalidate>
@@ -597,9 +593,16 @@
       }
       if (!valid) return;
 
-      // Success: hide form, show confirmation
-      Array.from(this.children).forEach(el => el.classList.add('hidden'));
-      document.getElementById('success-msg').classList.remove('hidden');
+      // Success: hide entire main content, show fullscreen confirmation
+      document.querySelector('main').style.display = 'none';
+      var successEl = document.getElementById('success-msg');
+      successEl.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100svh;text-align:center;';
+      successEl.innerHTML = '<span class="material-symbols-outlined" style="font-size:40px;color:#D4A49C;margin-bottom:28px;font-variation-settings:\'FILL\' 0,\'wght\' 200;">check_circle</span>'
+        + '<p style="font-family:\'Cormorant\',serif;font-size:clamp(48px,8vw,72px);font-style:italic;color:#242424;margin-bottom:16px;">Vielen Dank!</p>'
+        + '<p style="font-family:\'Montserrat\',sans-serif;font-size:13px;color:rgba(36,36,36,0.55);letter-spacing:0.03em;">Deine Anfrage wurde gesendet. Ich melde mich bald bei dir.</p>'
+        + '<a href="index.html" style="margin-top:48px;font-family:\'Montserrat\',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#242424;text-decoration:none;">Zurück zur Startseite &nbsp;——</a>';
+      document.body.appendChild(successEl);
+      successEl.classList.remove('hidden');
     });
 
     // URL-Parameter: Service, Option und Probe-Styling vorausfüllen
