@@ -244,11 +244,11 @@
           <div class="form-card">
             <div class="form-field">
               <label for="field-name">Name *</label>
-              <input id="field-name" name="name" type="text" required placeholder="Dein vollständiger Name"/>
+              <input id="field-name" name="name" type="text" required aria-required="true" placeholder="Dein vollständiger Name"/>
             </div>
             <div class="form-field">
               <label for="field-email">E-Mail *</label>
-              <input id="field-email" name="email" type="email" required placeholder="deine@email.de"/>
+              <input id="field-email" name="email" type="email" required aria-required="true" placeholder="deine@email.de"/>
             </div>
             <div class="form-field">
               <label for="field-phone">Telefon</label>
@@ -491,19 +491,27 @@
     // Form validation helpers
     function setFieldError(input, message) {
       input.style.borderBottomColor = '#ba1a1a';
-      let errorEl = input.parentElement.querySelector('.field-error');
+      var errorId = input.id + '-error';
+      var errorEl = document.getElementById(errorId);
       if (!errorEl) {
         errorEl = document.createElement('p');
+        errorEl.id = errorId;
         errorEl.className = 'field-error font-label text-xs tracking-widest uppercase text-red-700 mt-2';
+        errorEl.setAttribute('role', 'alert');
         input.parentElement.appendChild(errorEl);
       }
       errorEl.textContent = message;
+      input.setAttribute('aria-invalid', 'true');
+      input.setAttribute('aria-describedby', errorId);
     }
 
     function clearFieldError(input) {
       input.style.borderBottomColor = '';
-      const errorEl = input.parentElement.querySelector('.field-error');
+      var errorId = input.id + '-error';
+      var errorEl = document.getElementById(errorId);
       if (errorEl) errorEl.remove();
+      input.removeAttribute('aria-invalid');
+      input.removeAttribute('aria-describedby');
     }
 
     // Flatpickr — Datum

@@ -255,16 +255,16 @@
         <div class="h-px bg-champagne w-16 mb-8"></div>
         <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-4">Option wählen</p>
         <div class="options-list flex flex-wrap justify-center gap-3 w-full">
-          <div class="option-row" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
-          <div class="option-row" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
-          <div class="option-row" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
+          <div class="option-row" role="radio" aria-checked="false" tabindex="0" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
+          <div class="option-row" role="radio" aria-checked="false" tabindex="0" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
+          <div class="option-row" role="radio" aria-checked="false" tabindex="0" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
         </div>
         <div class="probe-section w-full">
           <p class="font-label text-[10px] tracking-[0.2em] uppercase text-accent-rose/70 mb-3">Probe-Styling gewünscht?</p>
           <div class="flex flex-wrap justify-center gap-3">
-            <div class="probe-row" data-probe="Hairstyling" data-probe-price="150"><span class="probe-label">Probe Hairstyling</span><span class="probe-price">150 €</span></div>
-            <div class="probe-row" data-probe="Makeup" data-probe-price="150"><span class="probe-label">Probe Makeup</span><span class="probe-price">150 €</span></div>
-            <div class="probe-row" data-probe="Complete Probelook" data-probe-price="300"><span class="probe-label">Complete Probelook</span><span class="probe-price">300 €</span></div>
+            <div class="probe-row" role="checkbox" aria-checked="false" tabindex="0" data-probe="Hairstyling" data-probe-price="150"><span class="probe-label">Probe Hairstyling</span><span class="probe-price">150 €</span></div>
+            <div class="probe-row" role="checkbox" aria-checked="false" tabindex="0" data-probe="Makeup" data-probe-price="150"><span class="probe-label">Probe Makeup</span><span class="probe-price">150 €</span></div>
+            <div class="probe-row" role="checkbox" aria-checked="false" tabindex="0" data-probe="Complete Probelook" data-probe-price="300"><span class="probe-label">Complete Probelook</span><span class="probe-price">300 €</span></div>
           </div>
         </div>
         <a href="anfrage.html?service=Braut" class="cta-link card-cta card-cta-inactive mt-8 inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Anfragen <span class="cta-dash ml-2">——</span></a>
@@ -498,33 +498,54 @@
 
   // Optionswahl in Anlass-Reihen
   document.querySelectorAll('.anlass-card').forEach(function(card) {
-    const probeSection = card.querySelector('.probe-section');
+    var probeSection = card.querySelector('.probe-section');
 
-    // Hauptoptionen
+    function selectOption(row) {
+      var alreadySelected = row.classList.contains('selected');
+      card.querySelectorAll('.option-row').forEach(function(r) {
+        r.classList.remove('selected');
+        r.setAttribute('aria-checked', 'false');
+      });
+      if (alreadySelected) {
+        if (probeSection) { probeSection.classList.remove('visible'); }
+        card.querySelectorAll('.probe-row').forEach(function(r) {
+          r.classList.remove('selected');
+          r.setAttribute('aria-checked', 'false');
+        });
+      } else {
+        row.classList.add('selected');
+        row.setAttribute('aria-checked', 'true');
+        if (probeSection) probeSection.classList.add('visible');
+      }
+      updateCta(card);
+    }
+
+    function toggleProbe(row) {
+      var alreadySelected = row.classList.contains('selected');
+      card.querySelectorAll('.probe-row').forEach(function(r) {
+        r.classList.remove('selected');
+        r.setAttribute('aria-checked', 'false');
+      });
+      if (!alreadySelected) {
+        row.classList.add('selected');
+        row.setAttribute('aria-checked', 'true');
+      }
+      updateCta(card);
+    }
+
+    // Hauptoptionen — Klick + Tastatur
     card.querySelectorAll('.option-row').forEach(function(row) {
-      row.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const alreadySelected = row.classList.contains('selected');
-        card.querySelectorAll('.option-row').forEach(function(r) { r.classList.remove('selected'); });
-        if (alreadySelected) {
-          if (probeSection) { probeSection.classList.remove('visible'); }
-          card.querySelectorAll('.probe-row').forEach(function(r) { r.classList.remove('selected'); });
-        } else {
-          row.classList.add('selected');
-          if (probeSection) probeSection.classList.add('visible');
-        }
-        updateCta(card);
+      row.addEventListener('click', function(e) { e.stopPropagation(); selectOption(row); });
+      row.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); selectOption(row); }
       });
     });
 
-    // Probe-Zeilen
+    // Probe-Zeilen — Klick + Tastatur
     card.querySelectorAll('.probe-row').forEach(function(row) {
-      row.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const alreadySelected = row.classList.contains('selected');
-        card.querySelectorAll('.probe-row').forEach(function(r) { r.classList.remove('selected'); });
-        if (!alreadySelected) row.classList.add('selected');
-        updateCta(card);
+      row.addEventListener('click', function(e) { e.stopPropagation(); toggleProbe(row); });
+      row.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); toggleProbe(row); }
       });
     });
   });
@@ -533,9 +554,9 @@
   document.addEventListener('click', function(e) {
     if (e.target.closest('.card-cta') || e.target.closest('#booking-overlay')) return;
     document.querySelectorAll('.anlass-card').forEach(function(card) {
-      card.querySelectorAll('.option-row').forEach(function(r) { r.classList.remove('selected'); });
-      card.querySelectorAll('.probe-row').forEach(function(r) { r.classList.remove('selected'); });
-      const ps = card.querySelector('.probe-section'); if (ps) ps.classList.remove('visible');
+      card.querySelectorAll('.option-row').forEach(function(r) { r.classList.remove('selected'); r.setAttribute('aria-checked', 'false'); });
+      card.querySelectorAll('.probe-row').forEach(function(r) { r.classList.remove('selected'); r.setAttribute('aria-checked', 'false'); });
+      var ps = card.querySelector('.probe-section'); if (ps) ps.classList.remove('visible');
       updateCta(card);
     });
   });
