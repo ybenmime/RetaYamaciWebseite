@@ -527,6 +527,11 @@
       time_24hr: true,
       minuteIncrement: 15,
       disableMobile: true,
+      onReady: function(_, __, fp) {
+        fp.calendarContainer.querySelectorAll('.numInputWrapper input').forEach(function(el) {
+          el.addEventListener('focus', function() { this.blur(); });
+        });
+      },
     });
 
     const form = document.getElementById('inquiry-form');
