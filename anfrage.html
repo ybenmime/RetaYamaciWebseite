@@ -54,25 +54,69 @@
       .hero-subtitle { font-size: 24px; }
       .section-h2    { font-size: 32px; }
     }
-    .input-base {
-      background: #faf8f6;
-      border: 1px solid rgba(212,164,156,0.35);
-      border-radius: 12px;
-      outline: none;
-      width: 100%;
-      padding: 14px 18px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 15px;
-      color: #242424;
-      transition: border-color 0.3s, box-shadow 0.3s;
+    /* Form card — rounded container mit internen Trennlinien */
+    .form-card {
+      border: 1px solid rgba(212,164,156,0.3);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #FAFAF8;
     }
-    .input-base:focus,
-    .input-base:focus-visible { border-color: #D4A49C; box-shadow: 0 0 0 3px rgba(212,164,156,0.15); outline: none; }
-    .input-base::placeholder { color: #242424; opacity: 0.4; font-size: 13px; letter-spacing: 0.05em; }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(212,164,156,0.18);
+    }
+    .form-field:last-child { border-bottom: none; }
+    .form-field label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(36,36,36,0.4);
+      margin-bottom: 4px;
+    }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: #242424;
+      width: 100%;
+    }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: rgba(36,36,36,0.3); }
+    .form-field select { cursor: pointer; color: #242424; }
+    .form-field select option[value=""] { color: rgba(36,36,36,0.3); }
+    .form-card:focus-within {
+      border-color: #D4A49C;
+      box-shadow: 0 0 0 3px rgba(212,164,156,0.12);
+    }
     /* Datum + Uhrzeit native Picker dezent stylen */
     input[type="date"], input[type="time"] { cursor: pointer; }
     input[type="date"]::-webkit-calendar-picker-indicator,
-    input[type="time"]::-webkit-calendar-picker-indicator { opacity: 0.4; cursor: pointer; }
+    input[type="time"]::-webkit-calendar-picker-indicator { opacity: 0.35; cursor: pointer; }
+    /* Probe-Styling & Ort — Auswahl-Karte */
+    .select-card {
+      border: 1px solid rgba(212,164,156,0.3);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #FAFAF8;
+    }
+    .select-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(212,164,156,0.18);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .select-row:last-child { border-bottom: none; }
+    .select-row:hover { background: rgba(212,164,156,0.06); }
     /* Radio dot */
     input[type="radio"]:checked + span { background-color: #D4A49C; border-color: #D4A49C; }
   </style>
@@ -154,90 +198,58 @@
         </div>
 
         <!-- Inquiry Form -->
-        <form id="inquiry-form" class="flex flex-col gap-12" novalidate>
+        <form id="inquiry-form" class="flex flex-col gap-8" novalidate>
 
-          <!-- Name -->
-          <div>
-            <label for="field-name" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Name *</label>
-            <input
-              id="field-name"
-              name="name"
-              type="text"
-              required
-              placeholder="Ihr vollständiger Name"
-              class="input-base"
-            />
+          <!-- Kontakt -->
+          <div class="form-card">
+            <div class="form-field">
+              <label for="field-name">Name *</label>
+              <input id="field-name" name="name" type="text" required placeholder="Dein vollständiger Name"/>
+            </div>
+            <div class="form-field">
+              <label for="field-email">E-Mail *</label>
+              <input id="field-email" name="email" type="email" required placeholder="deine@email.de"/>
+            </div>
+            <div class="form-field">
+              <label for="field-phone">Telefon</label>
+              <input id="field-phone" name="telefon" type="tel" placeholder="+49 000 000 000"/>
+            </div>
           </div>
 
-          <!-- E-Mail -->
-          <div>
-            <label for="field-email" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">E-Mail *</label>
-            <input
-              id="field-email"
-              name="email"
-              type="email"
-              required
-              placeholder="ihre@email.de"
-              class="input-base"
-            />
+          <!-- Leistung -->
+          <div class="form-card">
+            <div class="form-field">
+              <label for="field-service">Gewünschte Leistung</label>
+              <select id="field-service" name="leistung">
+                <option value="" disabled selected>Bitte wählen</option>
+                <optgroup label="Besondere Anlässe">
+                  <option>Braut</option>
+                  <option>Henna</option>
+                  <option>Standesamt</option>
+                  <option>Verlobung</option>
+                  <option>Gäste</option>
+                </optgroup>
+                <optgroup label="Weitere Leistungen">
+                  <option>Shooting Makeup</option>
+                </optgroup>
+                <optgroup label="Workshops &amp; Masterclass">
+                  <option>1:1 Workshop Hairstyling</option>
+                  <option>Online Masterclass</option>
+                </optgroup>
+              </select>
+            </div>
+            <!-- Gewählte Option (erscheint nur wenn via URL vorausgefüllt) -->
+            <div id="field-option-wrap" class="form-field" style="display:none">
+              <label>Gewählte Option</label>
+              <input id="field-option" name="option" type="text" readonly style="opacity:0.5;cursor:default"/>
+            </div>
           </div>
 
-          <!-- Telefon -->
-          <div>
-            <label for="field-phone" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Telefon</label>
-            <input
-              id="field-phone"
-              name="telefon"
-              type="tel"
-              placeholder="+49 000 000 000"
-              class="input-base"
-            />
-          </div>
-
-          <!-- Gewünschte Leistung -->
-          <div>
-            <label for="field-service" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Gewünschte Leistung</label>
-            <select
-              id="field-service"
-              name="leistung"
-              class="input-base"
-            >
-              <option value="" disabled selected>Bitte wählen</option>
-              <optgroup label="Besondere Anlässe">
-                <option>Braut</option>
-                <option>Henna</option>
-                <option>Standesamt</option>
-                <option>Verlobung</option>
-                <option>Gäste</option>
-              </optgroup>
-              <optgroup label="Weitere Leistungen">
-                <option>Shooting Makeup</option>
-              </optgroup>
-              <optgroup label="Workshops &amp; Masterclass">
-                <option>1:1 Workshop Hairstyling</option>
-                <option>Online Masterclass</option>
-              </optgroup>
-            </select>
-          </div>
-
-          <!-- Gewählte Option (erscheint nur wenn via URL vorausgefüllt) -->
-          <div id="field-option-wrap" style="display:none">
-            <label class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Gewählte Option</label>
-            <input
-              id="field-option"
-              name="option"
-              type="text"
-              readonly
-              class="input-base opacity-70 cursor-default"
-            />
-          </div>
-
-          <!-- Probe-Styling (3 Checkboxen, erscheint bei Anlass-Services) -->
+          <!-- Probe-Styling (erscheint bei Anlass-Services) -->
           <div id="field-probe-wrap" style="display:none">
-            <label class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-4">Probe-Styling gewünscht?</label>
-            <div class="flex flex-col gap-0 border border-[#e7e2dd]" style="border-radius:12px;overflow:hidden;">
-
-              <label class="probe-check-row flex items-center justify-between py-4 px-2 cursor-pointer border-b border-[#e7e2dd] hover:bg-accent-rose/5 transition-colors duration-200">
+            <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-3">Probe-Styling gewünscht?</p>
+            <div class="select-card">
+              <label class="probe-check-row select-row">
                 <span class="flex items-center gap-4">
                   <span class="relative flex-shrink-0">
                     <input id="probe-hairstyling" name="probe_styling" value="Probe Hairstyling" type="checkbox" class="peer sr-only"/>
@@ -245,10 +257,9 @@
                   </span>
                   <span class="font-body text-sm text-dark-text/70">Probe Hairstyling</span>
                 </span>
-                <span class="font-body text-sm font-medium text-dark-text/50">150 €</span>
+                <span class="font-body text-sm text-dark-text/40">150 €</span>
               </label>
-
-              <label class="probe-check-row flex items-center justify-between py-4 px-2 cursor-pointer border-b border-[#e7e2dd] hover:bg-accent-rose/5 transition-colors duration-200">
+              <label class="probe-check-row select-row">
                 <span class="flex items-center gap-4">
                   <span class="relative flex-shrink-0">
                     <input id="probe-makeup" name="probe_styling" value="Probe Makeup" type="checkbox" class="peer sr-only"/>
@@ -256,10 +267,9 @@
                   </span>
                   <span class="font-body text-sm text-dark-text/70">Probe Makeup</span>
                 </span>
-                <span class="font-body text-sm font-medium text-dark-text/50">150 €</span>
+                <span class="font-body text-sm text-dark-text/40">150 €</span>
               </label>
-
-              <label class="probe-check-row flex items-center justify-between py-4 px-2 cursor-pointer border-b border-[#e7e2dd] hover:bg-accent-rose/5 transition-colors duration-200">
+              <label class="probe-check-row select-row">
                 <span class="flex items-center gap-4">
                   <span class="relative flex-shrink-0">
                     <input id="probe-complete" name="probe_styling" value="Complete Probelook" type="checkbox" class="peer sr-only"/>
@@ -267,50 +277,37 @@
                   </span>
                   <span class="font-body text-sm text-dark-text/70">Complete Probelook</span>
                 </span>
-                <span class="font-body text-sm font-medium text-dark-text/50">300 €</span>
+                <span class="font-body text-sm text-dark-text/40">300 €</span>
               </label>
-
             </div>
           </div>
 
-          <!-- Datum des Events -->
-          <div>
-            <label for="field-date" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Datum des Events</label>
-            <input
-              id="field-date"
-              name="event_datum"
-              type="date"
-              class="input-base"
-            />
-          </div>
-
-          <!-- Uhrzeit fertig gestylt -->
-          <div>
-            <label for="field-time" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Fertig gestylt um</label>
-            <input
-              id="field-time"
-              name="fertig_um"
-              type="time"
-              class="input-base"
-            />
+          <!-- Termin -->
+          <div class="form-card">
+            <div class="form-field">
+              <label for="field-date">Datum des Events</label>
+              <input id="field-date" name="event_datum" type="date"/>
+            </div>
+            <div class="form-field">
+              <label for="field-time">Fertig gestylt um</label>
+              <input id="field-time" name="fertig_um" type="time"/>
+            </div>
           </div>
 
           <!-- Ort des Stylings -->
           <div>
-            <label class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-4">Ort des Stylings</label>
-            <div class="flex flex-col gap-0 border border-[#e7e2dd]" style="border-radius:12px;overflow:hidden;">
-
-              <label class="flex items-center justify-between py-4 px-2 cursor-pointer border-b border-[#e7e2dd] hover:bg-accent-rose/5 transition-colors duration-200">
+            <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-3">Ort des Stylings</p>
+            <div class="select-card">
+              <label class="select-row">
                 <span class="flex items-center gap-4">
                   <span class="relative flex-shrink-0">
-                    <input type="radio" name="ort" value="Vor Ort (Eventlocation)" class="sr-only"/>
-                    <span class="block w-4 h-4 border border-[#D4A49C]/40 transition-colors duration-200"></span>
+                    <input type="radio" name="ort" value="Vor Ort (Eventlocation)" class="peer sr-only"/>
+                    <span class="block w-4 h-4 border border-accent-rose/40 peer-checked:bg-accent-rose peer-checked:border-accent-rose transition-colors duration-200 rounded-sm"></span>
                   </span>
                   <span class="font-body text-sm text-dark-text/70">Vor Ort (Eventlocation)</span>
                 </span>
               </label>
-
-              <label class="flex items-center justify-between py-4 px-2 cursor-pointer border-b border-[#e7e2dd] hover:bg-accent-rose/5 transition-colors duration-200">
+              <label class="select-row">
                 <span class="flex items-center gap-4">
                   <span class="relative flex-shrink-0">
                     <input type="radio" name="ort" value="Hausbesuch" class="peer sr-only"/>
@@ -319,8 +316,7 @@
                   <span class="font-body text-sm text-dark-text/70">Hausbesuch</span>
                 </span>
               </label>
-
-              <label class="flex items-center justify-between py-4 px-2 cursor-pointer border-b border-[#e7e2dd] hover:bg-accent-rose/5 transition-colors duration-200">
+              <label class="select-row">
                 <span class="flex items-center gap-4">
                   <span class="relative flex-shrink-0">
                     <input type="radio" name="ort" value="Im Studio (MyStudio)" class="peer sr-only"/>
@@ -329,8 +325,7 @@
                   <span class="font-body text-sm text-dark-text/70">Im Studio (MyStudio)</span>
                 </span>
               </label>
-
-              <label class="flex items-center justify-between py-4 px-2 cursor-pointer border-b border-[#e7e2dd] hover:bg-accent-rose/5 transition-colors duration-200">
+              <label class="select-row">
                 <span class="flex items-center gap-4">
                   <span class="relative flex-shrink-0">
                     <input type="radio" name="ort" value="Noch nicht bekannt" class="peer sr-only"/>
@@ -339,32 +334,25 @@
                   <span class="font-body text-sm text-dark-text/70">Noch nicht bekannt</span>
                 </span>
               </label>
-
             </div>
           </div>
 
           <!-- Adresse (erscheint bei Vor Ort / Hausbesuch) -->
           <div id="field-adresse-wrap" style="display:none">
-            <label for="field-adresse" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Adresse</label>
-            <input
-              id="field-adresse"
-              name="adresse"
-              type="text"
-              placeholder="Straße, Hausnummer, PLZ, Stadt"
-              class="input-base"
-            />
+            <div class="form-card">
+              <div class="form-field">
+                <label for="field-adresse">Adresse</label>
+                <input id="field-adresse" name="adresse" type="text" placeholder="Straße, Hausnummer, PLZ, Stadt"/>
+              </div>
+            </div>
           </div>
 
           <!-- Nachricht -->
-          <div>
-            <label for="field-message" class="font-label text-xs tracking-[0.2em] uppercase text-dark-text/60 block mb-2">Deine Nachricht</label>
-            <textarea
-              id="field-message"
-              name="nachricht"
-              rows="4"
-              placeholder="Beschreibe kurz dein Anliegen..."
-              class="input-base resize-none"
-            ></textarea>
+          <div class="form-card">
+            <div class="form-field">
+              <label for="field-message">Deine Nachricht</label>
+              <textarea id="field-message" name="nachricht" rows="5" placeholder="Beschreibe kurz dein Anliegen..." style="resize:none"></textarea>
+            </div>
           </div>
 
           <!-- Submit Button -->
