@@ -7,6 +7,9 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/de.js"></script>
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -96,10 +99,49 @@
       border-color: #D4A49C;
       box-shadow: 0 0 0 3px rgba(212,164,156,0.15), 0 2px 12px rgba(36,36,36,0.05);
     }
-    /* Datum + Uhrzeit native Picker dezent stylen */
-    input[type="date"], input[type="time"] { cursor: pointer; }
-    input[type="date"]::-webkit-calendar-picker-indicator,
-    input[type="time"]::-webkit-calendar-picker-indicator { opacity: 0.35; cursor: pointer; }
+    /* Icon-Wrapper für Datum & Uhrzeit */
+    .field-icon-wrap { position: relative; display: flex; align-items: center; }
+    .field-icon-wrap input { padding-right: 28px; }
+    .field-icon-wrap .field-icon {
+      position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+      font-size: 16px; opacity: 0.35; pointer-events: none;
+    }
+    /* Flatpickr Overrides — Design System */
+    .flatpickr-calendar {
+      background: #fff;
+      border: 1px solid rgba(212,164,156,0.45);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(36,36,36,0.10);
+      font-family: 'Montserrat', sans-serif;
+      padding: 12px;
+    }
+    .flatpickr-calendar.arrowTop:before,
+    .flatpickr-calendar.arrowTop:after { display: none; }
+    .flatpickr-months { padding: 0 0 8px; }
+    .flatpickr-month { color: #242424; }
+    .flatpickr-current-month { font-size: 13px; font-weight: 500; }
+    .flatpickr-current-month .flatpickr-monthDropdown-months,
+    .flatpickr-current-month input.cur-year { color: #242424; font-family: 'Montserrat', sans-serif; }
+    .flatpickr-weekday { color: rgba(36,36,36,0.4); font-size: 10px; letter-spacing: 0.1em; font-family: 'Montserrat', sans-serif; }
+    .flatpickr-day {
+      border-radius: 8px;
+      font-size: 12px;
+      font-family: 'Montserrat', sans-serif;
+      color: #242424;
+    }
+    .flatpickr-day:hover { background: rgba(212,164,156,0.12); border-color: transparent; }
+    .flatpickr-day.selected,
+    .flatpickr-day.selected:hover {
+      background: #D4A49C;
+      border-color: #D4A49C;
+      color: #fff;
+    }
+    .flatpickr-day.today { border-color: rgba(212,164,156,0.5); }
+    .flatpickr-day.today:hover { background: rgba(212,164,156,0.12); }
+    .flatpickr-prev-month svg, .flatpickr-next-month svg { fill: rgba(36,36,36,0.4); }
+    .flatpickr-prev-month:hover svg, .flatpickr-next-month:hover svg { fill: #D4A49C; }
+    .numInputWrapper span { border-color: rgba(212,164,156,0.3); }
+    .numInputWrapper:hover { background: rgba(212,164,156,0.06); }
     /* Probe-Styling & Ort — Auswahl-Karte */
     .select-card {
       border: 1px solid rgba(212,164,156,0.45);
@@ -288,11 +330,17 @@
           <div class="form-card">
             <div class="form-field">
               <label for="field-date">Datum des Events</label>
-              <input id="field-date" name="event_datum" type="date"/>
+              <div class="field-icon-wrap">
+                <input id="field-date" name="event_datum" type="text" placeholder="Tag auswählen" readonly style="cursor:pointer"/>
+                <span class="material-symbols-outlined field-icon">calendar_month</span>
+              </div>
             </div>
             <div class="form-field">
               <label for="field-time">Fertig gestylt um</label>
-              <input id="field-time" name="fertig_um" type="time"/>
+              <div class="field-icon-wrap">
+                <input id="field-time" name="fertig_um" type="text" placeholder="Uhrzeit auswählen" readonly style="cursor:pointer"/>
+                <span class="material-symbols-outlined field-icon">schedule</span>
+              </div>
             </div>
           </div>
 
@@ -461,6 +509,25 @@
       const errorEl = input.parentElement.querySelector('.field-error');
       if (errorEl) errorEl.remove();
     }
+
+    // Flatpickr — Datum
+    flatpickr('#field-date', {
+      locale: 'de',
+      dateFormat: 'd. F Y',
+      minDate: 'today',
+      disableMobile: true,
+      appendTo: document.getElementById('field-date').closest('.form-card'),
+    });
+
+    // Flatpickr — Uhrzeit
+    flatpickr('#field-time', {
+      enableTime: true,
+      noCalendar: true,
+      dateFormat: 'H:i',
+      time_24hr: true,
+      minuteIncrement: 15,
+      disableMobile: true,
+    });
 
     const form = document.getElementById('inquiry-form');
     const nameInput  = form.querySelector('[name="name"]');
