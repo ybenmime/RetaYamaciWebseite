@@ -380,6 +380,17 @@
     const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     async function init() {
+      // ─── DEV PREVIEW (nur lokal) ──────────────────────────────────────────
+      // URL: masterclass.html?preview → Auth-Check überspringen
+      // WICHTIG: Vor dem Go-Live entfernen oder Supabase-Credentials eintragen
+      if (new URLSearchParams(window.location.search).get('preview') !== null) {
+        document.getElementById('loading-screen').style.display = 'none';
+        document.getElementById('page-content').style.display   = 'block';
+        setTimeout(function() { document.getElementById('hero-line').classList.add('visible'); }, 100);
+        return;
+      }
+      // ─────────────────────────────────────────────────────────────────────
+
       const { data: { session } } = await client.auth.getSession();
 
       // Nicht eingeloggt → Login-Seite
