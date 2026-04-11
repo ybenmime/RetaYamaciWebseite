@@ -31,11 +31,9 @@
   <style>
     .cta-dash { display: inline-block; transition: transform 0.3s ease; }
     .cta-link:hover .cta-dash { transform: translateX(8px); }
-    .section-h2 { font-size: 48px; line-height: 1.1; }
     .font-logo { font-family: 'Abril Fatface', serif; }
-    .body-text  { font-size: 17px; line-height: 1.65; }
 
-    /* Video container — verhindert Download-Kontextmenü */
+    /* Video container */
     .video-wrapper {
       position: relative;
       padding-bottom: 56.25%; /* 16:9 */
@@ -49,7 +47,7 @@
       width: 100%; height: 100%;
       border: none;
     }
-    /* Transparentes Overlay verhindert Rechtsklick auf den iframe */
+    /* Transparentes Overlay verhindert Rechtsklick auf iframes */
     .video-overlay {
       position: absolute;
       inset: 0;
@@ -57,21 +55,72 @@
       background: transparent;
     }
 
-    /* Video Card Hover */
-    .video-card { transition: opacity 0.3s; }
-    .video-card:hover { opacity: 0.85; }
-
-    /* Thumbnail placeholder */
-    .thumb-placeholder {
+    /* Coming Soon Karten */
+    .lesson-card {
+      background: #111;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .lesson-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .lesson-thumb {
       width: 100%;
       aspect-ratio: 16 / 9;
       background: #1a1a1a;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Subtiles Raster-Muster im Thumbnail */
+    .lesson-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .coming-soon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border: 1px solid rgba(212,164,156,0.3);
+      border-radius: 9999px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(212,164,156,0.8);
+    }
+    .coming-soon-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 9999px;
+      background: #D4A49C;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
     }
 
-    /* Loading screen (vor Auth-Check) */
+    /* Hero divider line animation */
+    .hero-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,164,156,0.4), transparent);
+      width: 0;
+      transition: width 1.2s ease;
+    }
+    .hero-line.visible { width: 100%; }
+
+    /* Loading screen */
     #loading-screen {
       position: fixed; inset: 0;
       background: #0d0d0d;
@@ -88,7 +137,7 @@
     }
 
     @media (max-width: 768px) {
-      .section-h2 { font-size: 32px; }
+      .hero-title { font-size: 52px !important; }
     }
   </style>
 </head>
@@ -100,7 +149,7 @@
   </div>
 
   <!-- Access Expired Overlay -->
-  <div id="expired-overlay" style="display:none;">
+  <div id="expired-overlay">
     <div class="text-center px-6 max-w-md">
       <p class="font-body text-xs tracking-[0.3em] uppercase text-accent-rose mb-4">Zugang abgelaufen</p>
       <h2 class="font-headline text-3xl italic text-white mb-4">Dein Jahres-Zugang ist beendet.</h2>
@@ -114,9 +163,7 @@
   <!-- PAGE CONTENT (versteckt bis Auth-Check abgeschlossen) -->
   <div id="page-content" style="display:none;">
 
-  <!-- ========================
-       NAV
-  ========================= -->
+  <!-- NAV -->
   <header class="fixed top-0 w-full z-50 bg-[#0d0d0d]/80 backdrop-blur-sm border-b border-white/5">
     <nav class="flex justify-between items-center px-8 md:px-12 py-4 max-w-[1920px] mx-auto">
       <a href="index.html" class="font-logo text-2xl text-white">Reta Yamaci</a>
@@ -140,155 +187,164 @@
          HERO
     ========================= -->
     <section class="px-8 md:px-12 py-24 max-w-[1280px] mx-auto">
-      <p class="font-body text-xs tracking-[0.3em] uppercase text-accent-rose mb-6">Exklusiver Bereich</p>
-      <h1 class="font-headline text-white mb-6" style="font-size: 72px; line-height: 1.05;">
-        Willkommen in deiner<br/><em class="italic">Masterclass</em>
-      </h1>
-      <p class="font-body font-light text-white/50 text-lg max-w-xl leading-relaxed">
-        Drei professionelle Lerneinheiten zu Frisuren und Techniken — kuratiert und aufgenommen von Reta Yamaci. Dein Zugang ist <span id="expiry-display" class="text-accent-rose"></span> gültig.
-      </p>
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+        <div>
+          <p class="font-body text-xs tracking-[0.3em] uppercase text-accent-rose mb-6">Exklusiver Bereich</p>
+          <h1 class="font-headline text-white hero-title" style="font-size: 72px; line-height: 1.05;">
+            Deine<br/><em class="italic">Masterclass</em>
+          </h1>
+        </div>
+        <div class="md:text-right max-w-sm">
+          <p class="font-body font-light text-white/40 text-sm leading-relaxed">
+            3 professionelle Lerneinheiten von Reta Yamaci. Dein Zugang ist <span id="expiry-display" class="text-accent-rose"></span> gültig.
+          </p>
+        </div>
+      </div>
+      <div class="hero-line" id="hero-line"></div>
     </section>
 
     <!-- ========================
-         FEATURED VIDEO
+         COMING SOON BANNER
     ========================= -->
-    <section class="px-8 md:px-12 pb-24 max-w-[1280px] mx-auto">
-      <p class="font-body text-xs tracking-[0.2em] uppercase text-white/30 mb-6">Featured</p>
-
-      <div class="relative bg-[#111] overflow-hidden rounded-2xl">
-        <!-- Vimeo Embed (TODO: Video-ID ersetzen) -->
-        <div class="video-wrapper">
-          <!--
-            TODO: Die Vimeo-Video-ID unten ersetzen (z.B. 123456789)
-            Einstellungen in Vimeo:
-            - Privacy: "Only on sites I choose" → deine Domain eintragen
-            - Downloads: deaktivieren
-          -->
-          <iframe
-            src="https://player.vimeo.com/video/VIMEO_ID_FEATURED?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            title="Masterclass — Featured Video">
-          </iframe>
-          <!-- Overlay verhindert Rechtsklick -->
-          <div class="video-overlay" oncontextmenu="return false;"></div>
+    <section class="px-8 md:px-12 pb-12 max-w-[1280px] mx-auto">
+      <div class="border border-accent-rose/20 bg-accent-rose/5 rounded-2xl px-8 py-6 flex flex-col md:flex-row items-start md:items-center gap-4">
+        <div class="coming-soon-badge flex-shrink-0">
+          <span class="coming-soon-dot"></span>
+          In Produktion
         </div>
-
-        <!-- Placeholder wenn kein Video vorhanden -->
-        <div id="featured-placeholder" class="thumb-placeholder" style="aspect-ratio: 16/9; min-height: 400px;">
-          <div class="text-center">
-            <div class="w-16 h-16 border border-white/20 flex items-center justify-center mx-auto mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-            <p class="font-body text-xs tracking-[0.2em] uppercase text-white/20">Video folgt in Kürze</p>
-          </div>
-        </div>
-
-        <div class="p-8 bg-[#111]">
-          <p class="font-body text-xs tracking-[0.2em] uppercase text-accent-rose mb-3">Lektion 01</p>
-          <h2 class="font-headline text-2xl text-white">Titel folgt</h2>
-        </div>
+        <p class="font-body text-sm text-white/50 leading-relaxed">
+          Die Videos werden gerade produziert und erscheinen hier sobald sie fertig sind. Du wirst als Erste informiert.
+        </p>
       </div>
     </section>
 
     <!-- ========================
-         VIDEO BIBLIOTHEK
+         LEKTIONEN
     ========================= -->
-    <section class="bg-[#111] py-24 px-8 md:px-12">
-      <div class="max-w-[1280px] mx-auto">
+    <section class="px-8 md:px-12 pb-32 max-w-[1280px] mx-auto">
+      <p class="font-body text-xs tracking-[0.2em] uppercase text-white/30 mb-12">Alle Lektionen</p>
 
-        <p class="font-body text-xs tracking-[0.2em] uppercase text-white/30 mb-2">Alle Inhalte</p>
-        <h2 class="section-h2 font-headline text-white mb-16">Die Bibliothek</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!--
+        ══════════════════════════════════════════
+        LEKTION 01
+        ══════════════════════════════════════════
+        Wenn das Video fertig ist:
+        1. Den <div class="lesson-thumb ..."> Block entfernen
+        2. Den auskommentierten <div class="video-wrapper"> Block einkommentieren
+        3. VIMEO_ID_1 durch die echte Vimeo-Video-ID ersetzen
+        4. Den Titel in <h3> eintragen
+        5. Die Beschreibung in <p> eintragen
+        6. Den <a href="#">-Link auf "#lektion-01" setzen oder entfernen
+        ══════════════════════════════════════════
+        -->
+        <div class="lesson-card flex flex-col">
 
-          <!-- Video 1 -->
-          <div class="video-card flex flex-col rounded-xl overflow-hidden">
-            <div class="video-wrapper">
-              <iframe
-                src="https://player.vimeo.com/video/VIMEO_ID_1?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                title="Lektion 01">
-              </iframe>
-              <div class="video-overlay" oncontextmenu="return false;"></div>
-            </div>
-            <!-- Placeholder -->
-            <div class="thumb-placeholder">
-              <div class="text-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" class="mx-auto mb-2">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-                <p class="font-body text-xs text-white/20">Lektion 01</p>
+          <!-- COMING SOON Thumbnail (entfernen sobald Video live) -->
+          <div class="lesson-thumb">
+            <div class="text-center relative z-10">
+              <p class="font-body text-xs tracking-[0.3em] uppercase text-white/20 mb-3">Lektion 01</p>
+              <div class="coming-soon-badge mx-auto">
+                <span class="coming-soon-dot"></span>
+                Demnächst
               </div>
-            </div>
-            <div class="bg-[#1a1a1a] p-6 flex flex-col gap-3 flex-1">
-              <p class="font-body text-xs tracking-[0.2em] uppercase text-accent-rose">Lektion 01</p>
-              <h3 class="font-headline text-lg text-white">Titel folgt</h3>
-              <p class="font-body text-sm text-white/40 font-light flex-1">Beschreibung folgt sobald das Video hochgeladen wird.</p>
-              <a href="#" class="cta-link mt-4 inline-flex items-center gap-2 font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors">
-                Jetzt ansehen <span class="cta-dash">——</span>
-              </a>
             </div>
           </div>
 
-          <!-- Video 2 -->
-          <div class="video-card flex flex-col rounded-xl overflow-hidden">
-            <div class="video-wrapper">
-              <iframe
-                src="https://player.vimeo.com/video/VIMEO_ID_2?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                title="Lektion 02">
-              </iframe>
-              <div class="video-overlay" oncontextmenu="return false;"></div>
-            </div>
-            <div class="thumb-placeholder">
-              <div class="text-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" class="mx-auto mb-2">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-                <p class="font-body text-xs text-white/20">Lektion 02</p>
-              </div>
-            </div>
-            <div class="bg-[#1a1a1a] p-6 flex flex-col gap-3 flex-1">
-              <p class="font-body text-xs tracking-[0.2em] uppercase text-accent-rose">Lektion 02</p>
-              <h3 class="font-headline text-lg text-white">Titel folgt</h3>
-              <p class="font-body text-sm text-white/40 font-light flex-1">Beschreibung folgt sobald das Video hochgeladen wird.</p>
-              <a href="#" class="cta-link mt-4 inline-flex items-center gap-2 font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors">
-                Jetzt ansehen <span class="cta-dash">——</span>
-              </a>
-            </div>
+          <!--
+          VIDEO (einkommentieren wenn bereit):
+          <div class="video-wrapper">
+            <iframe
+              src="https://player.vimeo.com/video/VIMEO_ID_1?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="Lektion 01">
+            </iframe>
+            <div class="video-overlay" oncontextmenu="return false;"></div>
           </div>
+          -->
 
-          <!-- Video 3 -->
-          <div class="video-card flex flex-col rounded-xl overflow-hidden">
-            <div class="video-wrapper">
-              <iframe
-                src="https://player.vimeo.com/video/VIMEO_ID_3?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                title="Lektion 03">
-              </iframe>
-              <div class="video-overlay" oncontextmenu="return false;"></div>
-            </div>
-            <div class="thumb-placeholder">
-              <div class="text-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" class="mx-auto mb-2">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-                <p class="font-body text-xs text-white/20">Lektion 03</p>
-              </div>
-            </div>
-            <div class="bg-[#1a1a1a] p-6 flex flex-col gap-3 flex-1">
-              <p class="font-body text-xs tracking-[0.2em] uppercase text-accent-rose">Lektion 03</p>
-              <h3 class="font-headline text-lg text-white">Titel folgt</h3>
-              <p class="font-body text-sm text-white/40 font-light flex-1">Beschreibung folgt sobald das Video hochgeladen wird.</p>
-              <a href="#" class="cta-link mt-4 inline-flex items-center gap-2 font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors">
-                Jetzt ansehen <span class="cta-dash">——</span>
-              </a>
-            </div>
+          <div class="bg-[#111] p-6 flex flex-col gap-3 flex-1 border-t border-white/5">
+            <p class="font-body text-xs tracking-[0.2em] uppercase text-accent-rose">Lektion 01</p>
+            <!-- TODO: Titel eintragen -->
+            <h3 class="font-headline text-lg text-white/40 italic">Titel folgt</h3>
+            <!-- TODO: Beschreibung eintragen -->
+            <p class="font-body text-xs text-white/25 font-light flex-1 leading-relaxed">Wird veröffentlicht sobald das Video fertig produziert ist.</p>
           </div>
-
         </div>
+
+        <!--
+        ══════════════════════════════════════════
+        LEKTION 02 — gleiche Schritte wie Lektion 01
+        ══════════════════════════════════════════
+        -->
+        <div class="lesson-card flex flex-col">
+
+          <div class="lesson-thumb">
+            <div class="text-center relative z-10">
+              <p class="font-body text-xs tracking-[0.3em] uppercase text-white/20 mb-3">Lektion 02</p>
+              <div class="coming-soon-badge mx-auto">
+                <span class="coming-soon-dot"></span>
+                Demnächst
+              </div>
+            </div>
+          </div>
+
+          <!--
+          VIDEO (einkommentieren wenn bereit):
+          <div class="video-wrapper">
+            <iframe
+              src="https://player.vimeo.com/video/VIMEO_ID_2?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="Lektion 02">
+            </iframe>
+            <div class="video-overlay" oncontextmenu="return false;"></div>
+          </div>
+          -->
+
+          <div class="bg-[#111] p-6 flex flex-col gap-3 flex-1 border-t border-white/5">
+            <p class="font-body text-xs tracking-[0.2em] uppercase text-accent-rose">Lektion 02</p>
+            <h3 class="font-headline text-lg text-white/40 italic">Titel folgt</h3>
+            <p class="font-body text-xs text-white/25 font-light flex-1 leading-relaxed">Wird veröffentlicht sobald das Video fertig produziert ist.</p>
+          </div>
+        </div>
+
+        <!--
+        ══════════════════════════════════════════
+        LEKTION 03 — gleiche Schritte wie Lektion 01
+        ══════════════════════════════════════════
+        -->
+        <div class="lesson-card flex flex-col">
+
+          <div class="lesson-thumb">
+            <div class="text-center relative z-10">
+              <p class="font-body text-xs tracking-[0.3em] uppercase text-white/20 mb-3">Lektion 03</p>
+              <div class="coming-soon-badge mx-auto">
+                <span class="coming-soon-dot"></span>
+                Demnächst
+              </div>
+            </div>
+          </div>
+
+          <!--
+          VIDEO (einkommentieren wenn bereit):
+          <div class="video-wrapper">
+            <iframe
+              src="https://player.vimeo.com/video/VIMEO_ID_3?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&title=0&byline=0&portrait=0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="Lektion 03">
+            </iframe>
+            <div class="video-overlay" oncontextmenu="return false;"></div>
+          </div>
+          -->
+
+          <div class="bg-[#111] p-6 flex flex-col gap-3 flex-1 border-t border-white/5">
+            <p class="font-body text-xs tracking-[0.2em] uppercase text-accent-rose">Lektion 03</p>
+            <h3 class="font-headline text-lg text-white/40 italic">Titel folgt</h3>
+            <p class="font-body text-xs text-white/25 font-light flex-1 leading-relaxed">Wird veröffentlicht sobald das Video fertig produziert ist.</p>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -332,8 +388,7 @@
         return;
       }
 
-      // Zugang-Ablauf prüfen (Supabase Tabelle: profiles)
-      // Spalte: access_expires_at (timestamp with time zone)
+      // Zugang-Ablauf prüfen (Supabase Tabelle: profiles, Spalte: access_expires_at)
       const { data: profile, error } = await client
         .from('profiles')
         .select('access_expires_at')
@@ -342,27 +397,29 @@
 
       if (!error && profile && profile.access_expires_at) {
         const expiresAt = new Date(profile.access_expires_at);
-        const now       = new Date();
 
-        if (now > expiresAt) {
-          // Zugang abgelaufen
+        if (new Date() > expiresAt) {
           document.getElementById('loading-screen').style.display  = 'none';
           document.getElementById('expired-overlay').style.display = 'flex';
           return;
         }
 
         // Ablaufdatum in Hero anzeigen
-        const options = { day: '2-digit', month: 'long', year: 'numeric' };
         document.getElementById('expiry-display').textContent =
-          'bis ' + expiresAt.toLocaleDateString('de-DE', options);
+          'bis ' + expiresAt.toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' });
       }
 
-      // E-Mail in Nav anzeigen
+      // E-Mail in Nav
       document.getElementById('user-email').textContent = session.user.email;
 
       // Seite einblenden
       document.getElementById('loading-screen').style.display = 'none';
       document.getElementById('page-content').style.display   = 'block';
+
+      // Hero-Linie animieren
+      setTimeout(function() {
+        document.getElementById('hero-line').classList.add('visible');
+      }, 100);
     }
 
     init();
@@ -374,10 +431,7 @@
     });
 
     // ─── VIDEO-SCHUTZ ──────────────────────────────────────────────────────────
-    // Rechtsklick deaktivieren
     document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-
-    // Tastenkürzel sperren: Strg+S (Speichern), Strg+U (Quellcode)
     document.addEventListener('keydown', function(e) {
       if ((e.ctrlKey || e.metaKey) && ['s', 'u', 'p'].includes(e.key.toLowerCase())) {
         e.preventDefault();
