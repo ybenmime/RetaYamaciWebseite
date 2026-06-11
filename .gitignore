@@ -1,3 +1,8 @@
 .DS_Store
 api/.env
 api/node_modules/
+
+# Verschachteltes Duplikat-Repo (eigenes .git) – gehört nicht in dieses Repo
+/RetaYamaciWebseite/
+# Interner Tool-State
+.superpowers/

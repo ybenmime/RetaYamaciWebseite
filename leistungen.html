@@ -89,6 +89,11 @@
       min-width: 120px;
     }
     .option-row:hover { background: rgba(255,255,255,0.85); }
+    /* Sichtbarer Tastatur-Fokus für die anklickbaren Options-/Probe-Reihen */
+    .option-row:focus-visible, .probe-row:focus-visible {
+      outline: 2px solid #D4A49C;
+      outline-offset: 2px;
+    }
     .option-row.selected { background: white; }
     .option-row.selected::before {
       content: '';
@@ -102,7 +107,7 @@
     .option-row.selected .option-label { opacity: 1; }
     .option-row .option-price { font-family: 'Cormorant', serif; font-size: 28px; font-style: italic; opacity: 0.65; color: #242424; }
     .option-row.selected .option-price { opacity: 1; color: #D4A49C; }
-    .card-cta-inactive { opacity: 0.3; pointer-events: none; cursor: default; }
+    .card-cta-inactive { opacity: 0.55; pointer-events: none; cursor: default; }
     .card-cta-active   { opacity: 1; pointer-events: auto; }
     /* Probe-Styling */
     .probe-section {
@@ -149,7 +154,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(212,164,156,0.35), transparent 65%);
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(212,164,156,0.55), transparent 70%);
       opacity: 0;
       transition: opacity 0.4s ease;
       pointer-events: none;
@@ -283,6 +288,7 @@
   </script>
 </head>
 <body class="bg-near-white text-dark-text font-body">
+  <a href="#hauptinhalt" class="sr-only focus:not-sr-only focus:fixed focus:z-[300] focus:top-4 focus:left-4 focus:bg-white focus:text-dark-text focus:px-4 focus:py-2 focus:rounded focus:shadow-lg font-label text-xs tracking-[0.2em] uppercase">Zum Inhalt springen</a>
 
 <!-- NAV -->
 <header class="fixed top-0 w-full z-50 bg-[#EEE9E4]/40 backdrop-blur-sm transition-colors duration-500 hover:bg-[#EEE9E4]/90">
@@ -310,48 +316,52 @@
   </div>
 </header>
 
-<main>
+<main id="hauptinhalt">
+
+<!-- SEITEN-HERO -->
+<section class="pt-36 pb-10 px-6 md:px-12 bg-champagne">
+  <div class="max-w-7xl mx-auto">
+    <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose mb-4 block">Leistungen &amp; Preise</span>
+    <h1 class="font-headline section-h2 text-dark-text">Hair &amp; Make-up für jeden Anlass</h1>
+  </div>
+</section>
 
 <!-- BESONDERE ANLÄSSE -->
-<section class="pt-36 pb-24 px-6 md:px-12 bg-champagne">
+<section class="pt-6 pb-24 px-6 md:px-12 bg-champagne">
   <div class="max-w-7xl mx-auto">
     <div class="mb-16">
-      <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose block mb-4">Besondere Anlässe</span>
       <h2 class="font-headline section-h2 text-dark-text">Für deinen besonderen Tag</h2>
     </div>
-    <div class="flex flex-col gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-      <!-- Hero-Karte: Braut (volle Breite, zentriert) -->
-      <div class="anlass-card bg-white p-12 flex flex-col items-center text-center" style="border-radius:24px;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Braut">
-        <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-4 block">01</span>
-        <h3 class="font-headline text-6xl text-dark-text leading-tight mb-4">Braut</h3>
-        <div class="h-px bg-champagne w-16 mb-8"></div>
-        <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-4">Option wählen</p>
-        <div class="options-list flex flex-wrap justify-center gap-3 w-full">
-          <div class="option-row" role="radio" aria-checked="false" tabindex="0" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
-          <div class="option-row" role="radio" aria-checked="false" tabindex="0" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
-          <div class="option-row" role="radio" aria-checked="false" tabindex="0" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
-        </div>
-        <div class="probe-section w-full">
-          <p class="font-label text-[10px] tracking-[0.2em] uppercase text-accent-rose/70 mb-3">Probe-Styling gewünscht?</p>
-          <div class="flex flex-wrap justify-center gap-3">
-            <div class="probe-row" role="checkbox" aria-checked="false" tabindex="0" data-probe="Hairstyling" data-probe-price="150"><span class="probe-label">Probe Hairstyling</span><span class="probe-price">150 €</span></div>
-            <div class="probe-row" role="checkbox" aria-checked="false" tabindex="0" data-probe="Makeup" data-probe-price="150"><span class="probe-label">Probe Makeup</span><span class="probe-price">150 €</span></div>
-            <div class="probe-row" role="checkbox" aria-checked="false" tabindex="0" data-probe="Complete Probelook" data-probe-price="300"><span class="probe-label">Complete Probelook</span><span class="probe-price">300 €</span></div>
+        <!-- Karte: Braut -->
+        <div class="anlass-card bg-white p-12 flex flex-col" style="border-radius:24px;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Braut">
+          <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-4 block">01</span>
+          <h3 class="font-headline text-5xl text-dark-text mb-6 leading-tight">Braut</h3>
+          <div class="h-px bg-champagne mb-6"></div>
+          <p class="font-label text-[11px] tracking-[0.2em] uppercase text-dark-text/70 mb-4">Option wählen</p>
+          <div class="options-list flex flex-row flex-wrap gap-3 mb-auto">
+            <div class="option-row flex-1" role="radio" aria-checked="false" tabindex="0" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
+            <div class="option-row flex-1" role="radio" aria-checked="false" tabindex="0" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
+            <div class="option-row flex-1" role="radio" aria-checked="false" tabindex="0" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
           </div>
+          <div class="probe-section">
+            <p class="font-label text-[10px] tracking-[0.2em] uppercase text-accent-rose/70 mb-3 px-1">Probe-Styling gewünscht?</p>
+            <div class="flex flex-row flex-wrap gap-3">
+              <div class="probe-row flex-1" role="checkbox" aria-checked="false" tabindex="0" data-probe="Hairstyling" data-probe-price="150"><span class="probe-label">Probe Hairstyling</span><span class="probe-price">150 €</span></div>
+              <div class="probe-row flex-1" role="checkbox" aria-checked="false" tabindex="0" data-probe="Makeup" data-probe-price="150"><span class="probe-label">Probe Makeup</span><span class="probe-price">150 €</span></div>
+              <div class="probe-row flex-1" role="checkbox" aria-checked="false" tabindex="0" data-probe="Complete Probelook" data-probe-price="300"><span class="probe-label">Complete Probelook</span><span class="probe-price">300 €</span></div>
+            </div>
+          </div>
+          <a href="anfrage.html?service=Braut" class="cta-link card-cta card-cta-inactive mt-10 inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Anfragen <span class="cta-dash ml-2">——</span></a>
         </div>
-        <a href="anfrage.html?service=Braut" class="cta-link card-cta card-cta-inactive mt-8 inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Anfragen <span class="cta-dash ml-2">——</span></a>
-      </div>
-
-      <!-- 2×2 Raster: Henna, Standesamt, Verlobung, Gäste -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
         <!-- Karte: Henna -->
         <div class="anlass-card bg-white p-12 flex flex-col" style="border-radius:24px;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Henna">
           <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-4 block">02</span>
           <h3 class="font-headline text-5xl text-dark-text mb-6 leading-tight">Henna</h3>
           <div class="h-px bg-champagne mb-6"></div>
-          <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-4">Option wählen</p>
+          <p class="font-label text-[11px] tracking-[0.2em] uppercase text-dark-text/70 mb-4">Option wählen</p>
           <div class="options-list flex flex-row flex-wrap gap-3 mb-auto">
             <div class="option-row flex-1" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
             <div class="option-row flex-1" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
@@ -365,7 +375,7 @@
           <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-4 block">03</span>
           <h3 class="font-headline text-5xl text-dark-text mb-6 leading-tight">Standesamt</h3>
           <div class="h-px bg-champagne mb-6"></div>
-          <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-4">Option wählen</p>
+          <p class="font-label text-[11px] tracking-[0.2em] uppercase text-dark-text/70 mb-4">Option wählen</p>
           <div class="options-list flex flex-row flex-wrap gap-3 mb-auto">
             <div class="option-row flex-1" data-option="Hairstyling" data-price="200"><span class="option-label">Hairstyling</span><span class="option-price">200 €</span></div>
             <div class="option-row flex-1" data-option="Makeup" data-price="200"><span class="option-label">Makeup</span><span class="option-price">200 €</span></div>
@@ -379,7 +389,7 @@
           <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-4 block">04</span>
           <h3 class="font-headline text-5xl text-dark-text mb-6 leading-tight">Verlobung</h3>
           <div class="h-px bg-champagne mb-6"></div>
-          <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-4">Option wählen</p>
+          <p class="font-label text-[11px] tracking-[0.2em] uppercase text-dark-text/70 mb-4">Option wählen</p>
           <div class="options-list flex flex-row flex-wrap gap-3 mb-auto">
             <div class="option-row flex-1" data-option="Hairstyling" data-price="200"><span class="option-label">Hairstyling</span><span class="option-price">200 €</span></div>
             <div class="option-row flex-1" data-option="Makeup" data-price="200"><span class="option-label">Makeup</span><span class="option-price">200 €</span></div>
@@ -396,22 +406,7 @@
           <a href="anfrage.html?service=Verlobung" class="cta-link card-cta card-cta-inactive mt-10 inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Anfragen <span class="cta-dash ml-2">——</span></a>
         </div>
 
-        <!-- Karte: Gäste -->
-        <div class="anlass-card bg-white p-12 flex flex-col" style="border-radius:24px;box-shadow:0 4px 28px rgba(36,36,36,0.09);" data-service="Gäste">
-          <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-4 block">05</span>
-          <h3 class="font-headline text-5xl text-dark-text mb-6 leading-tight">Gäste</h3>
-          <div class="h-px bg-champagne mb-6"></div>
-          <p class="font-label text-[10px] tracking-[0.2em] uppercase text-dark-text/40 mb-4">Option wählen</p>
-          <div class="options-list flex flex-row flex-wrap gap-3 mb-auto">
-            <div class="option-row flex-1" data-option="Hairstyling" data-price="120"><span class="option-label">Hairstyling</span><span class="option-price">120 €</span></div>
-            <div class="option-row flex-1" data-option="Makeup" data-price="120"><span class="option-label">Makeup</span><span class="option-price">120 €</span></div>
-            <div class="option-row flex-1" data-option="Complete Look" data-price="240"><span class="option-label">Complete Look</span><span class="option-price">240 €</span></div>
-          </div>
-          <a href="anfrage.html?service=Gäste" class="cta-link card-cta card-cta-inactive mt-10 inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Anfragen <span class="cta-dash ml-2">——</span></a>
-        </div>
-
       </div>
-    </div>
   </div>
 </section>
 
