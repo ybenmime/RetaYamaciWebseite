@@ -67,10 +67,11 @@ module.exports = async (req, res) => {
       </table>
     </div>`;
 
+  const senderAddress = process.env.SENDER_EMAIL || process.env.SMTP_USER || 'kontaktformular@reta-yamaci.de';
   const mail = {
-    from:    process.env.SENDER_EMAIL || process.env.SMTP_USER || 'kontaktformular@reta-yamaci.de',
+    from:    { name: 'Kontaktformular reta-yamaci.de', address: senderAddress },
     to:      process.env.RECIPIENT_EMAIL || 'rita.y@live.de',
-    replyTo: email, // Antworten gehen direkt an die anfragende Person
+    replyTo: { name: name, address: email }, // Antworten gehen direkt an die anfragende Person
     subject: `Neue Anfrage von ${name}${leistung ? ` — ${leistung}` : ''}`,
     text:    textBody,
     html:    htmlBody,
