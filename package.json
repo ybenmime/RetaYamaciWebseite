@@ -1,0 +1,9 @@
+{
+  "name": "reta-yamaci-webseite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Statische Webseite von Reta Yamaci + Kontaktformular-Serverless-Function (Vercel)",
+  "dependencies": {
+    "nodemailer": "^6.9.13"
+  }
+}

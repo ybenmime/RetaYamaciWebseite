@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /masterclass
 Disallow: /masterclass-login
-Sitemap: https://DOMAIN.de/sitemap.xml
+Sitemap: https://reta-yamaci.de/sitemap.xml

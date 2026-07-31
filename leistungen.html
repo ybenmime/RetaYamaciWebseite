@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
   <!-- ========================
        SEO & META
   ========================= -->
@@ -11,19 +12,19 @@
   <meta name="language" content="de"/>
   <meta name="theme-color" content="#f5f2ed"/>
   <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://DOMAIN.de/leistungen.html"/>
+  <link rel="canonical" href="https://reta-yamaci.de/leistungen.html"/>
   <!-- Open Graph — og:image empfohlen: 1200×630px -->
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Leistungen – Brautstyling, Make-up & Hairstyling Köln"/>
   <meta property="og:description" content="Professionelles Brautstyling, Make-up und Hairstyling für Hochzeiten, Standesamt, Verlobung & Gäste – mobil in Köln, Bonn & Düsseldorf."/>
-  <meta property="og:url" content="https://DOMAIN.de/leistungen.html"/>
-  <meta property="og:image" content="https://DOMAIN.de/assets/reta-og-image.jpg"/>
+  <meta property="og:url" content="https://reta-yamaci.de/leistungen.html"/>
+  <meta property="og:image" content="https://reta-yamaci.de/assets/reta-og-image.jpg"/>
   <meta property="og:locale" content="de_DE"/>
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Leistungen – Brautstyling, Make-up & Hairstyling Köln"/>
   <meta name="twitter:description" content="Professionelles Brautstyling, Make-up und Hairstyling – mobil in Köln, Bonn & Düsseldorf."/>
-  <meta name="twitter:image" content="https://DOMAIN.de/assets/reta-og-image.jpg"/>
+  <meta name="twitter:image" content="https://reta-yamaci.de/assets/reta-og-image.jpg"/>
   <!-- /SEO & META -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -62,6 +63,16 @@
     .body-text   { font-size: 17px; line-height: 1.65; }
     .cta-dash    { display: inline-block; transition: transform 0.3s ease; }
     .cta-link:hover .cta-dash { transform: translateX(8px); }
+    /* Coming-Soon Badge (Masterclass-Karte) */
+    .coming-soon-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border: 1px solid rgba(212,164,156,0.4);
+      border-radius: 9999px; font-family: 'Montserrat', sans-serif;
+      font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(212,164,156,0.95);
+    }
+    .coming-soon-dot { width: 5px; height: 5px; border-radius: 9999px; background: #D4A49C; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
     @media (max-width: 768px) {
       .hero-title { font-size: 48px; }
       .section-h2 { font-size: 32px; }
@@ -116,7 +127,7 @@
       transition: max-height 0.4s ease, opacity 0.3s ease;
       opacity: 0;
     }
-    .probe-section.visible { max-height: 150px; opacity: 1; margin-top: 12px; }
+    .probe-section.visible { max-height: 400px; opacity: 1; margin-top: 12px; }
     .probe-row {
       display: flex;
       flex-direction: column;
@@ -246,28 +257,28 @@
         "name": "Braut Make-up & Hairstyling Köln",
         "provider": { "@type": "Person", "name": "Reta Yamaci" },
         "areaServed": ["Köln", "Bonn", "Düsseldorf"],
-        "offers": { "@type": "Offer", "price": "220", "priceCurrency": "EUR" }
+        "offers": { "@type": "Offer", "price": "250", "priceCurrency": "EUR" }
       },
       {
         "@type": "Service",
         "name": "Henna Make-up & Hairstyling Köln",
         "provider": { "@type": "Person", "name": "Reta Yamaci" },
         "areaServed": ["Köln", "Bonn", "Düsseldorf"],
-        "offers": { "@type": "Offer", "price": "220", "priceCurrency": "EUR" }
+        "offers": { "@type": "Offer", "price": "250", "priceCurrency": "EUR" }
       },
       {
         "@type": "Service",
         "name": "Standesamt Styling Köln",
         "provider": { "@type": "Person", "name": "Reta Yamaci" },
         "areaServed": ["Köln", "Bonn", "Düsseldorf"],
-        "offers": { "@type": "Offer", "price": "200", "priceCurrency": "EUR" }
+        "offers": { "@type": "Offer", "price": "220", "priceCurrency": "EUR" }
       },
       {
         "@type": "Service",
         "name": "Verlobungs Make-up & Hairstyling Köln",
         "provider": { "@type": "Person", "name": "Reta Yamaci" },
         "areaServed": ["Köln", "Bonn", "Düsseldorf"],
-        "offers": { "@type": "Offer", "price": "200", "priceCurrency": "EUR" }
+        "offers": { "@type": "Offer", "price": "220", "priceCurrency": "EUR" }
       },
       {
         "@type": "Service",
@@ -319,7 +330,7 @@
 <main id="hauptinhalt">
 
 <!-- SEITEN-HERO -->
-<section class="pt-36 pb-10 px-6 md:px-12 bg-champagne">
+<section class="pt-36 pb-2 px-6 md:px-12 bg-champagne">
   <div class="max-w-7xl mx-auto">
     <span class="font-label text-xs tracking-[0.3em] uppercase text-accent-rose mb-4 block">Leistungen &amp; Preise</span>
     <h1 class="font-headline section-h2 text-dark-text">Hair &amp; Make-up für jeden Anlass</h1>
@@ -327,10 +338,10 @@
 </section>
 
 <!-- BESONDERE ANLÄSSE -->
-<section class="pt-6 pb-24 px-6 md:px-12 bg-champagne">
+<section class="pt-1 pb-24 px-6 md:px-12 bg-champagne">
   <div class="max-w-7xl mx-auto">
     <div class="mb-16">
-      <h2 class="font-headline section-h2 text-dark-text">Für deinen besonderen Tag</h2>
+      <h2 class="font-headline section-h2 italic text-dark-text" style="font-size:clamp(22px,3.5vw,32px);">Für deinen besonderen Tag</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
@@ -341,9 +352,9 @@
           <div class="h-px bg-champagne mb-6"></div>
           <p class="font-label text-[11px] tracking-[0.2em] uppercase text-dark-text/70 mb-4">Option wählen</p>
           <div class="options-list flex flex-row flex-wrap gap-3 mb-auto">
-            <div class="option-row flex-1" role="radio" aria-checked="false" tabindex="0" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
-            <div class="option-row flex-1" role="radio" aria-checked="false" tabindex="0" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
-            <div class="option-row flex-1" role="radio" aria-checked="false" tabindex="0" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
+            <div class="option-row flex-1" role="radio" aria-checked="false" tabindex="0" data-option="Hairstyling" data-price="250"><span class="option-label">Hairstyling</span><span class="option-price">250 €</span></div>
+            <div class="option-row flex-1" role="radio" aria-checked="false" tabindex="0" data-option="Makeup" data-price="250"><span class="option-label">Makeup</span><span class="option-price">250 €</span></div>
+            <div class="option-row flex-1" role="radio" aria-checked="false" tabindex="0" data-option="Complete Look" data-price="500"><span class="option-label">Complete Look</span><span class="option-price">500 €</span></div>
           </div>
           <div class="probe-section">
             <p class="font-label text-[10px] tracking-[0.2em] uppercase text-accent-rose/70 mb-3 px-1">Probe-Styling gewünscht?</p>
@@ -363,9 +374,9 @@
           <div class="h-px bg-champagne mb-6"></div>
           <p class="font-label text-[11px] tracking-[0.2em] uppercase text-dark-text/70 mb-4">Option wählen</p>
           <div class="options-list flex flex-row flex-wrap gap-3 mb-auto">
-            <div class="option-row flex-1" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
-            <div class="option-row flex-1" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
-            <div class="option-row flex-1" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
+            <div class="option-row flex-1" data-option="Hairstyling" data-price="250"><span class="option-label">Hairstyling</span><span class="option-price">250 €</span></div>
+            <div class="option-row flex-1" data-option="Makeup" data-price="250"><span class="option-label">Makeup</span><span class="option-price">250 €</span></div>
+            <div class="option-row flex-1" data-option="Complete Look" data-price="500"><span class="option-label">Complete Look</span><span class="option-price">500 €</span></div>
           </div>
           <a href="anfrage.html?service=Henna" class="cta-link card-cta card-cta-inactive mt-10 inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Anfragen <span class="cta-dash ml-2">——</span></a>
         </div>
@@ -377,9 +388,9 @@
           <div class="h-px bg-champagne mb-6"></div>
           <p class="font-label text-[11px] tracking-[0.2em] uppercase text-dark-text/70 mb-4">Option wählen</p>
           <div class="options-list flex flex-row flex-wrap gap-3 mb-auto">
-            <div class="option-row flex-1" data-option="Hairstyling" data-price="200"><span class="option-label">Hairstyling</span><span class="option-price">200 €</span></div>
-            <div class="option-row flex-1" data-option="Makeup" data-price="200"><span class="option-label">Makeup</span><span class="option-price">200 €</span></div>
-            <div class="option-row flex-1" data-option="Complete Look" data-price="380"><span class="option-label">Complete Look</span><span class="option-price">380 €</span></div>
+            <div class="option-row flex-1" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
+            <div class="option-row flex-1" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
+            <div class="option-row flex-1" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
           </div>
           <a href="anfrage.html?service=Standesamt" class="cta-link card-cta card-cta-inactive mt-10 inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors duration-300">Anfragen <span class="cta-dash ml-2">——</span></a>
         </div>
@@ -391,9 +402,9 @@
           <div class="h-px bg-champagne mb-6"></div>
           <p class="font-label text-[11px] tracking-[0.2em] uppercase text-dark-text/70 mb-4">Option wählen</p>
           <div class="options-list flex flex-row flex-wrap gap-3 mb-auto">
-            <div class="option-row flex-1" data-option="Hairstyling" data-price="200"><span class="option-label">Hairstyling</span><span class="option-price">200 €</span></div>
-            <div class="option-row flex-1" data-option="Makeup" data-price="200"><span class="option-label">Makeup</span><span class="option-price">200 €</span></div>
-            <div class="option-row flex-1" data-option="Complete Look" data-price="380"><span class="option-label">Complete Look</span><span class="option-price">380 €</span></div>
+            <div class="option-row flex-1" data-option="Hairstyling" data-price="220"><span class="option-label">Hairstyling</span><span class="option-price">220 €</span></div>
+            <div class="option-row flex-1" data-option="Makeup" data-price="220"><span class="option-label">Makeup</span><span class="option-price">220 €</span></div>
+            <div class="option-row flex-1" data-option="Complete Look" data-price="400"><span class="option-label">Complete Look</span><span class="option-price">400 €</span></div>
           </div>
           <div class="probe-section">
             <p class="font-label text-[10px] tracking-[0.2em] uppercase text-accent-rose/70 mb-3 px-1">Probe-Styling gewünscht?</p>
@@ -407,6 +418,22 @@
         </div>
 
       </div>
+
+      <!-- Persönlicher Kontakt (WhatsApp / Telefon) -->
+      <div class="max-w-2xl mx-auto mt-8 rounded-[24px] border border-dark-text/15 px-8 py-9 text-center">
+        <span class="font-label text-[11px] tracking-[0.3em] uppercase text-accent-rose/80 mb-5 block">Persönlich erreichbar für weitere Fragen</span>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="https://wa.me/491788242161" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-dark-text/15 text-dark-text font-label text-[11px] tracking-[0.15em] uppercase hover:border-accent-rose hover:text-accent-rose transition-colors duration-300">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.01c-.24.68-1.42 1.31-1.95 1.36-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-2.99 0-1.42.75-2.12 1.01-2.41.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.82 2 .89 2.15.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.17-.19.71-.83.9-1.11.19-.29.38-.24.65-.14.26.09 1.69.8 1.98.94.29.14.48.22.55.34.07.12.07.69-.17 1.37z"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+491788242161" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-dark-text/15 text-dark-text font-label text-[11px] tracking-[0.15em] uppercase hover:border-accent-rose hover:text-accent-rose transition-colors duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            +49 178 8242161
+          </a>
+        </div>
+      </div>
+
   </div>
 </section>
 
@@ -447,14 +474,15 @@
       <!-- Online Masterclass -->
       <div class="service-card bg-champagne p-10 flex flex-col w-full md:w-[calc(33.333%-1rem)]" style="border-radius:24px;overflow:hidden;box-shadow:0 4px 28px rgba(36,36,36,0.09);">
         <span class="font-label text-xs tracking-[0.3em] uppercase text-dark-text/40 mb-3 block">08</span>
-        <h3 class="font-headline text-4xl text-dark-text mb-6">Online<br/>Masterclass</h3>
+        <h3 class="font-headline text-4xl text-dark-text mb-4">Online<br/>Masterclass</h3>
+        <div class="coming-soon-badge mb-6"><span class="coming-soon-dot"></span>Coming soon</div>
         <ul class="space-y-2 mb-8 flex-1">
           <li class="font-label text-xs tracking-[0.1em] uppercase text-dark-text/70">3 Frisuren im Trend</li>
           <li class="font-label text-xs tracking-[0.1em] uppercase text-dark-text/70">Tips & Tricks · Technik</li>
           <li class="font-label text-xs tracking-[0.1em] uppercase text-dark-text/70">1 Jahr Zugriff</li>
         </ul>
         <p class="font-headline text-2xl italic text-accent-rose mb-8">499 €</p>
-        <a href="masterclass.html" class="cta-link inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors">Zur Masterclass <span class="cta-dash ml-2">——</span></a>
+        <a href="masterclass.html" class="cta-link inline-flex items-center font-label text-xs uppercase tracking-widest text-dark-text hover:text-accent-rose transition-colors">Mehr erfahren <span class="cta-dash ml-2">——</span></a>
       </div>
 
     </div>
@@ -468,11 +496,10 @@
   <div class="flex flex-col items-center gap-10 py-20 px-8">
     <a href="index.html" class="font-logo text-xl text-white">Reta Yamaci</a>
     <nav aria-label="Footer-Navigation" class="flex flex-wrap justify-center gap-8 md:gap-14">
-      <a href="#" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Impressum</a>
-      <a href="#" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Datenschutz</a>
+      <a href="impressum.html" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Impressum</a>
+      <a href="datenschutz.html" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Datenschutz</a>
       <a href="anfrage.html" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Kontakt</a>
-      <a href="#0" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Instagram</a>
-      <a href="#0" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Pinterest</a>
+      <a href="https://www.instagram.com/retamakeuphair/" target="_blank" rel="noopener" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Instagram</a>
     </nav>
     <p class="font-label text-xs tracking-[0.2em] uppercase text-stone-600">© 2026 Reta Yamaci. Alle Rechte vorbehalten.</p>
   </div>

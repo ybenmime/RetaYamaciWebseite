@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
   <!-- ========================
        SEO & META
   ========================= -->
@@ -11,19 +12,19 @@
   <meta name="language" content="de"/>
   <meta name="theme-color" content="#f5f2ed"/>
   <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://DOMAIN.de/anfrage.html"/>
+  <link rel="canonical" href="https://reta-yamaci.de/anfrage.html"/>
   <!-- Open Graph — og:image empfohlen: 1200×630px -->
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Termin anfragen – Reta Yamaci Köln"/>
   <meta property="og:description" content="Jetzt Termin anfragen – Mobile Make-up Artistin & Hairstylistin in Köln, Bonn & Düsseldorf."/>
-  <meta property="og:url" content="https://DOMAIN.de/anfrage.html"/>
-  <meta property="og:image" content="https://DOMAIN.de/assets/reta-og-image.jpg"/>
+  <meta property="og:url" content="https://reta-yamaci.de/anfrage.html"/>
+  <meta property="og:image" content="https://reta-yamaci.de/assets/reta-og-image.jpg"/>
   <meta property="og:locale" content="de_DE"/>
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Termin anfragen – Reta Yamaci Köln"/>
   <meta name="twitter:description" content="Jetzt Termin anfragen – Mobile Make-up Artistin & Hairstylistin in Köln, Bonn & Düsseldorf."/>
-  <meta name="twitter:image" content="https://DOMAIN.de/assets/reta-og-image.jpg"/>
+  <meta name="twitter:image" content="https://reta-yamaci.de/assets/reta-og-image.jpg"/>
   <!-- /SEO & META -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -451,8 +452,7 @@
         <a href="impressum.html" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Impressum</a>
         <a href="datenschutz.html" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Datenschutz</a>
         <a href="anfrage.html" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Kontakt</a>
-        <a href="#0" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Instagram</a>
-        <a href="#0" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Pinterest</a>
+        <a href="https://www.instagram.com/retamakeuphair/" target="_blank" rel="noopener" class="font-label text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Instagram</a>
       </nav>
 
       <p class="font-label text-xs tracking-[0.2em] uppercase text-stone-500">
@@ -664,7 +664,7 @@
       if (oldErr) oldErr.remove();
 
       try {
-        var res = await fetch('http://localhost:3001/anfrage', {
+        var res = await fetch('/api/anfrage', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),

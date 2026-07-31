@@ -6,3 +6,11 @@ api/node_modules/
 /RetaYamaciWebseite/
 # Interner Tool-State
 .superpowers/
+# Temporäre Feedback-Screenshots & lokales Vorschau-Tool
+/feedback-screenshots/
+/_mobile-preview.html
+
+# Original-/Quellbilder – bleiben lokal, nicht ins Repo/Deployment
+/Portfolio Img/
+/Web Img/
+/assets/images/portfolio/reta bilder neu/

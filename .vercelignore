@@ -1,0 +1,21 @@
+# Verwaiste Login-Seite (nicht verlinkt, enthält Supabase-Rest) — kommt erst zurück, wenn die Masterclass live geht
+masterclass-login.html
+
+# Lokaler Express-Dev-Server — auf Vercel ersetzt durch api/anfrage.js (Serverless Function)
+api/server.js
+api/node_modules
+api/.env
+api/.env.example
+api/README.md
+
+# Internes / Duplikate — gehören nicht ins öffentliche Deployment
+assets/images/portfolio/reta bilder neu
+RetaYamaciWebseite
+feedback-screenshots
+_mobile-preview.html
+design-refs
+docs
+.superpowers
+.claude
+.github
+.DS_Store

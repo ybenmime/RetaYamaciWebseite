@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
   <!-- ========================
        SEO & META
   ========================= -->
@@ -11,19 +12,19 @@
   <meta name="language" content="de"/>
   <meta name="theme-color" content="#f5f2ed"/>
   <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://DOMAIN.de/"/>
+  <link rel="canonical" href="https://reta-yamaci.de/"/>
   <!-- Open Graph — og:image empfohlen: 1200×630px -->
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Reta Yamaci – Make-up Artistin & Hairstylistin Köln"/>
   <meta property="og:description" content="Mobile Make-up Artistin & Hairstylistin in Köln. Brautstyling, Hochzeiten und besondere Anlässe – mobil in Köln, Bonn & Düsseldorf."/>
-  <meta property="og:url" content="https://DOMAIN.de/"/>
-  <meta property="og:image" content="https://DOMAIN.de/assets/reta-og-image.jpg"/>
+  <meta property="og:url" content="https://reta-yamaci.de/"/>
+  <meta property="og:image" content="https://reta-yamaci.de/assets/reta-og-image.jpg"/>
   <meta property="og:locale" content="de_DE"/>
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Reta Yamaci – Make-up Artistin & Hairstylistin Köln"/>
   <meta name="twitter:description" content="Mobile Make-up Artistin & Hairstylistin in Köln. Brautstyling, Hochzeiten und besondere Anlässe."/>
-  <meta name="twitter:image" content="https://DOMAIN.de/assets/reta-og-image.jpg"/>
+  <meta name="twitter:image" content="https://reta-yamaci.de/assets/reta-og-image.jpg"/>
   <!-- /SEO & META -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -66,7 +67,7 @@
       font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
     }
     .font-logo { font-family: 'Abril Fatface', serif; }
-    .hero-title    { font-size: 96px; line-height: 1.05; }
+    .hero-title    { font-size: 80px; line-height: 1.05; }
     .hero-subtitle { font-size: 42px; line-height: 1.2;  }
     .section-h2    { font-size: 48px; }
     .section-h3    { font-size: 32px; font-weight: 600; }
@@ -112,6 +113,31 @@
     }
     .carousel-slide:hover img { transform: scale3d(1.05, 1.05, 1); }
     #carousel-track { will-change: transform; }
+    /* Coming-Soon Badge (Masterclass) */
+    .coming-soon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border: 1px solid rgba(212,164,156,0.3);
+      border-radius: 9999px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(212,164,156,0.8);
+    }
+    .coming-soon-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 9999px;
+      background: #D4A49C;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
     /* Coaching + Masterclass sections — soft containers */
     .coaching-img-wrap { border-radius: 20px; overflow: hidden; }
     .quote-card { border-radius: 24px; }
@@ -145,7 +171,7 @@
     #carousel-dots button { border-radius: 9999px; }
 
     @media (max-width: 768px) {
-      .hero-title    { font-size: 48px; }
+      .hero-title    { font-size: clamp(34px, 12vw, 48px); }
       .hero-subtitle { font-size: 24px; }
       .section-h2    { font-size: 32px; }
     }
@@ -166,29 +192,28 @@
         "@type": "LocalBusiness",
         "name": "Reta Yamaci",
         "description": "Mobile Make-up Artistin und Hairstylistin in Köln. Spezialisiert auf Bridal Styling, Hochzeiten und besondere Anlässe.",
-        "url": "https://DOMAIN.de",
-        "telephone": "TELEFON_PLATZHALTER",
-        "image": "https://DOMAIN.de/assets/reta-og-image.jpg",
+        "url": "https://reta-yamaci.de",
+        "image": "https://reta-yamaci.de/assets/reta-og-image.jpg",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Köln",
+          "addressLocality": "Hürth",
           "addressRegion": "NRW",
           "addressCountry": "DE"
         },
         "areaServed": ["Köln", "Bonn", "Düsseldorf", "Leverkusen", "Bergisch Gladbach"],
         "priceRange": "€€€",
-        "sameAs": []
+        "sameAs": ["https://www.instagram.com/retamakeuphair/"]
       },
       {
         "@type": "Person",
         "name": "Reta Yamaci",
         "jobTitle": "Make-up Artistin & Hairstylistin",
         "description": "Mobile Make-up Artistin und Hairstylistin aus Köln, spezialisiert auf Bridal Styling, Hochzeiten und besondere Anlässe in NRW.",
-        "url": "https://DOMAIN.de",
-        "image": "https://DOMAIN.de/assets/reta-og-image.jpg",
+        "url": "https://reta-yamaci.de",
+        "image": "https://reta-yamaci.de/assets/reta-og-image.jpg",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Köln",
+          "addressLocality": "Hürth",
           "addressRegion": "NRW",
           "addressCountry": "DE"
         }
@@ -259,12 +284,12 @@
       </div>
 
       <!-- Hero Content -->
-      <div class="relative z-10 max-w-[1440px] mx-auto w-full flex items-end justify-between gap-8">
+      <div class="relative z-10 max-w-[1440px] mx-auto w-full flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
 
         <!-- Links: Text -->
         <div>
           <span class="font-label text-xs tracking-[0.4em] uppercase text-accent-rose mb-4 block">est. 2016</span>
-          <h1 class="font-headline text-white mb-4 max-w-3xl" style="font-size:80px;line-height:1.05;">
+          <h1 class="hero-title font-headline text-white mb-4 max-w-3xl">
             Die Kunst der <br/>Verfeinerung.
           </h1>
           <p class="font-body text-white/75 font-light text-lg md:text-xl md:whitespace-nowrap">
@@ -369,6 +394,83 @@
             </div>
           </div>
 
+          <!-- Bild 7 -->
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
+            <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
+              <img src="assets/images/portfolio/img_3439.jpg" alt="Brautfrisur mit Schleier von Reta Yamaci Köln" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
+            </div>
+          </div>
+
+          <!-- Bild 8 -->
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
+            <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
+              <img src="assets/images/portfolio/img_9334.jpg" alt="Brautfrisur mit Haarschmuck von Reta Yamaci" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
+            </div>
+          </div>
+
+          <!-- Bild 9 -->
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
+            <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
+              <img src="assets/images/portfolio/img_3775.jpg" alt="Half-Up Styling mit Wellen von Reta Yamaci Köln" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
+            </div>
+          </div>
+
+          <!-- Bild 10 -->
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
+            <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
+              <img src="assets/images/portfolio/img_4777.jpg" alt="Hollywood-Wellen von Reta Yamaci" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
+            </div>
+          </div>
+
+          <!-- Bild 11 -->
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
+            <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
+              <img src="assets/images/portfolio/img_3985.jpg" alt="Blonde Wellen Half-Up von Reta Yamaci Köln" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
+            </div>
+          </div>
+
+          <!-- Bild 12 -->
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
+            <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
+              <img src="assets/images/portfolio/img_7954.jpg" alt="Tiefer Chignon von Reta Yamaci" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
+            </div>
+          </div>
+
+          <!-- Bild 13 -->
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
+            <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
+              <img src="assets/images/portfolio/img_5180.jpg" alt="Brautstyling Hollywood-Welle von Reta Yamaci Köln" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
+            </div>
+          </div>
+
+          <!-- Bild 14 -->
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
+            <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
+              <img src="assets/images/portfolio/img_5512.jpg" alt="Glamouröse Wellen von Reta Yamaci" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
+            </div>
+          </div>
+
+          <!-- Bild 15 -->
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
+            <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
+              <img src="assets/images/portfolio/img_3044.jpg" alt="Eleganter Dutt von Reta Yamaci Köln" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
+            </div>
+          </div>
+
+          <!-- Bild 16 -->
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
+            <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
+              <img src="assets/images/portfolio/img_4645.jpg" alt="Gewellte Haare Styling von Reta Yamaci" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
+            </div>
+          </div>
+
+          <!-- Bild 17 -->
+          <div class="carousel-slide flex-shrink-0 w-[58vw] md:w-[calc((100%-6rem)/3.5)]">
+            <div class="slide-img-wrap w-full aspect-[4/5] overflow-hidden">
+              <img src="assets/images/portfolio/img_9407.jpg" alt="Blonde Hollywood-Wellen von Reta Yamaci Köln" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"/>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -461,6 +563,10 @@
         <!-- Text Right -->
         <div class="lg:w-1/2">
           <span class="font-label text-xs tracking-[0.4em] uppercase text-accent-rose mb-6 block">The Digital Atelier</span>
+          <div class="coming-soon-badge mb-6">
+            <span class="coming-soon-dot"></span>
+            Coming soon
+          </div>
           <h2 class="font-headline section-h2 mb-8 leading-tight text-near-white">Masterclasses für Zuhause</h2>
           <p class="font-body body-text text-near-white/60 mb-12">
             Erhalte exklusiven Zugang zu unserer kuratierten Bibliothek von Lernvideos. Von täglichen Hair-Hacks bis hin zu fortgeschrittenen Editorial-Make-up-Techniken.
@@ -476,7 +582,7 @@
             </li>
           </ul>
           <a href="masterclass.html" class="tap cta-link inline-flex items-center gap-1 font-label text-sm uppercase tracking-widest text-near-white hover:text-accent-rose transition-colors duration-300">
-            Mitglied werden <span class="cta-dash">&nbsp;——</span>
+            Mehr erfahren <span class="cta-dash">&nbsp;——</span>
           </a>
         </div>
 
@@ -497,8 +603,7 @@
         <a href="impressum.html" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Impressum</a>
         <a href="datenschutz.html" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Datenschutz</a>
         <a href="anfrage.html" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Kontakt</a>
-        <a href="#0" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Instagram</a>
-        <a href="#0" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Pinterest</a>
+        <a href="https://www.instagram.com/retamakeuphair/" target="_blank" rel="noopener" class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-white transition-colors duration-300">Instagram</a>
       </nav>
 
       <p class="font-label font-light text-xs tracking-[0.2em] uppercase text-stone-500">
@@ -581,7 +686,11 @@
       function goTo(page) {
         current = Math.max(0, Math.min(page, pages - 1));
         const slideWidth = slides[0].getBoundingClientRect().width + gap;
-        track.style.transform = 'translateX(-' + (current * perPage * slideWidth) + 'px)';
+        // Letzte Seite rechtsbündig andocken, damit keine Leerfläche entsteht,
+        // wenn die Slide-Anzahl kein Vielfaches von perPage ist.
+        const maxScroll = Math.max(0, (slides.length - perPage) * slideWidth);
+        const offset    = Math.min(current * perPage * slideWidth, maxScroll);
+        track.style.transform = 'translateX(-' + offset + 'px)';
         dots.querySelectorAll('button').forEach(function(d, i) {
           d.style.width     = i === current ? '24px' : '6px';
           d.style.background = i === current ? '#D4A49C' : 'rgba(36,36,36,0.18)';
