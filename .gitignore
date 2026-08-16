@@ -8,9 +8,13 @@ api/node_modules/
 .superpowers/
 # Temporäre Feedback-Screenshots & lokales Vorschau-Tool
 /feedback-screenshots/
+/go-live-screenshots/
+/Domain-übernahme/
 /_mobile-preview.html
 
 # Original-/Quellbilder – bleiben lokal, nicht ins Repo/Deployment
 /Portfolio Img/
 /Web Img/
 /assets/images/portfolio/reta bilder neu/
+/Foto Webseite Reta/
+/reta bilder neu/
