@@ -96,6 +96,20 @@
       border-bottom: 1px solid rgba(212,164,156,0.2);
     }
     .form-field:last-child { border-bottom: none; }
+    .privacy-note {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      line-height: 1.65;
+      color: rgba(36,36,36,0.6);
+      max-width: 620px;
+      margin-top: 4px;
+    }
+    .privacy-note a {
+      color: #D4A49C;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .privacy-note a:hover { color: #242424; }
     .form-field label {
       font-family: 'Montserrat', sans-serif;
       font-size: 10px;
@@ -424,6 +438,15 @@
               <textarea id="field-message" name="nachricht" rows="5" placeholder="Beschreibe kurz dein Anliegen..." style="resize:none"></textarea>
             </div>
           </div>
+
+          <!-- Datenschutzhinweis (Informationspflicht Art. 13 DSGVO) -->
+          <p class="privacy-note">
+            Mit dem Absenden übermittelst du mir die oben eingetragenen Angaben, damit ich deine Anfrage
+            beantworten und dir ein Angebot machen kann. Sie werden per E-Mail an mein Postfach zugestellt,
+            nicht in einer Datenbank gespeichert und nicht für Werbung genutzt. Details – auch zu Speicherdauer,
+            Löschung und deinen Rechten – findest du in der
+            <a href="datenschutz.html">Datenschutzerklärung</a>.
+          </p>
 
           <!-- Submit Button -->
           <button
